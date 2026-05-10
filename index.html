@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentação Completa de Lua - Guia Profissional</title>
+    <title>Documentação Completa de Lua - Guia Profissional Detalhado | Do Básico ao Avançado</title>
     <style>
         * {
             margin: 0;
@@ -12,38 +12,39 @@
         }
 
         :root {
-            --primary: #2d1b4e;
-            --secondary: #6b4fa3;
-            --accent: #ffc857;
-            --text: #1a1a2e;
-            --text-light: #6b7280;
-            --bg: #f8f9fa;
+            --primary: #1a0d33;
+            --secondary: #5a3a8a;
+            --accent: #ffb347;
+            --text: #0f0f1e;
+            --text-light: #3d3d5c;
+            --bg: #fafbfc;
             --bg-secondary: #ffffff;
-            --code-bg: #1e1e2e;
-            --code-text: #e0e0e0;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --border: #e5e7eb;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --code-bg: #1a1a2e;
+            --code-text: #f0f0f0;
+            --success: #0ea574;
+            --warning: #e89000;
+            --danger: #d93636;
+            --border: #d1d5db;
+            --shadow: rgba(0, 0, 0, 0.12);
         }
 
         body.dark-mode {
-            --primary: #f0e6ff;
-            --text: #f0f0f0;
-            --text-light: #b0b0b0;
-            --bg: #0d1117;
-            --bg-secondary: #161b22;
+            --primary: #f5e6ff;
+            --text: #f5f5f5;
+            --text-light: #c5c5d0;
+            --bg: #0a0e14;
+            --bg-secondary: #13171f;
             --code-bg: #0d1117;
-            --border: #30363d;
-            --shadow: rgba(0, 0, 0, 0.5);
+            --border: #2a2e38;
+            --shadow: rgba(0, 0, 0, 0.6);
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--text);
             background: var(--bg);
-            line-height: 1.7;
+            line-height: 1.8;
+            font-size: 16px;
             transition: background 0.3s ease, color 0.3s ease;
         }
 
@@ -58,28 +59,33 @@
             top: 0;
             right: 0;
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 2px 8px var(--shadow);
+            border-bottom: 2px solid var(--border);
+            box-shadow: 0 4px 12px var(--shadow);
         }
 
         .theme-toggle {
             background: linear-gradient(135deg, var(--secondary), var(--primary));
             border: none;
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 25px;
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.05rem;
+            font-weight: 700;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 12px var(--shadow);
+            box-shadow: 0 6px 16px var(--shadow);
+            letter-spacing: 0.3px;
         }
 
         .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px var(--shadow);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(-1px);
         }
 
         /* Sidebar */
@@ -91,21 +97,21 @@
             position: fixed;
             height: 100vh;
             overflow-y: auto;
-            box-shadow: 2px 0 20px var(--shadow);
+            box-shadow: 4px 0 24px var(--shadow);
         }
 
         body.dark-mode aside {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%);
+            background: linear-gradient(135deg, #13171f 0%, #1a0d33 100%);
         }
 
         aside h1 {
-            font-size: 1.6rem;
+            font-size: 1.75rem;
             padding: 0 1.5rem 2rem;
-            border-bottom: 2px solid rgba(255,255,255,0.2);
+            border-bottom: 3px solid rgba(255,255,255,0.25);
             margin-bottom: 1.5rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 0.5px;
-            background: linear-gradient(135deg, #ffc857, #ffb347);
+            background: linear-gradient(135deg, #ffb347, #ffc857);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -116,14 +122,14 @@
         }
 
         .nav-section h2 {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             padding: 0 1.5rem;
-            margin-bottom: 0.8rem;
-            color: #ffc857;
-            font-weight: 700;
-            letter-spacing: 1.2px;
-            opacity: 0.95;
+            margin-bottom: 1rem;
+            color: #ffb347;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            opacity: 1;
         }
 
         .nav-section ul {
@@ -132,20 +138,22 @@
 
         .nav-section a {
             display: block;
-            padding: 0.65rem 1.5rem;
-            color: rgba(255,255,255,0.85);
+            padding: 0.75rem 1.5rem;
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            font-weight: 500;
             transition: all 0.3s ease;
-            border-left: 3px solid transparent;
+            border-left: 4px solid transparent;
             position: relative;
         }
 
         .nav-section a:hover {
-            background: rgba(255,255,255,0.1);
-            border-left-color: #ffc857;
+            background: rgba(255,255,255,0.15);
+            border-left-color: #ffb347;
             color: white;
-            padding-left: 1.7rem;
+            padding-left: 1.8rem;
+            font-weight: 600;
         }
 
         aside::-webkit-scrollbar {
@@ -169,20 +177,21 @@
         main {
             margin-left: 320px;
             flex: 1;
-            padding: 4rem 3rem 3rem;
-            max-width: 1100px;
+            padding: 4rem 3.5rem 3rem;
+            max-width: 1200px;
         }
 
         h2 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: var(--primary);
             margin-top: 3.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.8rem;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
             border-bottom: 4px solid var(--accent);
             display: inline-block;
-            font-weight: 700;
+            font-weight: 800;
             position: relative;
+            letter-spacing: -0.5px;
         }
 
         body.dark-mode h2 {
@@ -190,11 +199,12 @@
         }
 
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             color: var(--secondary);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
+            margin-top: 2.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
         }
 
         body.dark-mode h3 {
@@ -202,11 +212,11 @@
         }
 
         h4 {
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             color: var(--primary);
-            margin-top: 1.8rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         body.dark-mode h4 {
@@ -214,9 +224,10 @@
         }
 
         p {
-            margin-bottom: 1.2rem;
-            color: var(--text-light);
-            line-height: 1.8;
+            margin-bottom: 1.3rem;
+            color: var(--text);
+            line-height: 1.9;
+            font-size: 1.05rem;
         }
 
         /* Code Blocks */
@@ -228,9 +239,9 @@
             overflow-x: auto;
             margin: 1.5rem 0;
             border-left: 5px solid var(--accent);
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.7;
             box-shadow: 0 4px 15px var(--shadow);
             position: relative;
         }
@@ -253,11 +264,12 @@
         p code, li code {
             background: var(--secondary);
             background: linear-gradient(135deg, var(--secondary), var(--primary));
-            padding: 0.25em 0.6em;
-            border-radius: 5px;
+            padding: 0.3em 0.7em;
+            border-radius: 6px;
             color: white;
-            font-size: 0.95em;
-            font-weight: 500;
+            font-size: 0.98em;
+            font-weight: 600;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
         }
 
         /* Tables */
@@ -268,18 +280,19 @@
             box-shadow: 0 4px 15px var(--shadow);
             border-radius: 10px;
             overflow: hidden;
+            font-size: 1rem;
         }
 
         th {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 1.1rem;
+            padding: 1.2rem;
             text-align: left;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 1rem;
             border: none;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
         body.dark-mode th {
@@ -287,84 +300,115 @@
         }
 
         td {
-            padding: 1rem 1.1rem;
+            padding: 1.1rem 1.2rem;
             border-bottom: 1px solid var(--border);
             background: var(--bg-secondary);
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
         tr:hover {
-            background: linear-gradient(90deg, rgba(255, 200, 87, 0.05), transparent);
+            background: linear-gradient(90deg, rgba(255, 179, 71, 0.08), transparent);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
         }
 
         /* Lists */
         ul, ol {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
+            margin-left: 2.2rem;
+            margin-bottom: 1.8rem;
         }
 
         li {
-            margin-bottom: 0.7rem;
-            color: var(--text-light);
-            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            color: var(--text);
+            line-height: 1.9;
+            font-size: 1.02rem;
+        }
+
+        li strong {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        body.dark-mode li strong {
+            color: var(--accent);
         }
 
         /* Highlight Boxes */
         .box {
-            padding: 1.8rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            border-left: 5px solid;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2.5rem 0;
+            border-left: 6px solid;
             background: var(--bg-secondary);
-            box-shadow: 0 4px 12px var(--shadow);
+            box-shadow: 0 6px 16px var(--shadow);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-size: 1.02rem;
+            line-height: 1.8;
         }
 
         .box:hover {
-            transform: translateX(4px);
-            box-shadow: 0 6px 16px var(--shadow);
+            transform: translateX(6px);
+            box-shadow: 0 8px 20px var(--shadow);
         }
 
         .box-info {
-            border-left-color: #3b82f6;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(59, 130, 246, 0.02));
+            border-left-color: #2563eb;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(37, 99, 235, 0.03));
         }
 
         .box-warning {
             border-left-color: var(--warning);
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), rgba(245, 158, 11, 0.02));
+            background: linear-gradient(135deg, rgba(232, 144, 0, 0.08), rgba(232, 144, 0, 0.03));
         }
 
         .box-danger {
             border-left-color: var(--danger);
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(239, 68, 68, 0.02));
+            background: linear-gradient(135deg, rgba(217, 54, 54, 0.08), rgba(217, 54, 54, 0.03));
         }
 
         .box-success {
             border-left-color: var(--success);
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(16, 185, 129, 0.02));
+            background: linear-gradient(135deg, rgba(14, 165, 116, 0.08), rgba(14, 165, 116, 0.03));
         }
 
         .box strong {
             color: var(--primary);
+            font-weight: 700;
+            font-size: 1.05rem;
         }
 
         body.dark-mode .box strong {
             color: var(--accent);
         }
 
+        .box ul {
+            margin-top: 1rem;
+            margin-bottom: 0;
+        }
+
+        .box li {
+            margin-bottom: 0.6rem;
+        }
+
         /* Comparação lado a lado */
         .comparison {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 2rem 0;
+            gap: 2rem;
+            margin: 2.5rem 0;
         }
 
         .comparison-item {
-            padding: 1.5rem;
-            border-radius: 8px;
+            padding: 1.8rem;
+            border-radius: 12px;
             background: var(--bg-secondary);
-            border: 2px solid var(--border);
+            border: 3px solid var(--border);
+            box-shadow: 0 4px 12px var(--shadow);
         }
 
         .comparison-item h4 {
@@ -373,20 +417,20 @@
 
         .comparison-item.bad {
             border-color: var(--danger);
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.02), rgba(239, 68, 68, 0.05));
+            background: linear-gradient(135deg, rgba(217, 54, 54, 0.03), rgba(217, 54, 54, 0.08));
         }
 
         .comparison-item.good {
             border-color: var(--success);
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.02), rgba(16, 185, 129, 0.05));
+            background: linear-gradient(135deg, rgba(14, 165, 116, 0.03), rgba(14, 165, 116, 0.08));
         }
 
         .comparison-label {
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: 800;
+            font-size: 1rem;
             text-transform: uppercase;
-            margin-bottom: 0.8rem;
-            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            letter-spacing: 1.2px;
         }
 
         .bad .comparison-label {
@@ -400,13 +444,14 @@
         /* Badge */
         .badge {
             display: inline-block;
-            padding: 0.35rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin: 0.2rem;
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin: 0.3rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            box-shadow: 0 2px 6px var(--shadow);
         }
 
         .badge-lua {
@@ -415,32 +460,34 @@
         }
 
         .badge-function {
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(37, 99, 235, 0.25);
             color: #1e40af;
+            border: 2px solid #2563eb;
         }
 
         .badge-warning {
-            background: rgba(245, 158, 11, 0.2);
+            background: rgba(232, 144, 0, 0.25);
             color: #92400e;
+            border: 2px solid var(--warning);
         }
 
         /* Exemplo com Output */
         .example-block {
             background: var(--bg-secondary);
-            border: 2px solid var(--accent);
-            border-radius: 10px;
-            padding: 1.8rem;
-            margin: 2rem 0;
-            box-shadow: 0 4px 12px var(--shadow);
+            border: 3px solid var(--accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 6px 16px var(--shadow);
         }
 
         .example-label {
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
         }
 
         body.dark-mode .example-label {
@@ -449,74 +496,88 @@
 
         .example-output {
             background: #f0f4f8;
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin-top: 1.2rem;
-            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            border-left: 5px solid var(--success);
             color: var(--text);
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 600;
         }
 
         body.dark-mode .example-output {
-            background: #1e2d3d;
+            background: #1a2332;
             color: #4ade80;
         }
 
         /* Intro Box */
         .intro-box {
-            background: linear-gradient(135deg, rgba(42,26,78,0.08), rgba(90,58,138,0.08));
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            border: 2px solid var(--accent);
-            box-shadow: 0 8px 20px var(--shadow);
+            background: linear-gradient(135deg, rgba(42,26,78,0.1), rgba(90,58,138,0.1));
+            padding: 3rem;
+            border-radius: 16px;
+            margin-bottom: 3.5rem;
+            border: 3px solid var(--accent);
+            box-shadow: 0 10px 30px var(--shadow);
         }
 
         body.dark-mode .intro-box {
-            background: linear-gradient(135deg, rgba(255,200,87,0.05), rgba(255,179,71,0.05));
+            background: linear-gradient(135deg, rgba(255,179,71,0.08), rgba(255,200,87,0.08));
         }
 
         .intro-box h2 {
             border: none;
             margin-top: 0;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        body.dark-mode .intro-box h2 {
+            background: linear-gradient(135deg, #ffb347, #ffc857);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        body.dark-mode .intro-box h2 {
-            background: linear-gradient(135deg, #ffc857, #ffb347);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .intro-box p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text);
         }
 
         .function-signature {
             background: var(--code-bg);
             color: #e879f9;
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin: 1.2rem 0;
-            font-family: 'Courier New', monospace;
-            border-left: 4px solid var(--accent);
-            font-weight: 500;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            border-left: 5px solid var(--accent);
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 12px var(--shadow);
         }
 
         /* Diagrama de fluxo */
         .flow-diagram {
             background: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 2px dashed var(--accent);
-            margin: 2rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 3px dashed var(--accent);
+            margin: 2.5rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
             overflow-x: auto;
-            color: var(--text-light);
+            color: var(--text);
+            line-height: 1.9;
+            font-weight: 600;
+            box-shadow: 0 4px 12px var(--shadow);
         }
 
         /* Responsivo */
@@ -586,11 +647,35 @@
         /* Rodapé */
         footer {
             text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            border-top: 1px solid var(--border);
-            margin-top: 4rem;
-            font-size: 0.95rem;
+            padding: 3rem 2rem;
+            color: var(--text);
+            border-top: 2px solid var(--border);
+            margin-top: 5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+            background: linear-gradient(135deg, rgba(255,179,71,0.03), rgba(255,200,87,0.03));
+        }
+
+        footer p {
+            margin-bottom: 0.8rem;
+        }
+
+        footer strong {
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        body.dark-mode footer strong {
+            color: var(--accent);
+        }
+
+        footer a {
+            transition: all 0.2s ease;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            transform: translateY(-1px);
         }
     </style>
 </head>
@@ -690,97 +775,214 @@
             <!-- Introdução -->
             <section id="introducao">
                 <div class="intro-box">
-                    <h2>Bem-vindo ao Universo de Lua</h2>
-                    <p>Este é um guia profissional e completo sobre <strong>Lua</strong>, uma linguagem dinâmica, leve e poderosa. Aqui você aprenderá desde os conceitos básicos até técnicas avançadas, com exemplos práticos e explicações detalhadas.</p>
-                    <p style="margin-bottom: 0;">Seja bem-vindo! 🌙</p>
+                    <h2>Bem-vindo ao Universo de Lua 🌙</h2>
+                    <p>Este é um guia <strong>profissional, completo e detalhado</strong> sobre <strong>Lua</strong>, uma linguagem dinâmica, leve e extremamente poderosa. Aqui você aprenderá desde os conceitos mais básicos até técnicas avançadas de programação, com exemplos práticos, explicações claras e dicas profissionais.</p>
+                    <p>Seja você um iniciante absoluto ou um desenvolvedor experiente querendo dominar Lua, esta documentação foi criada para ser seu guia definitivo. Cada seção é cuidadosamente explicada com exemplos funcionais que você pode testar imediatamente.</p>
+                    <p style="margin-bottom: 0;"><strong>Prepare-se para uma jornada completa pelo mundo de Lua!</strong> 🚀</p>
                 </div>
 
                 <h3>O que é Lua?</h3>
-                <p>Lua é uma linguagem de programação projetada para ser <strong>pequena, rápida e extensível</strong>. Criada em 1993 no Brasil, é amplamente usada em:</p>
+                <p>Lua é uma linguagem de programação projetada para ser <strong>pequena, rápida e extensível</strong>. Criada em 1993 no Brasil por Roberto Ierusalimschy, Waldemar Celes e Luiz Henrique de Figueiredo na PUC-Rio, Lua se tornou uma das linguagens mais populares para scripting e extensão de aplicações.</p>
+                
+                <p>O nome "Lua" significa "moon" em português, refletindo a simplicidade e elegância da linguagem. Lua é amplamente usada em diversos contextos:</p>
                 <ul>
-                    <li><strong>Games</strong>: Roblox, World of Warcraft, Garry's Mod</li>
-                    <li><strong>Scripts e Automação</strong>: Neovim, Awesome WM</li>
-                    <li><strong>Embarcada em Apps</strong>: LÖVE 2D, Corona SDK</li>
-                    <li><strong>Middleware</strong>: Nginx, Redis</li>
+                    <li><strong>Desenvolvimento de Games</strong>: Roblox (mais de 40 milhões de jogos), World of Warcraft, Garry's Mod, Angry Birds, Civilization V</li>
+                    <li><strong>Scripts e Automação</strong>: Neovim (editor de texto), Awesome WM (gerenciador de janelas), Adobe Lightroom</li>
+                    <li><strong>Embarcada em Aplicações</strong>: LÖVE 2D (framework de jogos), Corona SDK, Wireshark (análise de rede)</li>
+                    <li><strong>Middleware e Servidores</strong>: Nginx (servidor web), Redis (banco de dados), Apache HTTP Server</li>
+                    <li><strong>Sistemas Embarcados</strong>: Dispositivos IoT, roteadores, sistemas de automação industrial</li>
                 </ul>
+                
+                <div class="box box-info">
+                    <strong>💡 Por que Lua é tão popular?</strong> Lua é extremamente leve (menos de 300KB compilado), rápida, fácil de integrar com C/C++, e possui uma sintaxe simples e clara. Isso a torna ideal para ser embarcada em outras aplicações, permitindo que usuários estendam funcionalidades sem recompilar o programa principal.
+                </div>
 
                 <h3>Características Principais</h3>
+                <p>Lua possui características únicas que a diferenciam de outras linguagens de programação:</p>
                 <table>
                     <tr>
                         <th>Característica</th>
                         <th>Benefício</th>
-                        <th>Exemplo</th>
+                        <th>Exemplo Prático</th>
                     </tr>
                     <tr>
-                        <td><strong>Dinâmica</strong></td>
-                        <td>Sem tipagem estrita, flexível</td>
+                        <td><strong>Tipagem Dinâmica</strong></td>
+                        <td>Variáveis podem mudar de tipo durante a execução, oferecendo flexibilidade máxima</td>
                         <td><code>x = 10; x = "texto"</code></td>
                     </tr>
                     <tr>
                         <td><strong>First-class Functions</strong></td>
-                        <td>Funções como valores</td>
+                        <td>Funções são valores que podem ser armazenados, passados como argumentos e retornados</td>
                         <td><code>f = function() end</code></td>
                     </tr>
                     <tr>
-                        <td><strong>Tables</strong></td>
-                        <td>Única estrutura de dados, muito poderosa</td>
+                        <td><strong>Tables Universais</strong></td>
+                        <td>Uma única estrutura de dados que serve como array, dicionário, objeto e namespace</td>
                         <td><code>{1,2,3} ou {a=1,b=2}</code></td>
                     </tr>
                     <tr>
                         <td><strong>Metatables</strong></td>
-                        <td>Customização completa de comportamento</td>
+                        <td>Sistema poderoso para customizar comportamento de operadores e acessos</td>
                         <td><code>setmetatable(t, mt)</code></td>
                     </tr>
                     <tr>
-                        <td><strong>Leve</strong></td>
-                        <td>Executable < 1MB, bom para embarcada</td>
-                        <td>Roda em microcontroladores</td>
+                        <td><strong>Extremamente Leve</strong></td>
+                        <td>Executável menor que 300KB, ideal para sistemas embarcados e dispositivos com recursos limitados</td>
+                        <td>Roda em microcontroladores e IoT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Garbage Collection</strong></td>
+                        <td>Gerenciamento automático de memória, eliminando vazamentos e simplificando o código</td>
+                        <td>Coleta incremental e geracional</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coroutines</strong></td>
+                        <td>Suporte nativo para programação assíncrona e cooperativa sem threads do sistema</td>
+                        <td><code>coroutine.create()</code></td>
                     </tr>
                 </table>
+                
+                <div class="box box-success">
+                    <strong>✅ Vantagens de Lua:</strong> Lua é uma das linguagens mais rápidas entre as linguagens interpretadas, possui integração simples com C/C++, tem uma curva de aprendizado suave, e é mantida ativamente pela comunidade e pela PUC-Rio. Seu tamanho reduzido e eficiência a tornam perfeita para jogos, aplicações embarcadas e extensões de software.
+                </div>
 
                 <div class="box box-info">
-                    <strong>💡 Dica de Aprendizado:</strong> A melhor forma de aprender Lua é <strong>escrevendo código</strong>. Cada seção possui exemplos - tente rodá-los!
+                    <strong>💡 Dica de Aprendizado:</strong> A melhor forma de aprender Lua é <strong>escrevendo código</strong>. Cada seção desta documentação possui exemplos práticos e funcionais - copie, execute e modifique-os para entender como funcionam! Não tenha medo de experimentar e cometer erros, pois é assim que se aprende de verdade.
                 </div>
+                
+                <h3>Versões de Lua</h3>
+                <p>Existem diferentes versões de Lua, cada uma com suas características:</p>
+                <ul>
+                    <li><strong>Lua 5.1</strong>: Versão mais popular, usada em Roblox, World of Warcraft e muitos jogos. Possui LuaJIT (compilador JIT extremamente rápido).</li>
+                    <li><strong>Lua 5.2</strong>: Introduziu _ENV, melhorias em coroutines e mudanças em módulos.</li>
+                    <li><strong>Lua 5.3</strong>: Adicionou suporte nativo para inteiros de 64 bits e operadores bitwise.</li>
+                    <li><strong>Lua 5.4</strong>: Versão mais recente com to-be-closed variables, constantes e melhorias de performance.</li>
+                </ul>
+                
+                <p>Esta documentação foca em <strong>Lua 5.1</strong>, que é a versão mais amplamente utilizada na indústria, especialmente em jogos e aplicações embarcadas. A maioria dos conceitos se aplica a todas as versões, com pequenas diferenças que serão destacadas quando relevantes.</p>
             </section>
 
             <!-- Instalação -->
             <section id="instalacao">
                 <h2>Instalação e Setup</h2>
+                
+                <p>Antes de começar a programar em Lua, você precisa instalar o interpretador Lua no seu sistema. Existem várias formas de fazer isso, dependendo do seu sistema operacional. Vamos cobrir as principais opções:</p>
 
                 <h3>Windows</h3>
-                <pre>-- Com Chocolatey (recomendado)
+                <p>No Windows, você tem algumas opções para instalar Lua:</p>
+                <pre>-- Opção 1: Com Chocolatey (gerenciador de pacotes - recomendado)
 choco install lua
 
--- Ou download direto: https://www.lua.org/download.html</pre>
+-- Opção 2: Download direto do site oficial
+-- Visite: https://www.lua.org/download.html
+-- Baixe o binário pré-compilado para Windows
+-- Extraia e adicione ao PATH do sistema
+
+-- Opção 3: LuaForWindows (pacote completo com bibliotecas)
+-- Visite: https://github.com/rjpcomputing/luaforwindows
+-- Inclui Lua + LuaRocks + bibliotecas comuns</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Dica para Windows:</strong> Se você está começando, recomendo o <strong>LuaForWindows</strong>, que já vem com tudo configurado, incluindo o LuaRocks (gerenciador de pacotes) e várias bibliotecas úteis. Para desenvolvedores mais experientes, Chocolatey oferece mais controle sobre as versões.
+                </div>
 
                 <h3>macOS</h3>
-                <pre>-- Com Homebrew
+                <p>No macOS, a forma mais simples é usar o Homebrew:</p>
+                <pre>-- Instalar Homebrew (se ainda não tiver)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+-- Instalar Lua
 brew install lua
 
--- Verificar versão
-lua -v</pre>
+-- Verificar instalação
+lua -v
+-- Output esperado: Lua 5.4.x  Copyright (C) 1994-2023 Lua.org, PUC-Rio
+
+-- Instalar LuaRocks (gerenciador de pacotes)
+brew install luarocks</pre>
 
                 <h3>Linux (Ubuntu/Debian)</h3>
-                <pre>-- Instalação
+                <p>No Linux, você pode usar o gerenciador de pacotes da sua distribuição ou compilar do código-fonte:</p>
+                <pre>-- Opção 1: Instalação via apt (mais simples)
+sudo apt-get update
 sudo apt-get install lua5.3
 
--- Ou compilar do source
+-- Verificar versão instalada
+lua -v
+
+-- Instalar LuaRocks
+sudo apt-get install luarocks
+
+-- Opção 2: Compilar do código-fonte (mais controle)
 cd ~
-wget https://www.lua.org/ftp/lua-5.1.tar.gz
-tar xzf lua-5.1.tar.gz
-cd lua-5.1
-make linux
-make install</pre>
+wget https://www.lua.org/ftp/lua-5.4.6.tar.gz
+tar xzf lua-5.4.6.tar.gz
+cd lua-5.4.6
+make linux test
+sudo make install
 
-                <h3>Executar Lua</h3>
-                <pre>-- Modo interativo (REPL)
+-- Verificar instalação
+lua -v</pre>
+
+                <div class="box box-warning">
+                    <strong>⚠️ Atenção às Versões:</strong> Diferentes distribuições Linux podem ter versões diferentes de Lua nos repositórios. Se você precisa de uma versão específica (como Lua 5.1 para compatibilidade com Roblox ou LuaJIT), compile do código-fonte ou use um PPA específico.
+                </div>
+
+                <h3>Executar Lua - Guia Completo</h3>
+                <p>Depois de instalar, você pode executar Lua de várias formas:</p>
+                <pre>-- 1. Modo interativo (REPL - Read-Eval-Print Loop)
 lua
+-- Você verá um prompt onde pode digitar comandos Lua diretamente
+> print("Olá, Lua!")
+Olá, Lua!
+> x = 10
+> print(x * 2)
+20
+> os.exit()  -- Para sair
 
--- Executar arquivo
+-- 2. Executar arquivo Lua
 lua script.lua
 
--- Passar argumentos
-lua script.lua arg1 arg2</pre>
+-- 3. Executar arquivo com argumentos
+lua script.lua arg1 arg2 arg3
+-- Os argumentos ficam disponíveis na tabela 'arg'
+
+-- 4. Executar código inline (útil para testes rápidos)
+lua -e "print('Olá do terminal!')"
+
+-- 5. Executar com modo interativo após script
+lua -i script.lua
+-- Executa o script e depois abre o REPL
+
+-- 6. Verificar sintaxe sem executar
+luac -p script.lua
+-- Útil para validar código antes de rodar</pre>
+
+                <h3>Configurar Editor de Código</h3>
+                <p>Para uma melhor experiência de desenvolvimento, configure seu editor favorito:</p>
+                
+                <h4>Visual Studio Code</h4>
+                <pre>-- Extensões recomendadas:
+1. Lua (sumneko.lua) - Language Server com autocomplete
+2. Lua Debug (actboy168.lua-debug) - Debugger completo
+3. vscode-lua (trixnz.vscode-lua) - Syntax highlighting
+
+-- Configuração básica (settings.json):
+{
+    "Lua.diagnostics.globals": ["love", "vim"],
+    "Lua.runtime.version": "Lua 5.1",
+    "Lua.workspace.library": []
+}</pre>
+
+                <h4>Neovim</h4>
+                <pre>-- Plugins recomendados:
+- nvim-lspconfig com lua-language-server
+- nvim-cmp para autocomplete
+- luasnip para snippets</pre>
+
+                <div class="box box-success">
+                    <strong>✅ Pronto para Começar!</strong> Com Lua instalado e seu editor configurado, você está pronto para começar a programar. Teste sua instalação criando um arquivo <code>teste.lua</code> com <code>print("Funcionou!")</code> e executando <code>lua teste.lua</code>.
+                </div>
             </section>
 
             <!-- Seu Primeiro Script -->
@@ -829,30 +1031,118 @@ Bem-vindo, Maria!</div>
 
             <!-- Comentários -->
             <section id="comentarios">
-                <h2>Comentários</h2>
+                <h2>Comentários em Lua</h2>
+                
+                <p>Comentários são fundamentais para documentar seu código e torná-lo mais compreensível. Em Lua, existem duas formas principais de escrever comentários:</p>
 
                 <h3>Comentário de Linha Única</h3>
-                <pre>-- Este é um comentário
-local x = 10  -- Variável importante</pre>
+                <p>Use dois hífens (<code>--</code>) para comentários de uma linha. Tudo após <code>--</code> até o final da linha é ignorado pelo interpretador:</p>
+                <pre>-- Este é um comentário de linha única
+local x = 10  -- Você também pode colocar comentários no final de uma linha
+
+-- Comentários são úteis para explicar o que o código faz
+local velocidade_maxima = 120  -- km/h - limite de velocidade na rodovia</pre>
 
                 <h3>Comentário de Múltiplas Linhas</h3>
+                <p>Para comentários mais longos que ocupam várias linhas, use <code>--[[</code> para abrir e <code>]]</code> para fechar:</p>
                 <pre>--[[ 
     Este é um comentário que ocupa
     várias linhas. Muito útil para
-    documentar código complexo.
+    documentar código complexo, explicar
+    algoritmos ou deixar notas detalhadas
+    para outros desenvolvedores.
 ]]
 
-local x = 10</pre>
+local x = 10
+
+--[[
+    Função para calcular a área de um círculo
+    Parâmetros:
+        raio (number): O raio do círculo
+    Retorna:
+        number: A área calculada
+]]
+local function calcular_area_circulo(raio)
+    return math.pi * raio ^ 2
+end</pre>
 
                 <h3>Comentários Aninhados</h3>
+                <p>Lua suporta comentários aninhados, o que é útil para desabilitar temporariamente blocos de código que já contêm comentários:</p>
                 <pre>--[[
     Comentário externo
-    --[[ Comentário aninhado ]]
-    Continuação do externo
+    --[[ Comentário aninhado - também funciona! ]]
+    Continuação do comentário externo
+]]
+
+--[[
+    Você pode usar isso para "comentar" código temporariamente:
+    
+    local function teste()
+        -- Este comentário interno não causa problema
+        print("Esta função está desabilitada")
+    end
 ]]</pre>
 
+                <h3>Desabilitar Código Temporariamente</h3>
+                <p>Uma técnica comum é usar comentários para desabilitar/habilitar código rapidamente:</p>
+                <pre>-- Para desabilitar um bloco:
+--[[
+local debug_mode = true
+if debug_mode then
+    print("Debug ativo")
+end
+]]
+
+-- Para habilitar, adicione um hífen extra no início:
+---[[
+local debug_mode = true
+if debug_mode then
+    print("Debug ativo")
+end
+--]]</pre>
+
                 <div class="box box-info">
-                    <strong>📌 Padrão:</strong> Use <code>--</code> para comentários curtos e <code>--[[...]]</code> para documentação longa ou desabilitar blocos de código temporariamente.
+                    <strong>� Boas Práticas de Comentários:</strong>
+                    <ul>
+                        <li>Use <code>--</code> para comentários curtos e explicações rápidas</li>
+                        <li>Use <code>--[[...]]</code> para documentação de funções, módulos ou explicações longas</li>
+                        <li>Comente o "porquê", não o "o quê" - o código já mostra o que está fazendo</li>
+                        <li>Mantenha comentários atualizados quando o código mudar</li>
+                        <li>Evite comentários óbvios como <code>x = x + 1  -- incrementa x</code></li>
+                        <li>Use comentários para explicar decisões de design, limitações conhecidas ou TODOs</li>
+                    </ul>
+                </div>
+
+                <h3>Comentários de Documentação (LuaDoc Style)</h3>
+                <p>Para projetos maiores, considere usar um estilo de documentação consistente:</p>
+                <pre>--- Calcula o fatorial de um número
+-- @param n number O número para calcular o fatorial
+-- @return number O fatorial de n
+-- @usage local resultado = fatorial(5)  -- retorna 120
+local function fatorial(n)
+    if n <= 1 then
+        return 1
+    end
+    return n * fatorial(n - 1)
+end
+
+--- Classe Pessoa
+-- @field nome string Nome da pessoa
+-- @field idade number Idade da pessoa
+local Pessoa = {}
+
+--- Cria uma nova instância de Pessoa
+-- @param nome string Nome da pessoa
+-- @param idade number Idade da pessoa
+-- @return table Nova instância de Pessoa
+function Pessoa:novo(nome, idade)
+    local obj = {nome = nome, idade = idade}
+    setmetatable(obj, {__index = self})
+    return obj
+end</pre>
+
+                <div class="box box-success">
+                    <strong>✅ Dica Profissional:</strong> Ferramentas como LuaDoc e LDoc podem gerar documentação HTML automaticamente a partir de comentários bem formatados. Isso é especialmente útil para bibliotecas e APIs públicas.
                 </div>
             </section>
 
@@ -860,98 +1150,182 @@ local x = 10</pre>
             <section id="tipos">
                 <h2>Tipos de Dados - Guia Completo</h2>
 
-                <p>Lua possui <strong>8 tipos fundamentais</strong>. Entender cada um é crucial.</p>
+                <p>Lua é uma linguagem <strong>dinamicamente tipada</strong>, o que significa que as variáveis não têm tipos fixos - elas podem armazenar qualquer tipo de valor e mudar de tipo durante a execução. Lua possui <strong>8 tipos fundamentais</strong>, e entender cada um deles é crucial para dominar a linguagem.</p>
+                
+                <div class="box box-info">
+                    <strong>💡 Tipagem Dinâmica:</strong> Diferente de linguagens como C ou Java onde você declara <code>int x = 10;</code>, em Lua você simplesmente escreve <code>local x = 10</code>. O tipo é determinado pelo valor, não pela declaração. Isso oferece flexibilidade, mas requer cuidado para evitar erros de tipo em tempo de execução.
+                </div>
 
-                <h3>1. Nil (Nulo)</h3>
-                <p>Representa ausência de valor. Padrão para variáveis não inicializadas.</p>
+                <h3>1. Nil (Nulo/Ausência de Valor)</h3>
+                <p>O tipo <code>nil</code> representa a <strong>ausência de valor</strong>. É o valor padrão de variáveis não inicializadas e é usado para "deletar" valores de tables.</p>
                 <pre>local x
 print(x)              -- Output: nil
 print(type(x))        -- Output: nil
 
--- Usar nil para "limpar" variáveis
+-- Variáveis não declaradas também retornam nil
+print(variavel_inexistente)  -- Output: nil (sem erro!)
+
+-- Usar nil para "limpar" variáveis ou remover de tables
 local y = 10
 y = nil
-print(y)              -- Output: nil</pre>
+print(y)              -- Output: nil
+
+local pessoa = {nome = "João", idade = 30}
+pessoa.idade = nil    -- Remove a chave 'idade' da table
+print(pessoa.idade)   -- Output: nil</pre>
 
                 <div class="box box-warning">
-                    <strong>⚠️ Importante:</strong> Variáveis que nunca recebem valor inicial contêm automaticamente <code>nil</code>. Isto é diferente de linguagens que causariam erro.
+                    <strong>⚠️ Importante sobre Nil:</strong> 
+                    <ul>
+                        <li>Variáveis não inicializadas contêm <code>nil</code> automaticamente (não causam erro)</li>
+                        <li>Acessar chaves inexistentes em tables retorna <code>nil</code></li>
+                        <li>Atribuir <code>nil</code> a uma chave de table efetivamente remove essa chave</li>
+                        <li><code>nil</code> é considerado <strong>falsy</strong> em condicionais (junto com <code>false</code>)</li>
+                    </ul>
                 </div>
 
                 <h3>2. Boolean (Verdadeiro/Falso)</h3>
-                <p>Apenas dois valores: <code>true</code> e <code>false</code>.</p>
+                <p>O tipo boolean possui apenas dois valores possíveis: <code>true</code> (verdadeiro) e <code>false</code> (falso). São usados principalmente em condicionais e lógica.</p>
                 <pre>local ativo = true
 local deletado = false
 
 if ativo then
     print("Usuário está ativo")
-end</pre>
+end
+
+-- Operações lógicas retornam booleanos
+print(10 > 5)         -- Output: true
+print(10 == 20)       -- Output: false
+print(type(true))     -- Output: boolean</pre>
 
                 <div class="box box-danger">
-                    <strong>🚨 Armadilha Comum:</strong> Em Lua, <code>0</code> é verdadeiro (truthy), <code>""</code> string vazia é verdadeira. Apenas <code>nil</code> e <code>false</code> são falsy!
+                    <strong>🚨 Armadilha Comum - Valores Truthy e Falsy:</strong> Em Lua, apenas <code>nil</code> e <code>false</code> são considerados falsos (falsy). <strong>TUDO MAIS</strong> é verdadeiro (truthy), incluindo:
+                    <ul>
+                        <li><code>0</code> é verdadeiro (diferente de C, JavaScript, Python)</li>
+                        <li><code>""</code> (string vazia) é verdadeiro</li>
+                        <li><code>{}</code> (table vazia) é verdadeiro</li>
+                    </ul>
                 </div>
 
-                <pre>-- Exemplos
-if 0 then print("0 é truthy!") end           -- Imprime
-if "" then print("String vazia é truthy!") end -- Imprime
-if nil then print("Isto não imprime") end    -- Não imprime
-if false then print("Isto não imprime") end  -- Não imprime</pre>
+                <pre>-- Demonstração de truthy/falsy
+if 0 then print("0 é truthy!") end                    -- Imprime!
+if "" then print("String vazia é truthy!") end        -- Imprime!
+if {} then print("Table vazia é truthy!") end         -- Imprime!
+if nil then print("Isto não imprime") end             -- Não imprime
+if false then print("Isto não imprime") end           -- Não imprime
+
+-- Cuidado ao verificar valores:
+local valor = 0
+if valor then
+    print("Valor existe")  -- Imprime, mesmo sendo 0!
+end
+
+-- Para verificar se é diferente de zero:
+if valor ~= 0 then
+    print("Valor não é zero")
+end</pre>
 
                 <h3>3. Number (Número)</h3>
-                <p>Lua trata inteiros e floats como <code>number</code> (diferente de muitas linguagens).</p>
+                <p>Em Lua, <strong>não há distinção entre inteiros e floats</strong> - ambos são do tipo <code>number</code>. Internamente, Lua 5.1-5.2 usa double-precision floating-point (64 bits), enquanto Lua 5.3+ suporta inteiros de 64 bits nativamente.</p>
                 <pre>local inteiro = 42
 local decimal = 3.14159
 local negativo = -100
-local exponencial = 1.5e3      -- 1500
+local exponencial = 1.5e3      -- 1500 (notação científica)
 local exponencial2 = 1.23e-4   -- 0.000123
+local hexadecimal = 0xFF       -- 255 (Lua 5.2+)
+local binario = 0b1010         -- 10 (Lua 5.3+)
 
 print(type(inteiro))            -- Output: number
+print(type(decimal))            -- Output: number (mesmo tipo!)
 print(inteiro == 42)            -- Output: true
-print(decimal + inteiro)        -- Output: 45.14159</pre>
+print(decimal + inteiro)        -- Output: 45.14159
+
+-- Operações matemáticas
+print(10 / 3)                   -- Output: 3.3333333333333
+print(10 // 3)                  -- Output: 3 (divisão inteira, Lua 5.3+)
+print(10 % 3)                   -- Output: 1 (módulo/resto)
+print(2 ^ 10)                   -- Output: 1024 (potência)</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Precisão Numérica:</strong> Como Lua usa ponto flutuante para números, pode haver pequenos erros de arredondamento. Para comparações, use uma margem de erro (epsilon):
+                    <pre>local a = 0.1 + 0.2
+local b = 0.3
+print(a == b)  -- Pode ser false devido a arredondamento!
+
+-- Melhor forma:
+local epsilon = 0.0001
+print(math.abs(a - b) < epsilon)  -- true</pre>
+                </div>
 
                 <h3>4. String (Texto)</h3>
-                <p>Sequência de caracteres. <strong>Imutáveis</strong> em Lua.</p>
-                <pre>-- Três formas de declarar
+                <p>Strings são sequências de caracteres usadas para representar texto. Em Lua, strings são <strong>imutáveis</strong> - uma vez criadas, não podem ser modificadas (operações criam novas strings).</p>
+                <pre>-- Três formas de declarar strings
 local simples = "Olá"
 local duplas = 'Lua é ótima'
 local multiplas = [[
     Strings que ocupam
     várias linhas
-    sem escape
+    sem necessidade de escape
 ]]
 
--- Acesso a caracteres
+-- Strings com aspas dentro
+local texto1 = "Ele disse: 'Olá!'"
+local texto2 = 'Ela respondeu: "Oi!"'
+local texto3 = [[Ambas "aspas" e 'apóstrofos' funcionam aqui]]
+
+-- Escape sequences
+local com_escape = "Linha 1\nLinha 2\tTabulação"
+print(com_escape)
+-- Output:
+-- Linha 1
+-- Linha 2    Tabulação
+
+-- Acesso a caracteres (strings são indexadas a partir de 1)
 local texto = "Lua"
-print(string.sub(texto, 1, 1))   -- Output: L
-print(string.sub(texto, -1))     -- Output: a (último char)</pre>
+print(string.sub(texto, 1, 1))   -- Output: L (primeiro caractere)
+print(string.sub(texto, -1))     -- Output: a (último caractere)
+print(#texto)                    -- Output: 3 (comprimento)
 
-                <h3>5. Table (Tabela)</h3>
-                <p><strong>A estrutura de dados mais importante</strong>. Combina arrays, maps/dicionários e objetos.</p>
-                <pre>-- Array (índices numéricos começam em 1)
-local numeros = {10, 20, 30, 40}
-print(numeros[1])               -- Output: 10
-print(#numeros)                 -- Output: 4 (tamanho)
+-- Concatenação
+local nome = "João"
+local sobrenome = "Silva"
+local completo = nome .. " " .. sobrenome
+print(completo)  -- Output: João Silva
 
--- Map/Dicionário
-local pessoa = {
-    nome = "João",
-    idade = 30,
-    email = "joao@example.com"
-}
-print(pessoa.nome)              -- Output: João
-print(pessoa["email"])          -- Output: joao@example.com
+-- Strings são imutáveis
+local original = "Lua"
+local maiuscula = string.upper(original)
+print(original)    -- Output: Lua (não mudou!)
+print(maiuscula)   -- Output: LUA (nova string)</pre>
 
--- Misto
-local dados = {
-    "primeiro",
-    "segundo",
-    chave = "valor",
-    numero = 42
-}
-print(dados[1])                 -- Output: primeiro
-print(dados.chave)              -- Output: valor</pre>
+                <div class="box box-success">
+                    <strong>✅ Dicas de Performance com Strings:</strong>
+                    <ul>
+                        <li>Evite concatenação em loops - use <code>table.concat()</code> para múltiplas strings</li>
+                        <li>Strings são internadas (interned) - strings idênticas compartilham memória</li>
+                        <li>Use <code>string.format()</code> para formatação complexa ao invés de múltiplas concatenações</li>
+                    </ul>
+                </div>
 
-                <h3>6. Function (Função)</h3>
-                <p>Funções são <strong>first-class values</strong> - podem ser passadas, retornadas, armazenadas.</p>
+                <h3>Comparação de Tipos</h3>
+                <p>Use a função <code>type()</code> para verificar o tipo de qualquer valor:</p>
+                <pre>print(type(nil))              -- Output: nil
+print(type(true))             -- Output: boolean
+print(type(42))               -- Output: number
+print(type(3.14))             -- Output: number (mesmo tipo que inteiro!)
+print(type("texto"))          -- Output: string
+print(type({}))               -- Output: table
+print(type(print))            -- Output: function
+print(type(coroutine.create(function()end)))  -- Output: thread
+
+-- Verificar tipo em condicionais
+local valor = "123"
+if type(valor) == "string" then
+    print("É uma string")
+    valor = tonumber(valor)  -- Converter para número
+end
+print(type(valor))  -- Output: number</pre>
+            </section>>first-class values</strong> - podem ser passadas, retornadas, armazenadas.</p>
                 <pre>-- Definição nomeada
 function saudacao(nome)
     return "Olá, " .. nome
@@ -3312,8 +3686,21 @@ local resultado = table.concat(linhas, "\n")</pre>
 
             <!-- Footer -->
             <footer>
-                <p><strong>Documentação Lua Profissional</strong> - Guia Completo | Atualizado em 2024</p>
-                <p>Esta documentação cobre Lua 5.1. Para mais informações, visite <a href="https://www.lua.org" target="_blank" style="color: var(--secondary);">www.lua.org</a></p>
+                <p><strong>📖 Documentação Lua Profissional</strong> - Guia Completo e Detalhado</p>
+                <p>Esta documentação cobre <strong>Lua 5.1</strong> com referências a versões mais recentes quando relevante.</p>
+                <p>Criada com ❤️ para desenvolvedores que querem dominar Lua | Atualizado em 2024</p>
+                <p>Para mais informações oficiais, visite <a href="https://www.lua.org" target="_blank" style="color: var(--accent); font-weight: 600; text-decoration: none;">www.lua.org</a> | 
+                <a href="https://www.lua.org/manual/5.1/" target="_blank" style="color: var(--accent); font-weight: 600; text-decoration: none;">Manual de Referência</a> | 
+                <a href="https://www.lua.org/pil/" target="_blank" style="color: var(--accent); font-weight: 600; text-decoration: none;">Programming in Lua</a></p>
+                <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                    <p style="font-size: 0.9rem; color: var(--text-light);">
+                        <strong>Recursos Adicionais:</strong><br>
+                        • <a href="https://luarocks.org" target="_blank" style="color: var(--secondary);">LuaRocks</a> - Gerenciador de pacotes<br>
+                        • <a href="https://github.com/LewisJEllis/awesome-lua" target="_blank" style="color: var(--secondary);">Awesome Lua</a> - Lista curada de bibliotecas<br>
+                        • <a href="https://www.reddit.com/r/lua/" target="_blank" style="color: var(--secondary);">r/lua</a> - Comunidade no Reddit<br>
+                        • <a href="https://discord.gg/lua" target="_blank" style="color: var(--secondary);">Discord Lua</a> - Chat da comunidade
+                    </p>
+                </div>
             </footer>
         </main>
     </div>
