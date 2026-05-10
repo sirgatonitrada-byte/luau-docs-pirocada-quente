@@ -146,7 +146,7 @@
             position: relative;
         }
 
-        /* A linha "�?"�?"�?"�?"�?"�?"" antes do nome */
+        /* A linha "——————" antes do nome */
         .nav-group-header::before {
             content: '';
             display: block;
@@ -340,7 +340,7 @@
         /* Code Blocks */
         .code-block {
             position: relative;
-            margin: 0.7rem 0;
+            margin: 1.5rem 0;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
@@ -434,7 +434,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 0.8rem 0;
+            margin: 2rem 0;
             box-shadow: 0 4px 15px var(--shadow);
             border-radius: 10px;
             overflow: hidden;
@@ -477,11 +477,11 @@
         /* Lists */
         ul, ol {
             margin-left: 2.2rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.8rem;
         }
 
         li {
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.8rem;
             color: var(--text);
             line-height: 1.9;
             font-size: 1.02rem;
@@ -498,9 +498,9 @@
 
         /* Highlight Boxes */
         .box {
-            padding: 1rem 1.2rem;
+            padding: 2rem;
             border-radius: 12px;
-            margin: 1rem 0;
+            margin: 2.5rem 0;
             border-left: 6px solid;
             background: var(--bg-secondary);
             box-shadow: 0 6px 16px var(--shadow);
@@ -558,7 +558,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin: 1rem 0;
+            margin: 2.5rem 0;
         }
 
         .comparison-item {
@@ -1031,7 +1031,7 @@
             background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
             border: 3px solid #30363d;
             border-radius: 20px;
-            margin: 1.5rem 0;
+            margin: 4rem 0;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
@@ -1507,13 +1507,13 @@
 </head>
 <body>
     <header>
-        <button class="theme-toggle" id="themeToggle">�YOT Modo Escuro</button>
+        <button class="theme-toggle" id="themeToggle"> Modo Escuro</button>
     </header>
 
     <div class="container">
         <!-- Sidebar -->
         <aside>
-            <h1>�Y"- Lua Pro</h1>
+            <h1>📖 Lua Pro</h1>
 
             <nav class="sidebar-nav">
 
@@ -1584,7 +1584,7 @@
                         <li><a href="#lib-string">string</a></li>
                         <li><a href="#lib-table">table</a></li>
                         <li><a href="#lib-math">math</a></li>
-                        <li><a href="#lib-io">io �?" input / output</a></li>
+                        <li><a href="#lib-io">io — input / output</a></li>
                         <li><a href="#lib-os">os</a></li>
                     </ul>
                 </div>
@@ -1606,10 +1606,10 @@
             <!-- Introdução -->
             <section id="introducao">
                 <div class="intro-box">
-                    <h2>Bem-vindo ao Universo de Lua �YOT</h2>
+                    <h2>Bem-vindo ao Universo de Lua </h2>
                     <p>Este é um guia <strong>profissional, completo e detalhado</strong> sobre <strong>Lua</strong>, uma linguagem dinâmica, leve e extremamente poderosa. Aqui você aprenderá desde os conceitos mais básicos até técnicas avançadas de programação, com exemplos práticos, explicações claras e dicas profissionais.</p>
                     <p>Seja você um iniciante absoluto ou um desenvolvedor experiente querendo dominar Lua, esta documentação foi criada para ser seu guia definitivo. Cada seção é cuidadosamente explicada com exemplos funcionais que você pode testar imediatamente.</p>
-                    <p style="margin-bottom: 0;"><strong>Prepare-se para uma jornada completa pelo mundo de Lua!</strong> �Ys?</p>
+                    <p style="margin-bottom: 0;"><strong>Prepare-se para uma jornada completa pelo mundo de Lua!</strong> 🚨</p>
                 </div>
 
                 <h3>O que é Lua?</h3>
@@ -1619,13 +1619,13 @@
                 <ul>
                     <li><strong>Desenvolvimento de Games</strong>: Roblox (mais de 40 milhões de jogos), World of Warcraft, Garry's Mod, Angry Birds, Civilization V</li>
                     <li><strong>Scripts e Automação</strong>: Neovim (editor de texto), Awesome WM (gerenciador de janelas), Adobe Lightroom</li>
-                    <li><strong>Embarcada em Aplicações</strong>: L�-VE 2D (framework de jogos), Corona SDK, Wireshark (análise de rede)</li>
+                    <li><strong>Embarcada em Aplicações</strong>: LÖVE 2D (framework de jogos), Corona SDK, Wireshark (análise de rede)</li>
                     <li><strong>Middleware e Servidores</strong>: Nginx (servidor web), Redis (banco de dados), Apache HTTP Server</li>
                     <li><strong>Sistemas Embarcados</strong>: Dispositivos IoT, roteadores, sistemas de automação industrial</li>
                 </ul>
                 
                 <div class="box box-info">
-                    <strong>�Y'� Por que Lua é tão popular?</strong> Lua é extremamente leve (menos de 300KB compilado), rápida, fácil de integrar com C/C++, e possui uma sintaxe simples e clara. Isso a torna ideal para ser embarcada em outras aplicações, permitindo que usuários estendam funcionalidades sem recompilar o programa principal.
+                    <strong>' Por que Lua é tão popular?</strong> Lua é extremamente leve (menos de 300KB compilado), rápida, fácil de integrar com C/C++, e possui uma sintaxe simples e clara. Isso a torna ideal para ser embarcada em outras aplicações, permitindo que usuários estendam funcionalidades sem recompilar o programa principal.
                 </div>
 
                 <h3>Características Principais</h3>
@@ -1674,11 +1674,11 @@
                 </table>
                 
                 <div class="box box-success">
-                    <strong>�o. Vantagens de Lua:</strong> Lua é uma das linguagens mais rápidas entre as linguagens interpretadas, possui integração simples com C/C++, tem uma curva de aprendizado suave, e é mantida ativamente pela comunidade e pela PUC-Rio. Seu tamanho reduzido e eficiência a tornam perfeita para jogos, aplicações embarcadas e extensões de software.
+                    <strong>✅ Vantagens de Lua:</strong> Lua é uma das linguagens mais rápidas entre as linguagens interpretadas, possui integração simples com C/C++, tem uma curva de aprendizado suave, e é mantida ativamente pela comunidade e pela PUC-Rio. Seu tamanho reduzido e eficiência a tornam perfeita para jogos, aplicações embarcadas e extensões de software.
                 </div>
 
                 <div class="box box-info">
-                    <strong>�Y'� Dica de Aprendizado:</strong> A melhor forma de aprender Lua é <strong>escrevendo código</strong>. Cada seção desta documentação possui exemplos práticos e funcionais - copie, execute e modifique-os para entender como funcionam! Não tenha medo de experimentar e cometer erros, pois é assim que se aprende de verdade.
+                    <strong>' Dica de Aprendizado:</strong> A melhor forma de aprender Lua é <strong>escrevendo código</strong>. Cada seção desta documentação possui exemplos práticos e funcionais - copie, execute e modifique-os para entender como funcionam! Não tenha medo de experimentar e cometer erros, pois é assim que se aprende de verdade.
                 </div>
                 
                 <h3>Versões de Lua</h3>
@@ -1714,7 +1714,7 @@ choco install lua
 -- Inclui Lua + LuaRocks + bibliotecas comuns</pre>
 
                 <div class="box box-info">
-                    <strong>�Y'� Dica para Windows:</strong> Se você está começando, recomendo o <strong>LuaForWindows</strong>, que já vem com tudo configurado, incluindo o LuaRocks (gerenciador de pacotes) e várias bibliotecas úteis. Para desenvolvedores mais experientes, Chocolatey oferece mais controle sobre as versões.
+                    <strong>' Dica para Windows:</strong> Se você está começando, recomendo o <strong>LuaForWindows</strong>, que já vem com tudo configurado, incluindo o LuaRocks (gerenciador de pacotes) e várias bibliotecas úteis. Para desenvolvedores mais experientes, Chocolatey oferece mais controle sobre as versões.
                 </div>
 
                 <h3>macOS</h3>
@@ -1756,7 +1756,7 @@ sudo make install
 lua -v</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ Atenção às Versões:</strong> Diferentes distribuições Linux podem ter versões diferentes de Lua nos repositórios. Se você precisa de uma versão específica (como Lua 5.1 para compatibilidade com Roblox ou LuaJIT), compile do código-fonte ou use um PPA específico.
+                    <strong>️ Atenção às Versões:</strong> Diferentes distribuições Linux podem ter versões diferentes de Lua nos repositórios. Se você precisa de uma versão específica (como Lua 5.1 para compatibilidade com Roblox ou LuaJIT), compile do código-fonte ou use um PPA específico.
                 </div>
 
                 <h3>Executar Lua - Guia Completo</h3>
@@ -1787,7 +1787,7 @@ lua -i script.lua
 
 -- 6. Verificar sintaxe sem executar
 luac -p script.lua
--- �stil para validar código antes de rodar</pre>
+--  para validar código antes de rodar</pre>
 
                 <h3>Configurar Editor de Código</h3>
                 <p>Para uma melhor experiência de desenvolvimento, configure seu editor favorito:</p>
@@ -1812,7 +1812,7 @@ luac -p script.lua
 - luasnip para snippets</pre>
 
                 <div class="box box-success">
-                    <strong>�o. Pronto para Começar!</strong> Com Lua instalado e seu editor configurado, você está pronto para começar a programar. Teste sua instalação criando um arquivo <code>teste.lua</code> com <code>print("Funcionou!")</code> e executando <code>lua teste.lua</code>.
+                    <strong>✅ Pronto para Começar!</strong> Com Lua instalado e seu editor configurado, você está pronto para começar a programar. Teste sua instalação criando um arquivo <code>teste.lua</code> com <code>print("Funcionou!")</code> e executando <code>lua teste.lua</code>.
                 </div>
             </section>
 
@@ -1869,7 +1869,7 @@ Bem-vindo, Maria!</div>
                 
                 <p>Comentários são fundamentais para documentar seu código e torná-lo mais compreensível. Em Lua, existem duas formas principais de escrever comentários:</p>
 
-                <h3>Comentário de Linha �snica</h3>
+                <h3>Comentário de Linha </h3>
                 <p>Use dois hífens (<code>--</code>) para comentários de uma linha. Tudo após <code>--</code> até o final da linha é ignorado pelo interpretador:</p>
                 <pre>-- Este é um comentário de linha única
 local x = 10  -- Você também pode colocar comentários no final de uma linha
@@ -1936,7 +1936,7 @@ end
 --]]</pre>
 
                 <div class="box box-info">
-                    <strong>� Boas Práticas de Comentários:</strong>
+                    <strong> Boas Práticas de Comentários:</strong>
                     <ul>
                         <li>Use <code>--</code> para comentários curtos e explicações rápidas</li>
                         <li>Use <code>--[[...]]</code> para documentação de funções, módulos ou explicações longas</li>
@@ -1976,7 +1976,7 @@ function Pessoa:novo(nome, idade)
 end</pre>
 
                 <div class="box box-success">
-                    <strong>�o. Dica Profissional:</strong> Ferramentas como LuaDoc e LDoc podem gerar documentação HTML automaticamente a partir de comentários bem formatados. Isso é especialmente útil para bibliotecas e APIs públicas.
+                    <strong>✅ Dica Profissional:</strong> Ferramentas como LuaDoc e LDoc podem gerar documentação HTML automaticamente a partir de comentários bem formatados. Isso é especialmente útil para bibliotecas e APIs públicas.
                 </div>
             </section>
 
@@ -1987,11 +1987,11 @@ end</pre>
                 <p>Lua é uma linguagem <strong>dinamicamente tipada</strong>, o que significa que as variáveis não têm tipos fixos - elas podem armazenar qualquer tipo de valor e mudar de tipo durante a execução. Lua possui <strong>8 tipos fundamentais</strong>, e entender cada um deles é crucial para dominar a linguagem.</p>
                 
                 <div class="box box-info">
-                    <strong>�Y'� Tipagem Dinâmica:</strong> Diferente de linguagens como C ou Java onde você declara <code>int x = 10;</code>, em Lua você simplesmente escreve <code>local x = 10</code>. O tipo é determinado pelo valor, não pela declaração. Isso oferece flexibilidade, mas requer cuidado para evitar erros de tipo em tempo de execução.
+                    <strong>' Tipagem Dinâmica:</strong> Diferente de linguagens como C ou Java onde você declara <code>int x = 10;</code>, em Lua você simplesmente escreve <code>local x = 10</code>. O tipo é determinado pelo valor, não pela declaração. Isso oferece flexibilidade, mas requer cuidado para evitar erros de tipo em tempo de execução.
                 </div>
 
                 <h3>1. Nil (Nulo/Ausência de Valor)</h3>
-                <p>O tipo <code>nil</code> representa a <strong>ausência de valor</strong>. �? o valor padrão de variáveis não inicializadas e é usado para "deletar" valores de tables.</p>
+                <p>O tipo <code>nil</code> representa a <strong>ausência de valor</strong>. É o valor padrão de variáveis não inicializadas e é usado para "deletar" valores de tables.</p>
                 <pre>local x
 print(x)              -- Output: nil
 print(type(x))        -- Output: nil
@@ -2009,7 +2009,7 @@ pessoa.idade = nil    -- Remove a chave 'idade' da table
 print(pessoa.idade)   -- Output: nil</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ Importante sobre Nil:</strong> 
+                    <strong>️ Importante sobre Nil:</strong> 
                     <ul>
                         <li>Variáveis não inicializadas contêm <code>nil</code> automaticamente (não causam erro)</li>
                         <li>Acessar chaves inexistentes em tables retorna <code>nil</code></li>
@@ -2033,7 +2033,7 @@ print(10 == 20)       -- Output: false
 print(type(true))     -- Output: boolean</pre>
 
                 <div class="box box-danger">
-                    <strong>�Ys� Armadilha Comum - Valores Truthy e Falsy:</strong> Em Lua, apenas <code>nil</code> e <code>false</code> são considerados falsos (falsy). <strong>TUDO MAIS</strong> é verdadeiro (truthy), incluindo:
+                    <strong> Armadilha Comum - Valores Truthy e Falsy:</strong> Em Lua, apenas <code>nil</code> e <code>false</code> são considerados falsos (falsy). <strong>TUDO MAIS</strong> é verdadeiro (truthy), incluindo:
                     <ul>
                         <li><code>0</code> é verdadeiro (diferente de C, JavaScript, Python)</li>
                         <li><code>""</code> (string vazia) é verdadeiro</li>
@@ -2081,7 +2081,7 @@ print(10 % 3)                   -- Output: 1 (módulo/resto)
 print(2 ^ 10)                   -- Output: 1024 (potência)</pre>
 
                 <div class="box box-info">
-                    <strong>�Y'� Precisão Numérica:</strong> Como Lua usa ponto flutuante para números, pode haver pequenos erros de arredondamento. Para comparações, use uma margem de erro (epsilon):
+                    <strong>' Precisão Numérica:</strong> Como Lua usa ponto flutuante para números, pode haver pequenos erros de arredondamento. Para comparações, use uma margem de erro (epsilon):
                     <pre>local a = 0.1 + 0.2
 local b = 0.3
 print(a == b)  -- Pode ser false devido a arredondamento!
@@ -2133,7 +2133,7 @@ print(original)    -- Output: Lua (não mudou!)
 print(maiuscula)   -- Output: LUA (nova string)</pre>
 
                 <div class="box box-success">
-                    <strong>�o. Dicas de Performance com Strings:</strong>
+                    <strong>✅ Dicas de Performance com Strings:</strong>
                     <ul>
                         <li>Evite concatenação em loops - use <code>table.concat()</code> para múltiplas strings</li>
                         <li>Strings são internadas (interned) - strings idênticas compartilham memória</li>
@@ -2155,7 +2155,7 @@ print(type(coroutine.create(function()end)))  -- Output: thread
 -- Verificar tipo em condicionais
 local valor = "123"
 if type(valor) == "string" then
-    print("�? uma string")
+    print("uma string")
     valor = tonumber(valor)  -- Converter para número
 end
 print(type(valor))  -- Output: number</pre>
@@ -2208,14 +2208,14 @@ print(type(coroutine.create(function()end)))  -- Output: thread</pre>
             <section id="variaveis">
                 <h2>Variáveis</h2>
 
-                <p>Uma variável é um nome que aponta para um valor na memória. Em Lua, você não precisa declarar o tipo �?" a variável assume o tipo do valor que recebe. A decisão mais importante ao criar uma variável é escolher entre <strong>local</strong> e <strong>global</strong>.</p>
+                <p>Uma variável é um nome que aponta para um valor na memória. Em Lua, você não precisa declarar o tipo — a variável assume o tipo do valor que recebe. A decisão mais importante ao criar uma variável é escolher entre <strong>local</strong> e <strong>global</strong>.</p>
 
                 <h3>local vs global</h3>
-                <p>Variáveis <strong>locais</strong> existem apenas dentro do bloco onde foram declaradas �?" uma função, um <code>if</code>, um <code>for</code>, ou o arquivo inteiro. Variáveis <strong>globais</strong> existem em <code>_G</code>, a tabela global do programa, e são acessíveis de qualquer lugar. O problema das globais é exatamente esse: qualquer parte do código pode lê-las ou modificá-las sem aviso, tornando o comportamento do programa difícil de prever. Use <code>local</code> por padrão �?" sempre.</p>
+                <p>Variáveis <strong>locais</strong> existem apenas dentro do bloco onde foram declaradas — uma função, um <code>if</code>, um <code>for</code>, ou o arquivo inteiro. Variáveis <strong>globais</strong> existem em <code>_G</code>, a tabela global do programa, e são acessíveis de qualquer lugar. O problema das globais é exatamente esse: qualquer parte do código pode lê-las ou modificá-las sem aviso, tornando o comportamento do programa difícil de prever. Use <code>local</code> por padrão — sempre.</p>
 
                 <div class="comparison">
                     <div class="comparison-item bad">
-                        <div class="comparison-label">�O Evitar - Global</div>
+                        <div class="comparison-label"> Evitar - Global</div>
                         <pre>x = 10  -- Global implícito
 y = 20
 
@@ -2229,7 +2229,7 @@ teste()  -- Output: 30
 print(_G.x)  -- Output: 10 (está aqui!)</pre>
                     </div>
                     <div class="comparison-item good">
-                        <div class="comparison-label">�o. Recomendado - Local</div>
+                        <div class="comparison-label">✅ Recomendado - Local</div>
                         <pre>local x = 10  -- Local explícito
 local y = 20
 
@@ -2249,7 +2249,7 @@ print(_G.x)  -- Output: nil (não existe globalmente)</pre>
                     <li><strong>Performance</strong>: variáveis locais são acessadas diretamente pelo índice no stack. Globais exigem uma busca na tabela <code>_G</code>, que é mais lenta.</li>
                     <li><strong>Segurança</strong>: não poluem o escopo global, evitando conflitos com outras partes do código ou bibliotecas.</li>
                     <li><strong>Legibilidade</strong>: fica claro onde a variável existe e quem pode modificá-la.</li>
-                    <li><strong>Debugging</strong>: menos efeitos colaterais inesperados �?" se algo muda, você sabe onde procurar.</li>
+                    <li><strong>Debugging</strong>: menos efeitos colaterais inesperados — se algo muda, você sabe onde procurar.</li>
                 </ul>
 
                 <h3>Declaração múltipla</h3>
@@ -2294,19 +2294,19 @@ print(loop_var)             -- Output: nil (não existe fora do for)</pre>
             <section id="escopo-detalhado">
                 <h2>Escopo em Profundidade</h2>
 
-                <p>Escopo define onde uma variável existe e pode ser acessada. Em Lua, o escopo é <strong>léxico</strong> (ou estático) �?" determinado pela posição no código-fonte, não pelo fluxo de execução. Quando você usa um nome de variável, Lua procura do escopo mais interno para o mais externo até encontrar ou chegar ao global.</p>
+                <p>Escopo define onde uma variável existe e pode ser acessada. Em Lua, o escopo é <strong>léxico</strong> (ou estático) — determinado pela posição no código-fonte, não pelo fluxo de execução. Quando você usa um nome de variável, Lua procura do escopo mais interno para o mais externo até encontrar ou chegar ao global.</p>
 
                 <h3>Cadeia de escopo</h3>
                 <p>Quando Lua encontra um nome de variável, percorre esta sequência até encontrar uma declaração ou chegar ao global:</p>
 
                 <div class="flow-diagram">1. Variável local do bloco atual
-   �?" não encontrou?
+   — não encontrou?
 2. Variável local da função que contém este bloco
-   �?" não encontrou?
+   — não encontrou?
 3. Variável local do arquivo (nível do módulo)
-   �?" não encontrou?
+   — não encontrou?
 4. Tabela global _G
-   �?" não encontrou?
+   — não encontrou?
 5. Retorna nil</div>
 
                 <pre>local g = "global"
@@ -2329,7 +2329,7 @@ end
 externa()</pre>
 
                 <h3>Shadowing</h3>
-                <p>Shadowing acontece quando você declara uma variável com o mesmo nome em um escopo mais interno. A nova variável "cobre" a externa dentro daquele bloco �?" a externa continua existindo, mas fica inacessível enquanto a interna estiver no escopo. Isso pode ser útil, mas também confuso se feito sem intenção.</p>
+                <p>Shadowing acontece quando você declara uma variável com o mesmo nome em um escopo mais interno. A nova variável "cobre" a externa dentro daquele bloco — a externa continua existindo, mas fica inacessível enquanto a interna estiver no escopo. Isso pode ser útil, mas também confuso se feito sem intenção.</p>
 
                 <pre>local x = "original"
 
@@ -2341,7 +2341,7 @@ end
 print(x)  -- Output: original (variável do escopo externo)</pre>
 
                 <h3>Escopo de função e upvalues</h3>
-                <p>Quando uma função interna acessa uma variável local da função externa, essa variável é chamada de <strong>upvalue</strong>. A função interna mantém uma referência viva para o upvalue �?" mesmo depois que a função externa terminar de executar, o valor continua existindo enquanto a função interna existir. Isso é a base das closures.</p>
+                <p>Quando uma função interna acessa uma variável local da função externa, essa variável é chamada de <strong>upvalue</strong>. A função interna mantém uma referência viva para o upvalue — mesmo depois que a função externa terminar de executar, o valor continua existindo enquanto a função interna existir. Isso é a base das closures.</p>
                 <pre>function externa()
     local var_externa = 100
     
@@ -2357,7 +2357,7 @@ print(externa())  -- Output: 200
 print(var_externa)  -- Output: nil (não existe globalmente)</pre>
 
                 <div class="box box-info">
-                    <strong>�Y'� Closure:</strong> quando uma função interna acessa variáveis da função externa, ela "fecha sobre" (closes over) essas variáveis �?" daí o nome closure. A função carrega consigo o ambiente onde foi criada, não apenas o código. Isso permite criar funções com estado privado sem usar variáveis globais.
+                    <strong>' Closure:</strong> quando uma função interna acessa variáveis da função externa, ela "fecha sobre" (closes over) essas variáveis — daí o nome closure. A função carrega consigo o ambiente onde foi criada, não apenas o código. Isso permite criar funções com estado privado sem usar variáveis globais.
                 </div>
             </section>
 
@@ -2368,7 +2368,7 @@ print(var_externa)  -- Output: nil (não existe globalmente)</pre>
                 <p>Lua é uma linguagem dinamicamente tipada, mas isso não significa que ela converte tudo automaticamente. Existem conversões <strong>explícitas</strong> (você pede) e <strong>implícitas</strong> (Lua faz sozinha em situações específicas). Entender a diferença evita bugs silenciosos.</p>
 
                 <h3>tostring()</h3>
-                <p><code>tostring(valor)</code> converte qualquer valor para sua representação em string. �? a forma correta de transformar números, booleanos e nil em texto. Para tables e funções, retorna uma string com o endereço de memória (como <code>"table: 0x55a3b2"</code>), o que raramente é útil �?" a menos que a table tenha um metamétodo <code>__tostring</code> definido.</p>
+                <p><code>tostring(valor)</code> converte qualquer valor para sua representação em string. A forma correta de transformar números, booleanos e nil em texto. Para tables e funções, retorna uma string com o endereço de memória (como <code>"table: 0x55a3b2"</code>), o que raramente é útil — a menos que a table tenha um metamétodo <code>__tostring</code> definido.</p>
                 <pre>print(tostring(42))          -- Output: "42"
 print(tostring(true))        -- Output: "true"
 print(tostring(nil))         -- Output: "nil"
@@ -2380,7 +2380,7 @@ local msg = "O número é " .. tostring(num)
 print(msg)  -- Output: O número é 42</pre>
 
                 <h3>tonumber()</h3>
-                <p><code>tonumber(valor)</code> tenta converter um valor para número. Se a conversão for possível, retorna o número. Se não for (por exemplo, a string <code>"abc"</code> não representa um número), retorna <code>nil</code> �?" nunca lança um erro. Você pode passar uma base como segundo argumento para converter strings em outras bases numéricas (binário, octal, hexadecimal).</p>
+                <p><code>tonumber(valor)</code> tenta converter um valor para número. Se a conversão for possível, retorna o número. Se não for (por exemplo, a string <code>"abc"</code> não representa um número), retorna <code>nil</code> — nunca lança um erro. Você pode passar uma base como segundo argumento para converter strings em outras bases numéricas (binário, octal, hexadecimal).</p>
                 <pre>print(tonumber("42"))        -- Output: 42
 print(tonumber("3.14"))      -- Output: 3.14
 print(tonumber("0xFF"))      -- Output: 255 (hexadecimal)
@@ -2408,13 +2408,13 @@ print("3.14" * 2)           -- Output: 6.28
 print(tonumber("10") - tonumber("5"))  -- Output: 5 (correto)</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ Conversão Implícita:</strong> Lua é flexível demais em algumas conversões. Sempre seja explícito com <code>tonumber()</code> e <code>tostring()</code> em código profissional.
+                    <strong>️ Conversão Implícita:</strong> Lua é flexível demais em algumas conversões. Sempre seja explícito com <code>tonumber()</code> e <code>tostring()</code> em código profissional.
                 </div>
             </section>
 
             <!-- Nova seção: Conceitos Visuais Detalhados -->
             <section id="conceitos-visuais">
-                <h2>�YZ� Conceitos Fundamentais Explicados Visualmente</h2>
+                <h2> Conceitos Fundamentais Explicados Visualmente</h2>
                 
                 <p>Agora vamos explorar os conceitos mais importantes de Lua com explicações visuais detalhadas e exemplos práticos. Esta seção foi criada para ajudar você a <strong>entender profundamente</strong> como cada tipo de dado funciona internamente.</p>
 
@@ -2429,7 +2429,7 @@ print(tonumber("10") - tonumber("5"))  -- Output: 5 (correto)</pre>
                         </div>
                         
                         <div class="visual-demo">
-                            <div class="demo-title">�Y'� Como Strings Funcionam na Memória</div>
+                            <div class="demo-title">' Como Strings Funcionam na Memória</div>
                             <div class="string-visual">
                                 <div class="string-box">
                                     <div class="string-label">String Original</div>
@@ -2440,7 +2440,7 @@ print(tonumber("10") - tonumber("5"))  -- Output: 5 (correto)</pre>
                                     </div>
                                     <div class="string-info">Endereço: 0x1A2B3C</div>
                                 </div>
-                                <div class="arrow-right">�?'</div>
+                                <div class="arrow-right"></div>
                                 <div class="string-box">
                                     <div class="string-label">Após string.upper()</div>
                                     <div class="string-chars">
@@ -2467,25 +2467,25 @@ local b = "teste"
 
                         <div class="feature-list">
                             <div class="feature-item">
-                                <span class="feature-icon">�o"</span>
+                                <span class="feature-icon">✓</span>
                                 <span><strong>Imutáveis</strong> - Seguras para compartilhar entre funções</span>
                             </div>
                             <div class="feature-item">
-                                <span class="feature-icon">�o"</span>
+                                <span class="feature-icon">✓</span>
                                 <span><strong>Internadas</strong> - Strings idênticas compartilham memória</span>
                             </div>
                             <div class="feature-item">
-                                <span class="feature-icon">�o"</span>
+                                <span class="feature-icon">✓</span>
                                 <span><strong>Qualquer byte</strong> - Suportam até caractere nulo (\0)</span>
                             </div>
                             <div class="feature-item">
-                                <span class="feature-icon">�o"</span>
+                                <span class="feature-icon">✓</span>
                                 <span><strong>Biblioteca rica</strong> - Muitas funções de manipulação</span>
                             </div>
                         </div>
 
                         <div class="box box-info">
-                            <strong>�Y'� Por que Imutabilidade é Boa:</strong>
+                            <strong>' Por que Imutabilidade é Boa:</strong>
                             <ul>
                                 <li>Strings podem ser compartilhadas sem medo de modificação acidental</li>
                                 <li>Facilita otimizações do interpretador (como string interning)</li>
@@ -2545,7 +2545,7 @@ print(math.floor(3.7))          -- 3 (arredondar para baixo)
 print(math.ceil(3.2))           -- 4 (arredondar para cima)</pre>
 
                         <div class="box box-warning">
-                            <strong>�s�️ Precisão de Ponto Flutuante:</strong>
+                            <strong>️ Precisão de Ponto Flutuante:</strong>
                             <p>Como Lua usa ponto flutuante, pode haver pequenos erros de arredondamento:</p>
                             <pre>print(0.1 + 0.2 == 0.3)  -- false! (devido a arredondamento)
 print(0.1 + 0.2)          -- 0.30000000000000004
@@ -2560,7 +2560,7 @@ print(quase_igual(0.1 + 0.2, 0.3))  -- true</pre>
                         </div>
 
                         <div class="box box-info">
-                            <strong>�Y'� Vantagens do Tipo Unificado:</strong>
+                            <strong>' Vantagens do Tipo Unificado:</strong>
                             <ul>
                                 <li><strong>Simplicidade</strong>: Não precisa se preocupar com conversões entre int/float</li>
                                 <li><strong>Flexibilidade</strong>: Mesma variável pode armazenar qualquer número</li>
@@ -2602,7 +2602,7 @@ print(quase_igual(0.1 + 0.2, 0.3))  -- true</pre>
                                         <div class="cell-value">"uva"</div>
                                     </div>
                                 </div>
-                                <div class="array-note">�s�️ Índices começam em 1, não em 0!</div>
+                                <div class="array-note">️ Índices começam em 1, não em 0!</div>
                             </div>
                         </div>
 
@@ -2642,29 +2642,29 @@ end</pre>
 
                         <div class="operations-grid">
                             <div class="operation-card">
-                                <div class="op-title">�Y"� Adicionar</div>
+                                <div class="op-title">" Adicionar</div>
                                 <code>table.insert(arr, valor)</code>
                                 <div class="op-desc">Adiciona no final do array</div>
                             </div>
                             <div class="operation-card">
-                                <div class="op-title">�Y"� Remover</div>
+                                <div class="op-title">" Remover</div>
                                 <code>table.remove(arr, pos)</code>
                                 <div class="op-desc">Remove e retorna elemento</div>
                             </div>
                             <div class="operation-card">
-                                <div class="op-title">�Y"" Ordenar</div>
+                                <div class="op-title">"" Ordenar</div>
                                 <code>table.sort(arr)</code>
                                 <div class="op-desc">Ordena in-place</div>
                             </div>
                             <div class="operation-card">
-                                <div class="op-title">�Y"- Concatenar</div>
+                                <div class="op-title">📖 Concatenar</div>
                                 <code>table.concat(arr, sep)</code>
                                 <div class="op-desc">Junta em string</div>
                             </div>
                         </div>
 
                         <div class="box box-danger">
-                            <strong>�Ys� Armadilha Comum - Índice 0:</strong>
+                            <strong> Armadilha Comum - Índice 0:</strong>
                             <p>Muitos programadores vindos de outras linguagens (C, Java, Python, JavaScript) cometem o erro de usar índice 0:</p>
                             <pre>local lista = {"primeiro", "segundo", "terceiro"}
 
@@ -2694,25 +2694,25 @@ print(#lista)    -- 3 (não conta o índice 0!)</pre>
 
                         <div class="table-types-grid">
                             <div class="table-type-card">
-                                <div class="type-icon">�Y"<</div>
+                                <div class="type-icon">"<</div>
                                 <div class="type-name">Como Array</div>
                                 <pre>{1, 2, 3, 4, 5}</pre>
                             </div>
                             <div class="table-type-card">
-                                <div class="type-icon">�Y"-</div>
+                                <div class="type-icon">📖</div>
                                 <div class="type-name">Como Dicionário</div>
                                 <pre>{nome="João", 
  idade=30}</pre>
                             </div>
                             <div class="table-type-card">
-                                <div class="type-icon">�YZ�</div>
+                                <div class="type-icon"></div>
                                 <div class="type-name">Como Objeto</div>
                                 <pre>{x=10, y=20,
  mover=function()
  end}</pre>
                             </div>
                             <div class="table-type-card">
-                                <div class="type-icon">�Y"?</div>
+                                <div class="type-icon">"?</div>
                                 <div class="type-name">Híbrido</div>
                                 <pre>{"a", "b",
  chave="valor"}</pre>
@@ -2720,7 +2720,7 @@ print(#lista)    -- 3 (não conta o índice 0!)</pre>
                         </div>
 
                         <div class="visual-explanation">
-                            <h4>�Y"S Anatomia Interna de uma Table</h4>
+                            <h4>📊 Anatomia Interna de uma Table</h4>
                             <div class="table-visual">
                                 <div class="table-section">
                                     <div class="section-title">Array Part (Parte Numérica)</div>
@@ -2744,17 +2744,17 @@ print(#lista)    -- 3 (não conta o índice 0!)</pre>
                                     <div class="table-items">
                                         <div class="table-item hash-item">
                                             <span class="item-key">nome</span>
-                                            <span class="item-arrow">�?'</span>
+                                            <span class="item-arrow"></span>
                                             <span class="item-value">"João"</span>
                                         </div>
                                         <div class="table-item hash-item">
                                             <span class="item-key">idade</span>
-                                            <span class="item-arrow">�?'</span>
+                                            <span class="item-arrow"></span>
                                             <span class="item-value">30</span>
                                         </div>
                                         <div class="table-item hash-item">
                                             <span class="item-key">ativo</span>
-                                            <span class="item-arrow">�?'</span>
+                                            <span class="item-arrow"></span>
                                             <span class="item-value">true</span>
                                         </div>
                                     </div>
@@ -2801,13 +2801,13 @@ dados.saudar()            -- Olá!
 print(dados.endereco.rua) -- Rua Principal</pre>
 
                         <div class="memory-diagram">
-                            <div class="diagram-title">�Y'� Tables na Memória - Passagem por Referência</div>
+                            <div class="diagram-title">' Tables na Memória - Passagem por Referência</div>
                             <div class="memory-visual">
                                 <div class="memory-block">
                                     <div class="block-title">Variável</div>
                                     <div class="block-content">
                                         <code>local t = {...}</code>
-                                        <div class="pointer">�?" referência</div>
+                                        <div class="pointer">— referência</div>
                                     </div>
                                 </div>
                                 <div class="memory-block">
@@ -2822,7 +2822,7 @@ print(dados.endereco.rua) -- Rua Principal</pre>
                                 </div>
                             </div>
                             <div class="diagram-note">
-                                <strong>�s�️ Importante:</strong> Tables são sempre passadas por referência. Copiar uma variável table copia apenas a referência, não os dados! Modificar a "cópia" modifica o original.
+                                <strong>️ Importante:</strong> Tables são sempre passadas por referência. Copiar uma variável table copia apenas a referência, não os dados! Modificar a "cópia" modifica o original.
                             </div>
                         </div>
 
@@ -2851,7 +2851,7 @@ print(original2[1])           -- 1 (original intacto!)
 -- Tables aninhadas ainda são referências!</pre>
 
                         <div class="box box-success">
-                            <strong>�o. Por que Tables são Tão Poderosas:</strong>
+                            <strong>✅ Por que Tables são Tão Poderosas:</strong>
                             <ul>
                                 <li><strong>Flexíveis</strong>: Podem crescer e encolher dinamicamente sem realocação</li>
                                 <li><strong>Eficientes</strong>: Implementação otimizada com array part (O(1)) + hash part</li>
@@ -2868,10 +2868,10 @@ print(original2[1])           -- 1 (original intacto!)
             <section id="operadores">
                 <h2>Operadores</h2>
 
-                <p>Operadores são símbolos que realizam operações sobre valores. Lua tem operadores aritméticos, de comparação, lógicos, de concatenação e de comprimento. Um detalhe importante: os operadores lógicos <code>and</code> e <code>or</code> em Lua <strong>não retornam booleanos</strong> �?" eles retornam um dos operandos, o que permite padrões úteis como valores padrão.</p>
+                <p>Operadores são símbolos que realizam operações sobre valores. Lua tem operadores aritméticos, de comparação, lógicos, de concatenação e de comprimento. Um detalhe importante: os operadores lógicos <code>and</code> e <code>or</code> em Lua <strong>não retornam booleanos</strong> — eles retornam um dos operandos, o que permite padrões úteis como valores padrão.</p>
 
                 <h3>Operadores aritméticos</h3>
-                <p>Realizam cálculos matemáticos. O operador <code>^</code> (potência) sempre retorna float. O operador <code>%</code> é o módulo �?" retorna o resto da divisão inteira.</p>
+                <p>Realizam cálculos matemáticos. O operador <code>^</code> (potência) sempre retorna float. O operador <code>%</code> é o módulo — retorna o resto da divisão inteira.</p>
                 <table>
                     <tr>
                         <th>Operador</th>
@@ -2937,7 +2937,7 @@ print("abc" < "def")        -- Output: true (ordem alfabética)
 print("lua" == "lua")       -- Output: true</print></pre>
 
                 <h3>Operadores lógicos</h3>
-                <p><code>and</code> e <code>or</code> não retornam <code>true</code>/<code>false</code> �?" eles retornam <strong>um dos operandos</strong>. <code>and</code> retorna o primeiro valor falsy que encontrar, ou o último valor se todos forem truthy. <code>or</code> retorna o primeiro valor truthy que encontrar, ou o último se todos forem falsy. Isso permite o padrão <code>valor = entrada or "padrão"</code>.</p>
+                <p><code>and</code> e <code>or</code> não retornam <code>true</code>/<code>false</code> — eles retornam <strong>um dos operandos</strong>. <code>and</code> retorna o primeiro valor falsy que encontrar, ou o último valor se todos forem truthy. <code>or</code> retorna o primeiro valor truthy que encontrar, ou o último se todos forem falsy. Isso permite o padrão <code>valor = entrada or "padrão"</code>.</p>
                 <table>
                     <tr>
                         <th>Operador</th>
@@ -2978,7 +2978,7 @@ print(not false)            -- Output: true
 print(not (x > 15))         -- Output: true</pre>
 
                 <h3>Operador de concatenação (..)</h3>
-                <p>O operador <code>..</code> une duas strings em uma nova string. Números são convertidos automaticamente para string ao usar <code>..</code>. Evite concatenar dentro de loops com muitas iterações �?" cada <code>..</code> cria uma nova string na memória. Para isso, use <code>table.concat()</code>.</p>
+                <p>O operador <code>..</code> une duas strings em uma nova string. Números são convertidos automaticamente para string ao usar <code>..</code>. Evite concatenar dentro de loops com muitas iterações — cada <code>..</code> cria uma nova string na memória. Para isso, use <code>table.concat()</code>.</p>
                 <pre>local nome = "João"
 local idade = 30
 local mensagem = "Olá, " .. nome .. "! Você tem " .. idade .. " anos."
@@ -2989,7 +2989,7 @@ local resultado = "Resultado: " .. (10 + 5)
 print(resultado)  -- Output: Resultado: 15</pre>
 
                 <h3>Operador de comprimento (#)</h3>
-                <p>O operador <code>#</code> retorna o comprimento de uma string (em bytes) ou o tamanho da parte sequencial de uma table. Para strings, é sempre preciso. Para tables, retorna o índice do último elemento <strong>contíguo</strong> a partir de 1 �?" se houver um <code>nil</code> no meio, o resultado é imprevisível.</p>
+                <p>O operador <code>#</code> retorna o comprimento de uma string (em bytes) ou o tamanho da parte sequencial de uma table. Para strings, é sempre preciso. Para tables, retorna o índice do último elemento <strong>contíguo</strong> a partir de 1 — se houver um <code>nil</code> no meio, o resultado é imprevisível.</p>
                 <pre>local texto = "Lua"
 print(#texto)                   -- Output: 3
 
@@ -3001,7 +3001,7 @@ local tabela = {1, 2, nil, 4, 5}
 print(#tabela)                  -- Output: 2 (para no primeiro nil!)</pre>
 
                 <div class="box box-danger">
-                    <strong>�Ys� Armadilha:</strong> O operador <code>#</code> retorna o índice do último elemento **contíguo**. Se houver nil no meio, para lá!
+                    <strong> Armadilha:</strong> O operador <code>#</code> retorna o índice do último elemento **contíguo**. Se houver nil no meio, para lá!
                 </div>
 
                 <pre>local array = {1, 2, 3, [5] = 5, [6] = 6}
@@ -3013,7 +3013,7 @@ for _ in pairs(array) do len = len + 1 end
 print(len)  -- Output: 5</pre>
 
                 <h3>Precedência de operadores</h3>
-                <p>Quando uma expressão tem múltiplos operadores, Lua avalia na ordem de precedência. Operadores com precedência maior são avaliados primeiro. Use parênteses para deixar a intenção explícita �?" código claro é melhor do que código que depende de memorizar a tabela de precedência.</p>
+                <p>Quando uma expressão tem múltiplos operadores, Lua avalia na ordem de precedência. Operadores com precedência maior são avaliados primeiro. Use parênteses para deixar a intenção explícita — código claro é melhor do que código que depende de memorizar a tabela de precedência.</p>
                 <table>
                     <tr>
                         <th>Precedência</th>
@@ -3065,10 +3065,10 @@ print((true or false) and false)  -- Output: false</pre>
             <section id="condicionais">
                 <h2>Condicionais</h2>
 
-                <p>Condicionais permitem que o programa tome decisões �?" executar um bloco de código apenas se uma condição for verdadeira. Em Lua, a estrutura é <code>if ... then ... end</code>. Lembre-se: apenas <code>nil</code> e <code>false</code> são falsos. Zero, string vazia e table vazia são todos verdadeiros.</p>
+                <p>Condicionais permitem que o programa tome decisões — executar um bloco de código apenas se uma condição for verdadeira. Em Lua, a estrutura é <code>if ... then ... end</code>. Lembre-se: apenas <code>nil</code> e <code>false</code> são falsos. Zero, string vazia e table vazia são todos verdadeiros.</p>
 
                 <h3>if / then / end</h3>
-                <p>A forma mais simples: executa o bloco apenas se a condição for verdadeira. O <code>then</code> e o <code>end</code> são obrigatórios �?" não há chaves como em C ou Java.</p>
+                <p>A forma mais simples: executa o bloco apenas se a condição for verdadeira. O <code>then</code> e o <code>end</code> são obrigatórios — não há chaves como em C ou Java.</p>
                 <pre>local idade = 18
 
 if idade >= 18 then
@@ -3129,7 +3129,7 @@ local msg = (idade >= 18) and "Pode entrar" or "Não pode"
 print(msg)  -- Output: Pode entrar</pre>
 
                 <h3>Valores padrão com or</h3>
-                <p>O padrão <code>variavel = entrada or "padrão"</code> é muito comum em Lua. Se <code>entrada</code> for <code>nil</code> ou <code>false</code>, o valor após <code>or</code> é usado. Isso funciona bem para strings e números, mas falha se o valor legítimo for <code>false</code> �?" nesse caso, use <code>if entrada == nil then</code>.</p>
+                <p>O padrão <code>variavel = entrada or "padrão"</code> é muito comum em Lua. Se <code>entrada</code> for <code>nil</code> ou <code>false</code>, o valor após <code>or</code> é usado. Isso funciona bem para strings e números, mas falha se o valor legítimo for <code>false</code> — nesse caso, use <code>if entrada == nil then</code>.</p>
                 <pre>-- Pattern comum em Lua
 local nome = usuario_input or "Anônimo"
 local quantidade = tonumber(input) or 0
@@ -3138,7 +3138,7 @@ local ativo = opcoes.ativo or true
 print(nome)  -- "Anônimo" se usuario_input for nil/false</pre>
 
                 <h3>Verificar nil</h3>
-                <p>Para verificar se uma variável tem valor, você pode usar <code>if variavel then</code> �?" isso é falso apenas para <code>nil</code> e <code>false</code>. Se você precisa distinguir entre "não existe" e "é false", compare explicitamente com <code>~= nil</code>. Para verificar o tipo exato, use <code>type()</code>.</p>
+                <p>Para verificar se uma variável tem valor, você pode usar <code>if variavel then</code> — isso é falso apenas para <code>nil</code> e <code>false</code>. Se você precisa distinguir entre "não existe" e "é false", compare explicitamente com <code>~= nil</code>. Para verificar o tipo exato, use <code>type()</code>.</p>
                 <pre>local valor = nil
 
 -- Ruim
@@ -3153,7 +3153,7 @@ end
 
 -- Se quer ser explícito
 if type(valor) == "number" then
-    print("�? um número")
+    print("? um número")
 end</pre>
             </section>
 
@@ -3164,7 +3164,7 @@ end</pre>
                 <p>Loops repetem um bloco de código. Lua tem três estruturas de loop: <code>for</code> (numérico e genérico), <code>while</code> e <code>repeat/until</code>. Cada uma tem um caso de uso ideal.</p>
 
                 <h3>for numérico</h3>
-                <p>O <code>for</code> numérico conta de um valor inicial até um valor final, com um passo opcional. A variável de controle (<code>i</code>) é local ao loop �?" não existe fora dele. O passo padrão é 1; use um passo negativo para contar de trás para frente. Os limites são avaliados uma única vez antes do loop começar.</p>
+                <p>O <code>for</code> numérico conta de um valor inicial até um valor final, com um passo opcional. A variável de controle (<code>i</code>) é local ao loop — não existe fora dele. O passo padrão é 1; use um passo negativo para contar de trás para frente. Os limites são avaliados uma única vez antes do loop começar.</p>
                 <pre>-- Sintaxe básica
 for i = 1, 5 do
     print(i)
@@ -3184,7 +3184,7 @@ end
 -- Output: 5 4 3 2 1</pre>
 
                 <h3>for genérico com pairs()</h3>
-                <p><code>pairs(t)</code> retorna um iterador que percorre <strong>todos</strong> os pares chave-valor de uma table, incluindo chaves string e numéricas não sequenciais. A ordem de iteração não é garantida �?" não assuma que os elementos vão aparecer na ordem em que foram inseridos.</p>
+                <p><code>pairs(t)</code> retorna um iterador que percorre <strong>todos</strong> os pares chave-valor de uma table, incluindo chaves string e numéricas não sequenciais. A ordem de iteração não é garantida — não assuma que os elementos vão aparecer na ordem em que foram inseridos.</p>
                 <pre>local pessoa = {
     nome = "João",
     idade = 30,
@@ -3201,7 +3201,7 @@ end
 -- email = joao@example.com</pre>
 
                 <h3>for genérico com ipairs()</h3>
-                <p><code>ipairs(t)</code> percorre apenas a parte sequencial da table �?" índices 1, 2, 3... �?" e para imediatamente ao encontrar o primeiro <code>nil</code>. Use <code>ipairs</code> para arrays onde a ordem importa. Use <code>pairs</code> quando precisar de todas as chaves ou quando a table for um dicionário.</p>
+                <p><code>ipairs(t)</code> percorre apenas a parte sequencial da table — índices 1, 2, 3... — e para imediatamente ao encontrar o primeiro <code>nil</code>. Use <code>ipairs</code> para arrays onde a ordem importa. Use <code>pairs</code> quando precisar de todas as chaves ou quando a table for um dicionário.</p>
                 <pre>local lista = {"maçã", "banana", "laranja"}
 
 for indice, valor in ipairs(lista) do
@@ -3220,7 +3220,7 @@ end
 -- Output: 1 a | 2 b (para aqui!)</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ pairs vs ipairs:</strong>
+                    <strong>️ pairs vs ipairs:</strong>
                     <ul>
                         <li><code>pairs()</code>: todos os elementos, qualquer ordem</li>
                         <li><code>ipairs()</code>: apenas sequência, para no primeiro nil</li>
@@ -3248,7 +3248,7 @@ while true do
 end</pre>
 
                 <h3>repeat / until</h3>
-                <p>O <code>repeat/until</code> verifica a condição <strong>depois</strong> de cada iteração �?" o corpo sempre executa pelo menos uma vez. A condição de parada fica no <code>until</code>: o loop continua enquanto a condição for <em>falsa</em> e para quando ela se tornar <em>verdadeira</em>. Variáveis declaradas dentro do bloco são visíveis na condição do <code>until</code>.</p>
+                <p>O <code>repeat/until</code> verifica a condição <strong>depois</strong> de cada iteração — o corpo sempre executa pelo menos uma vez. A condição de parada fica no <code>until</code>: o loop continua enquanto a condição for <em>falsa</em> e para quando ela se tornar <em>verdadeira</em>. Variáveis declaradas dentro do bloco são visíveis na condição do <code>until</code>.</p>
                 <pre>local x = 1
 
 repeat
@@ -3257,7 +3257,7 @@ repeat
 until x > 5
 -- Output: 1 2 3 4 5
 
--- �stil para validação
+--  para validação
 repeat
     print("Digite um número entre 1 e 10:")
     local num = tonumber(io.read())
@@ -3275,7 +3275,7 @@ for i = 1, 3 do
 end</pre>
 
                 <h3>Iterador customizado</h3>
-                <p>O <code>for</code> genérico funciona com qualquer função que retorne valores a cada chamada e retorne <code>nil</code> quando terminar. Você pode criar seus próprios iteradores usando closures �?" a função interna mantém o estado entre chamadas.</p>
+                <p>O <code>for</code> genérico funciona com qualquer função que retorne valores a cada chamada e retorne <code>nil</code> quando terminar. Você pode criar seus próprios iteradores usando closures — a função interna mantém o estado entre chamadas.</p>
                 <pre>-- Função que retorna um iterador
 local function numeros_pares(maximo)
     local i = 0
@@ -3298,7 +3298,7 @@ end
                 <h2>break e controle de loop</h2>
 
                 <h3>break</h3>
-                <p><code>break</code> encerra imediatamente o loop mais interno em que está �?" <code>for</code>, <code>while</code> ou <code>repeat</code>. A execução continua na primeira instrução após o <code>end</code> do loop. Use quando encontrar o que procurava e não precisar continuar iterando.</p>
+                <p><code>break</code> encerra imediatamente o loop mais interno em que está — <code>for</code>, <code>while</code> ou <code>repeat</code>. A execução continua na primeira instrução após o <code>end</code> do loop. Use quando encontrar o que procurava e não precisar continuar iterando.</p>
                 <pre>-- Buscar número em lista
 local lista = {10, 20, 30, 40, 50}
 local procurando = 30
@@ -3315,7 +3315,7 @@ end
 print("Fim da busca")</pre>
 
                 <h3>break com while</h3>
-                <p><code>break</code> funciona da mesma forma em <code>while true do</code> �?" o padrão mais comum para loops que precisam de uma condição de saída no meio do corpo, não no início.</p>
+                <p><code>break</code> funciona da mesma forma em <code>while true do</code> — o padrão mais comum para loops que precisam de uma condição de saída no meio do corpo, não no início.</p>
                 <pre>local contador = 0
 
 while true do
@@ -3329,7 +3329,7 @@ while true do
 end</pre>
 
                 <div class="box box-info">
-                    <strong>�Y'� Lua não tem continue:</strong> diferente de C, Python e JavaScript, Lua não possui a instrução <code>continue</code> para pular para a próxima iteração. A solução é inverter a condição com <code>if</code> �?" em vez de "pule se X", escreva "execute se não X".
+                    <strong>' Lua não tem continue:</strong> diferente de C, Python e JavaScript, Lua não possui a instrução <code>continue</code> para pular para a próxima iteração. A solução é inverter a condição com <code>if</code> — em vez de "pule se X", escreva "execute se não X".
                 </div>
 
                 <h3>Alternativa ao continue</h3>
@@ -3357,7 +3357,7 @@ end</pre>
             <section id="funcoes">
                 <h2>Funções</h2>
 
-                <p>Funções são blocos de código reutilizáveis que recebem entradas (parâmetros), executam uma lógica e podem retornar resultados. Em Lua, funções são <strong>valores de primeira classe</strong> �?" isso significa que uma função pode ser armazenada em uma variável, passada como argumento para outra função, retornada como resultado, e colocada dentro de uma table. Não há diferença entre uma função e qualquer outro valor.</p>
+                <p>Funções são blocos de código reutilizáveis que recebem entradas (parâmetros), executam uma lógica e podem retornar resultados. Em Lua, funções são <strong>valores de primeira classe</strong> — isso significa que uma função pode ser armazenada em uma variável, passada como argumento para outra função, retornada como resultado, e colocada dentro de uma table. Não há diferença entre uma função e qualquer outro valor.</p>
 
                 <h3>Formas de definir uma função</h3>
                 <p>Existem três sintaxes equivalentes. A forma <code>local function nome()</code> é a mais recomendada para funções locais porque deixa claro o escopo e permite que a função se referencie recursivamente pelo nome.</p>
@@ -3383,7 +3383,7 @@ end
 print(multiplicar(3, 4))  -- Output: 12</pre>
 
                 <h3>Parâmetros e argumentos</h3>
-                <p>Parâmetros são os nomes declarados na definição da função. Argumentos são os valores passados na chamada. Se você passar mais argumentos do que parâmetros, os extras são descartados. Se passar menos, os parâmetros sem valor recebem <code>nil</code>. Para definir valores padrão, use o padrão <code>param = param or valor_padrao</code> �?" mas lembre que isso falha se o valor legítimo for <code>false</code>.</p>
+                <p>Parâmetros são os nomes declarados na definição da função. Argumentos são os valores passados na chamada. Se você passar mais argumentos do que parâmetros, os extras são descartados. Se passar menos, os parâmetros sem valor recebem <code>nil</code>. Para definir valores padrão, use o padrão <code>param = param or valor_padrao</code> — mas lembre que isso falha se o valor legítimo for <code>false</code>.</p>
                 <pre>-- Sem parâmetros
 local function ola()
     print("Olá!")
@@ -3413,7 +3413,7 @@ end
 print(somar_seguro(10))  -- Output: 10</pre>
 
                 <h3>Retorno múltiplo</h3>
-                <p>Lua permite que uma função retorne vários valores com um único <code>return</code>. Isso é muito usado para retornar um resultado junto com um possível erro (padrão <code>valor, erro</code>). Ao capturar os retornos, você pode ignorar valores usando <code>_</code> como nome de variável �?" convenção que indica "não me importo com este valor".</p>
+                <p>Lua permite que uma função retorne vários valores com um único <code>return</code>. Isso é muito usado para retornar um resultado junto com um possível erro (padrão <code>valor, erro</code>). Ao capturar os retornos, você pode ignorar valores usando <code>_</code> como nome de variável — convenção que indica "não me importo com este valor".</p>
                 <pre>-- Função com múltiplos retornos
 local function obter_dados_usuario()
     local nome = "João"
@@ -3435,7 +3435,7 @@ local nome, _, ativo = obter_dados_usuario()
 print(nome, ativo)  -- Output: João    true</pre>
 
                 <h3>Funções aninhadas e closures</h3>
-                <p>Uma função definida dentro de outra tem acesso às variáveis locais da função externa �?" essas variáveis são chamadas de <strong>upvalues</strong>. Quando a função interna é retornada, ela carrega consigo uma referência viva para esses upvalues. Cada chamada à função externa cria um novo conjunto de upvalues independente.</p>
+                <p>Uma função definida dentro de outra tem acesso às variáveis locais da função externa — essas variáveis são chamadas de <strong>upvalues</strong>. Quando a função interna é retornada, ela carrega consigo uma referência viva para esses upvalues. Cada chamada à função externa cria um novo conjunto de upvalues independente.</p>
                 <pre>local function criar_contador(inicial)
     local valor = inicial or 0
     
@@ -3458,7 +3458,7 @@ local contador2 = criar_contador(100)
 print(contador2())  -- Output: 101</pre>
 
                 <h3>Funções como argumentos</h3>
-                <p>Como funções são valores, você pode passá-las como argumento para outras funções. Isso permite criar funções genéricas que recebem o comportamento específico como parâmetro �?" o padrão de callbacks e higher-order functions.</p>
+                <p>Como funções são valores, você pode passá-las como argumento para outras funções. Isso permite criar funções genéricas que recebem o comportamento específico como parâmetro — o padrão de callbacks e higher-order functions.</p>
                 <pre>local function aplicar_operacao(a, b, operacao)
     return operacao(a, b)
 end
@@ -3479,7 +3479,7 @@ local subtracao = function(x, y) return x - y end
 print(aplicar_operacao(10, 3, subtracao))    -- Output: 7</pre>
 
                 <h3>Retornar funções</h3>
-                <p>Uma função pode retornar outra função como resultado. Isso é a base das <strong>factory functions</strong> �?" funções que criam e configuram outras funções. A função retornada captura os parâmetros da factory como upvalues.</p>
+                <p>Uma função pode retornar outra função como resultado. Isso é a base das <strong>factory functions</strong> — funções que criam e configuram outras funções. A função retornada captura os parâmetros da factory como upvalues.</p>
                 <pre>local function criar_multiplicador(fator)
     return function(numero)
         return numero * fator
@@ -3493,7 +3493,7 @@ print(vezes_2(5))    -- Output: 10
 print(vezes_10(5))   -- Output: 50</pre>
 
                 <h3>Recursão</h3>
-                <p>Uma função recursiva é aquela que chama a si mesma. Toda recursão precisa de um <strong>caso base</strong> �?" uma condição que para a recursão �?" caso contrário o programa entra em loop infinito e eventualmente estoura o stack. Lua tem um limite de profundidade de chamadas (por padrão ~200 níveis).</p>
+                <p>Uma função recursiva é aquela que chama a si mesma. Toda recursão precisa de um <strong>caso base</strong> — uma condição que para a recursão — caso contrário o programa entra em loop infinito e eventualmente estoura o stack. Lua tem um limite de profundidade de chamadas (por padrão ~200 níveis).</p>
                 <pre>-- Fatorial recursivo
 local function fatorial(n)
     if n <= 1 then
@@ -3515,13 +3515,13 @@ end
 print(fibonacci(6))  -- Output: 8</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ Recursão:</strong> Lua tem limite de profundidade de recursão. Use cuidado com números muito grandes. Preferir loops quando possível.
+                    <strong>️ Recursão:</strong> Lua tem limite de profundidade de recursão. Use cuidado com números muito grandes. Preferir loops quando possível.
                 </div>
 
                 <h3>Tail call optimization</h3>
-                <p>Uma <strong>tail call</strong> é quando o último ato de uma função é chamar outra função e retornar seu resultado diretamente �?" sem fazer nada depois. Lua otimiza esse caso reutilizando o frame de stack atual em vez de criar um novo. Isso permite recursão infinita sem estouro de stack, desde que a chamada recursiva seja a última operação.</p>
+                <p>Uma <strong>tail call</strong> é quando o último ato de uma função é chamar outra função e retornar seu resultado diretamente — sem fazer nada depois. Lua otimiza esse caso reutilizando o frame de stack atual em vez de criar um novo. Isso permite recursão infinita sem estouro de stack, desde que a chamada recursiva seja a última operação.</p>
                 <pre>-- Lua otimiza chamadas de cauda (tail call)
--- Isto N�fO consome stack mesmo com muitas iterações
+-- Isto N consome stack mesmo com muitas iterações
 
 local function contar(n, limite)
     if n > limite then
@@ -3561,7 +3561,7 @@ print(user2.email)   -- Output: maria@test.com
 print(user2.ativo)   -- Output: false</pre>
 
                 <div class="box box-danger">
-                    <strong>�Ys� Armadilha:</strong> O padrão <code>or</code> falha se o valor legítimo for <code>false</code> ou <code>0</code>!
+                    <strong> Armadilha:</strong> O padrão <code>or</code> falha se o valor legítimo for <code>false</code> ou <code>0</code>!
                 </div>
 
                 <pre>-- Problema:
@@ -3582,8 +3582,8 @@ end
 
 print(config_correto(false))  -- Output: false (CORRETO!)</pre>
 
-                <h3>Retorno com erro �?" padrão (valor, erro)</h3>
-                <p>O padrão mais comum em Lua para tratar erros sem usar exceções é retornar dois valores: o resultado em caso de sucesso, ou <code>nil</code> mais uma mensagem de erro em caso de falha. Quem chama a função verifica o segundo retorno antes de usar o primeiro. Esse padrão é usado pela própria biblioteca padrão �?" <code>io.open()</code>, por exemplo, funciona assim.</p>
+                <h3>Retorno com erro — padrão (valor, erro)</h3>
+                <p>O padrão mais comum em Lua para tratar erros sem usar exceções é retornar dois valores: o resultado em caso de sucesso, ou <code>nil</code> mais uma mensagem de erro em caso de falha. Quem chama a função verifica o segundo retorno antes de usar o primeiro. Esse padrão é usado pela própria biblioteca padrão — <code>io.open()</code>, por exemplo, funciona assim.</p>
                 <pre>-- Padrão: (valor, erro)
 local function dividir(a, b)
     if b == 0 then
@@ -3635,7 +3635,7 @@ end</pre>
                 <p>Varargs (argumentos variáveis) permitem que uma função aceite qualquer número de argumentos. O símbolo <code>...</code> representa todos os argumentos extras passados além dos parâmetros nomeados. Dentro da função, <code>...</code> pode ser coletado em uma table com <code>{...}</code> ou inspecionado com <code>select()</code>.</p>
 
                 <h3>Coletar varargs em uma table</h3>
-                <p>A forma mais simples de trabalhar com varargs é converter para uma table com <code>{...}</code>. Isso cria um array com todos os argumentos variáveis, que você pode iterar normalmente. Cuidado: se algum argumento for <code>nil</code>, o <code>#</code> pode não contar corretamente �?" use <code>select('#', ...)</code> para obter o total real.</p>
+                <p>A forma mais simples de trabalhar com varargs é converter para uma table com <code>{...}</code>. Isso cria um array com todos os argumentos variáveis, que você pode iterar normalmente. Cuidado: se algum argumento for <code>nil</code>, o <code>#</code> pode não contar corretamente — use <code>select('#', ...)</code> para obter o total real.</p>
                 <pre>-- ... representa argumentos variáveis
 local function imprimir_tudo(...)
     local args = {...}  -- Converte em table
@@ -3699,7 +3699,7 @@ end
 print(wrapper(1, 2, 3))  -- Output: Chamando... 6</pre>
 
                 <h3>Exemplo prático: join()</h3>
-                <p>Um uso clássico de varargs é uma função que une valores em uma string com um separador �?" similar ao <code>join</code> de outras linguagens.</p>
+                <p>Um uso clássico de varargs é uma função que une valores em uma string com um separador — similar ao <code>join</code> de outras linguagens.</p>
                 <pre>local function join(separador, ...)
     local args = {...}
     local resultado = ""
@@ -3725,11 +3725,11 @@ print(join(" - ", 1, 2, 3, 4, 5))
             <section id="closures">
                 <h2>Closures</h2>
 
-                <p>Uma closure é uma função que <strong>captura variáveis do escopo onde foi criada</strong> e as mantém vivas mesmo depois que aquele escopo terminou. Em Lua, toda função que acessa variáveis locais externas é automaticamente uma closure �?" não há sintaxe especial. As variáveis capturadas são chamadas de <strong>upvalues</strong>.</p>
+                <p>Uma closure é uma função que <strong>captura variáveis do escopo onde foi criada</strong> e as mantém vivas mesmo depois que aquele escopo terminou. Em Lua, toda função que acessa variáveis locais externas é automaticamente uma closure — não há sintaxe especial. As variáveis capturadas são chamadas de <strong>upvalues</strong>.</p>
 
-                <p>O ponto chave: cada chamada à função que cria a closure gera um novo conjunto de upvalues independente. Duas closures criadas pela mesma função não compartilham estado entre si �?" cada uma tem a sua própria cópia das variáveis capturadas.</p>
+                <p>O ponto chave: cada chamada à função que cria a closure gera um novo conjunto de upvalues independente. Duas closures criadas pela mesma função não compartilham estado entre si — cada uma tem a sua própria cópia das variáveis capturadas.</p>
 
-                <h3>Closure básica �?" contador com estado</h3>
+                <h3>Closure básica — contador com estado</h3>
                 <p>O exemplo mais claro de closure é um contador: a função interna captura a variável <code>valor</code> da função externa. Mesmo depois que <code>criar_contador()</code> retornou, <code>valor</code> continua existindo porque a closure mantém uma referência a ela.</p>
 
                 <pre>local function criar_contador()
@@ -3751,7 +3751,7 @@ local contador2 = criar_contador()
 print(contador2())  -- Output: 1</pre>
 
                 <h3>Múltiplas funções compartilhando upvalues</h3>
-                <p>Quando várias funções são criadas no mesmo escopo, elas compartilham os mesmos upvalues. Isso permite criar objetos com estado privado e múltiplos métodos �?" todas as funções leem e escrevem na mesma variável <code>saldo</code>, mas ela é invisível de fora.</p>
+                <p>Quando várias funções são criadas no mesmo escopo, elas compartilham os mesmos upvalues. Isso permite criar objetos com estado privado e múltiplos métodos — todas as funções leem e escrevem na mesma variável <code>saldo</code>, mas ela é invisível de fora.</p>
                 <pre>local function criar_banco_conta(saldo_inicial)
     local saldo = saldo_inicial or 0
     
@@ -3779,7 +3779,7 @@ print(conta:depositar(500)) -- Output: 1500
 print(conta:sacar(200))     -- Output: 1300</pre>
 
                 <div class="box box-success">
-                    <strong>�o. Padrão Comum:</strong> Closures são perfeitos para criar "dados privados" e simular encapsulamento em Lua.
+                    <strong>✅ Padrão Comum:</strong> Closures são perfeitos para criar "dados privados" e simular encapsulamento em Lua.
                 </div>
 
                 <h3>Closure como factory de funções</h3>
@@ -3810,7 +3810,7 @@ print(table.concat(maiorQue10({1,5,8,12,3}), ", "))
             <section id="higher-order">
                 <h2>Higher-Order Functions</h2>
 
-                <p>Uma higher-order function é qualquer função que recebe outra função como argumento, ou retorna uma função como resultado. Isso não é um recurso especial em Lua �?" é consequência natural de funções serem valores de primeira classe. Os três padrões mais comuns são <code>map</code>, <code>filter</code> e <code>reduce</code>, que formam a base da programação funcional.</p>
+                <p>Uma higher-order function é qualquer função que recebe outra função como argumento, ou retorna uma função como resultado. Isso não é um recurso especial em Lua — é consequência natural de funções serem valores de primeira classe. Os três padrões mais comuns são <code>map</code>, <code>filter</code> e <code>reduce</code>, que formam a base da programação funcional.</p>
 
                 <h3>map()</h3>
                 <p><code>map</code> aplica uma função a cada elemento de uma lista e retorna uma nova lista com os resultados. A lista original não é modificada. O tamanho da lista resultante é sempre igual ao da original.</p>
@@ -3850,7 +3850,7 @@ local maiores_que_5 = filter(function(x) return x > 5 end, numeros)
 print(table.concat(maiores_que_5, ", "))  -- Output: 6, 7, 8, 9, 10</pre>
 
                 <h3>reduce()</h3>
-                <p><code>reduce</code> (também chamado de <code>fold</code>) combina todos os elementos de uma lista em um único valor. Recebe uma função acumuladora, a lista e um valor inicial. A função acumuladora recebe o acumulador atual e o próximo elemento, e retorna o novo acumulador. �stil para somas, produtos, concatenações e qualquer operação que agrega valores.</p>
+                <p><code>reduce</code> (também chamado de <code>fold</code>) combina todos os elementos de uma lista em um único valor. Recebe uma função acumuladora, a lista e um valor inicial. A função acumuladora recebe o acumulador atual e o próximo elemento, e retorna o novo acumulador.  para somas, produtos, concatenações e qualquer operação que agrega valores.</p>
                 <pre>local function reduce(funcao, lista, inicial)
     local acumulador = inicial
     for _, valor in ipairs(lista) do
@@ -3868,7 +3868,7 @@ local produto = reduce(function(acc, x) return acc * x end, numeros, 1)
 print(produto)  -- Output: 120</pre>
 
                 <h3>compose()</h3>
-                <p><code>compose</code> combina duas funções em uma só: o resultado da segunda é passado como entrada para a primeira. <code>compose(f, g)(x)</code> é equivalente a <code>f(g(x))</code>. �stil para criar pipelines de transformação sem variáveis intermediárias.</p>
+                <p><code>compose</code> combina duas funções em uma só: o resultado da segunda é passado como entrada para a primeira. <code>compose(f, g)(x)</code> é equivalente a <code>f(g(x))</code>.  para criar pipelines de transformação sem variáveis intermediárias.</p>
                 <pre>local function compose(f, g)
     return function(x)
         return f(g(x))
@@ -3884,11 +3884,11 @@ print(operacao(5))  -- Output: 20 (5 * 2 = 10, 10 + 10 = 20)</pre>
 
             <!-- Tables Detalhado -->
             <section id="tables">
-                <h2>Tables �?" detalhado</h2>
+                <h2>Tables — detalhado</h2>
 
                 <p>Tables são a única estrutura de dados complexa de Lua. Internamente, toda table tem duas partes: um <strong>array part</strong> para índices numéricos sequenciais (acesso O(1)) e um <strong>hash part</strong> para qualquer outra chave. Lua decide automaticamente onde colocar cada valor. Uma table pode ser usada como array, dicionário, objeto, namespace ou qualquer combinação.</p>
 
-                <h3>Array �?" lista ordenada</h3>
+                <h3>Array — lista ordenada</h3>
                 <p>Quando você usa índices numéricos sequenciais começando em 1, a table se comporta como um array. O operador <code>#</code> retorna o tamanho da sequência contígua. <code>table.insert()</code> adiciona ao final e desloca os elementos seguintes. <code>table.remove()</code> remove e retorna o elemento, deslocando os seguintes para preencher o espaço.</p>
                 <pre>-- Declarar uma lista
 local frutas = {"maçã", "banana", "laranja"}
@@ -3909,8 +3909,8 @@ print(#frutas)             -- Output: 4
 table.remove(frutas, 2)    -- Remove banana
 print(frutas[2])           -- Output: laranja</pre>
 
-                <h3>Dicionário �?" chaves nomeadas</h3>
-                <p>Quando você usa strings como chaves, a table funciona como um dicionário (ou mapa). Você acessa valores com a sintaxe de ponto (<code>t.chave</code>) ou de colchetes (<code>t["chave"]</code>) �?" são equivalentes. Atribuir <code>nil</code> a uma chave remove essa chave da table.</p>
+                <h3>Dicionário — chaves nomeadas</h3>
+                <p>Quando você usa strings como chaves, a table funciona como um dicionário (ou mapa). Você acessa valores com a sintaxe de ponto (<code>t.chave</code>) ou de colchetes (<code>t["chave"]</code>) — são equivalentes. Atribuir <code>nil</code> a uma chave remove essa chave da table.</p>
                 <pre>local usuario = {
     id = 1,
     nome = "João",
@@ -3935,7 +3935,7 @@ if usuario.telefone then
     print("Tem telefone")
 end</pre>
 
-                <h3>Table mista �?" array e dicionário juntos</h3>
+                <h3>Table mista — array e dicionário juntos</h3>
                 <p>Uma table pode ter simultaneamente uma parte sequencial (array) e chaves nomeadas (hash). O operador <code>#</code> conta apenas a parte sequencial. <code>pairs()</code> itera sobre tudo; <code>ipairs()</code> itera apenas sobre a sequência.</p>
                 <pre>local configuracao = {
     "producao",           -- [1]
@@ -3977,7 +3977,7 @@ end
 -- 3: azul</pre>
 
                 <h3>Copiar uma table</h3>
-                <p>Atribuir uma table a outra variável copia apenas a <strong>referência</strong>, não os dados. Para copiar os valores, você precisa iterar e copiar manualmente. Isso é uma <em>cópia rasa</em> (shallow copy) �?" tables aninhadas ainda são referências compartilhadas.</p>
+                <p>Atribuir uma table a outra variável copia apenas a <strong>referência</strong>, não os dados. Para copiar os valores, você precisa iterar e copiar manualmente. Isso é uma <em>cópia rasa</em> (shallow copy) — tables aninhadas ainda são referências compartilhadas.</p>
                 <pre>-- Cópia rasa (shallow copy)
 local original = {a = 1, b = 2}
 local copia = {}
@@ -4062,15 +4062,15 @@ print(indice)  -- Output: 2</pre>
             <section id="metatables">
                 <h2>Metatables</h2>
 
-                <p>Uma metatable é uma table comum que define como outra table se comporta em operações especiais �?" aritméticas, comparações, acesso a chaves inexistentes, conversão para string, e mais. Você associa uma metatable a uma table com <code>setmetatable(t, mt)</code>. Os campos especiais da metatable são chamados de <strong>metamétodos</strong> e têm nomes que começam com <code>__</code>.</p>
+                <p>Uma metatable é uma table comum que define como outra table se comporta em operações especiais — aritméticas, comparações, acesso a chaves inexistentes, conversão para string, e mais. Você associa uma metatable a uma table com <code>setmetatable(t, mt)</code>. Os campos especiais da metatable são chamados de <strong>metamétodos</strong> e têm nomes que começam com <code>__</code>.</p>
 
-                <p>Metatables são o mecanismo que permite implementar OOP, sobrecarga de operadores e comportamentos customizados em Lua �?" tudo sem sintaxe especial na linguagem.</p>
+                <p>Metatables são o mecanismo que permite implementar OOP, sobrecarga de operadores e comportamentos customizados em Lua — tudo sem sintaxe especial na linguagem.</p>
 
                 <h3>setmetatable() e getmetatable()</h3>
-                <p><code>setmetatable(t, mt)</code> associa a metatable <code>mt</code> à table <code>t</code> e retorna <code>t</code>. <code>getmetatable(t)</code> retorna a metatable atual de <code>t</code>, ou <code>nil</code> se não tiver nenhuma. Se a metatable tiver um campo <code>__metatable</code>, <code>getmetatable</code> retorna esse valor em vez da metatable real �?" isso protege a metatable de ser lida ou modificada externamente.</p>
+                <p><code>setmetatable(t, mt)</code> associa a metatable <code>mt</code> à table <code>t</code> e retorna <code>t</code>. <code>getmetatable(t)</code> retorna a metatable atual de <code>t</code>, ou <code>nil</code> se não tiver nenhuma. Se a metatable tiver um campo <code>__metatable</code>, <code>getmetatable</code> retorna esse valor em vez da metatable real — isso protege a metatable de ser lida ou modificada externamente.</p>
 
-                <h3>__index �?" acesso a chaves inexistentes</h3>
-                <p>Quando você acessa uma chave que não existe na table, Lua verifica se a metatable tem <code>__index</code>. Se for uma <strong>função</strong>, Lua a chama passando a table e a chave �?" você decide o que retornar. Se for uma <strong>table</strong>, Lua procura a chave nessa table (base da herança em OOP). Se a chave existir na table original, <code>__index</code> nunca é chamado.</p>
+                <h3>__index — acesso a chaves inexistentes</h3>
+                <p>Quando você acessa uma chave que não existe na table, Lua verifica se a metatable tem <code>__index</code>. Se for uma <strong>função</strong>, Lua a chama passando a table e a chave — você decide o que retornar. Se for uma <strong>table</strong>, Lua procura a chave nessa table (base da herança em OOP). Se a chave existir na table original, <code>__index</code> nunca é chamado.</p>
                 <pre>local tabela = {x = 10}
 
 setmetatable(tabela, {
@@ -4081,11 +4081,11 @@ setmetatable(tabela, {
 })
 
 print(tabela.x)   -- 10  (existe na table, __index não é chamado)
-print(tabela.y)   -- Acessando chave inexistente: y  �?'  0
-print(tabela.z)   -- Acessando chave inexistente: z  �?'  0</pre>
+print(tabela.y)   -- Acessando chave inexistente: y  0
+print(tabela.z)   -- Acessando chave inexistente: z   0</pre>
 
-                <h3>__newindex �?" interceptar atribuições</h3>
-                <p><code>__newindex</code> é chamado quando você tenta atribuir um valor a uma chave que <strong>ainda não existe</strong> na table. Se a chave já existir, a atribuição acontece normalmente sem chamar <code>__newindex</code>. Para gravar o valor dentro do <code>__newindex</code> sem causar recursão infinita, use <code>rawset(t, k, v)</code> �?" que ignora metamétodos.</p>
+                <h3>__newindex — interceptar atribuições</h3>
+                <p><code>__newindex</code> é chamado quando você tenta atribuir um valor a uma chave que <strong>ainda não existe</strong> na table. Se a chave já existir, a atribuição acontece normalmente sem chamar <code>__newindex</code>. Para gravar o valor dentro do <code>__newindex</code> sem causar recursão infinita, use <code>rawset(t, k, v)</code> — que ignora metamétodos.</p>
                 <pre>local tabela = {}
 
 setmetatable(tabela, {
@@ -4115,7 +4115,7 @@ setmetatable(vetor2, meta)
 local v3 = vetor1 + vetor2
 print(v3.x, v3.y)   -- 15    35</pre>
 
-                <h3>__tostring �?" conversão para string</h3>
+                <h3>__tostring — conversão para string</h3>
                 <p><code>__tostring</code> é chamado quando você passa a table para <code>tostring()</code> ou para <code>print()</code>. Sem esse metamétodo, <code>print(t)</code> mostra algo como <code>table: 0x55a3b2</code>. Com ele, você controla exatamente o que aparece.</p>
                 <pre>local pessoa = {nome = "João", idade = 30}
 
@@ -4128,8 +4128,8 @@ setmetatable(pessoa, {
 print(pessoa)           -- João (30 anos)
 print(tostring(pessoa)) -- João (30 anos)</pre>
 
-                <h3>__call �?" chamar table como função</h3>
-                <p><code>__call</code> é chamado quando você usa a table como se fosse uma função �?" <code>t(args)</code>. O primeiro argumento recebido é a própria table (<code>self</code>), seguido dos argumentos passados na chamada. �stil para criar objetos que têm um comportamento "padrão" ao serem invocados.</p>
+                <h3>__call — chamar table como função</h3>
+                <p><code>__call</code> é chamado quando você usa a table como se fosse uma função — <code>t(args)</code>. O primeiro argumento recebido é a própria table (<code>self</code>), seguido dos argumentos passados na chamada.  para criar objetos que têm um comportamento "padrão" ao serem invocados.</p>
                 <pre>local contador = {valor = 0}
 
 setmetatable(contador, {
@@ -4144,7 +4144,7 @@ print(contador())    -- 1  (incrementa por 1)
 print(contador(5))   -- 6  (incrementa por 5)
 print(contador(3))   -- 9</pre>
 
-                <h3>__lt e __le �?" comparações</h3>
+                <h3>__lt e __le — comparações</h3>
                 <p><code>__lt</code> define o comportamento de <code><</code> (menor que). <code>__le</code> define <code><=</code>. Se apenas <code>__lt</code> estiver definido, Lua deriva <code><=</code> automaticamente como <code>not (b < a)</code>.</p>
                 <pre>local p1 = {nome = "João",  idade = 30}
 local p2 = {nome = "Maria", idade = 25}
@@ -4162,7 +4162,7 @@ end</pre>
             <section id="coroutines">
                 <h2>Coroutines</h2>
 
-                <p>Uma coroutine é uma função que pode <strong>pausar sua própria execução</strong> no meio e ser retomada de onde parou. Diferente de threads do sistema operacional, coroutines são <strong>cooperativas</strong> �?" só executam quando explicitamente retomadas, e só pausam quando explicitamente cedem o controle com <code>yield</code>. Não há paralelismo real: apenas uma coroutine executa por vez.</p>
+                <p>Uma coroutine é uma função que pode <strong>pausar sua própria execução</strong> no meio e ser retomada de onde parou. Diferente de threads do sistema operacional, coroutines são <strong>cooperativas</strong> — só executam quando explicitamente retomadas, e só pausam quando explicitamente cedem o controle com <code>yield</code>. Não há paralelismo real: apenas uma coroutine executa por vez.</p>
 
                 <p>O caso de uso principal é quando você precisa de uma função que produz valores ao longo do tempo (generators), implementa uma máquina de estados, ou precisa intercalar execução entre produtor e consumidor sem callbacks.</p>
 
@@ -4170,7 +4170,7 @@ end</pre>
                 <p><code>coroutine.create(f)</code> cria uma nova coroutine a partir da função <code>f</code>, mas <strong>não a executa ainda</strong>. Retorna um objeto do tipo <code>thread</code>. A coroutine começa no estado <code>"suspended"</code> e só executa quando você chamar <code>coroutine.resume()</code>.</p>
 
                 <h3>coroutine.resume()</h3>
-                <p><code>coroutine.resume(co, ...)</code> inicia ou continua a execução da coroutine <code>co</code>. Os argumentos extras são passados para a coroutine �?" na primeira chamada, chegam como parâmetros da função; nas chamadas seguintes, chegam como retorno do <code>yield</code>. Retorna <code>true</code> mais os valores passados ao <code>yield</code> (ou os valores retornados pela função quando termina). Se a coroutine lançar um erro, retorna <code>false</code> mais a mensagem de erro.</p>
+                <p><code>coroutine.resume(co, ...)</code> inicia ou continua a execução da coroutine <code>co</code>. Os argumentos extras são passados para a coroutine — na primeira chamada, chegam como parâmetros da função; nas chamadas seguintes, chegam como retorno do <code>yield</code>. Retorna <code>true</code> mais os valores passados ao <code>yield</code> (ou os valores retornados pela função quando termina). Se a coroutine lançar um erro, retorna <code>false</code> mais a mensagem de erro.</p>
 
                 <h3>coroutine.yield()</h3>
                 <p><code>coroutine.yield(...)</code> pausa a coroutine e devolve o controle para quem chamou <code>resume</code>. Os argumentos do <code>yield</code> se tornam os valores de retorno do <code>resume</code>. Quando a coroutine for retomada, o <code>yield</code> retorna os argumentos passados ao próximo <code>resume</code>.</p>
@@ -4203,7 +4203,7 @@ local ok, v2 = coroutine.resume(co, 20)
 print("função retornou:", v2)           -- função retornou: fim</pre>
 
                 <h3>coroutine.wrap()</h3>
-                <p><code>coroutine.wrap(f)</code> é um atalho que cria uma coroutine e retorna uma função que chama <code>resume</code> automaticamente. Mais simples que <code>create + resume</code>, mas não captura erros �?" se a coroutine lançar um erro, ele se propaga normalmente.</p>
+                <p><code>coroutine.wrap(f)</code> é um atalho que cria uma coroutine e retorna uma função que chama <code>resume</code> automaticamente. Mais simples que <code>create + resume</code>, mas não captura erros — se a coroutine lançar um erro, ele se propaga normalmente.</p>
                 <pre>local gen = coroutine.wrap(function()
     coroutine.yield("a")
     coroutine.yield("b")
@@ -4221,8 +4221,8 @@ print(gen())   -- c
                     <tr><th>Status</th><th>Significado</th></tr>
                     <tr><td><code>"suspended"</code></td><td>Criada mas não iniciada, ou pausada em um yield</td></tr>
                     <tr><td><code>"running"</code></td><td>Executando agora (só visível de dentro da própria coroutine)</td></tr>
-                    <tr><td><code>"normal"</code></td><td>Ativa mas não executando �?" resumiu outra coroutine</td></tr>
-                    <tr><td><code>"dead"</code></td><td>Terminou (retornou ou lançou erro) �?" não pode ser retomada</td></tr>
+                    <tr><td><code>"normal"</code></td><td>Ativa mas não executando — resumiu outra coroutine</td></tr>
+                    <tr><td><code>"dead"</code></td><td>Terminou (retornou ou lançou erro) — não pode ser retomada</td></tr>
                 </table>
 
                 <h3>Caso de uso: generator / iterador</h3>
@@ -4241,26 +4241,26 @@ for n in range(1, 10, 2) do
 end</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ Coroutines não são threads:</strong> não executam em paralelo. Se você precisa de paralelismo real (múltiplos núcleos), coroutines não resolvem �?" você precisaria de múltiplos processos ou de uma biblioteca externa. Coroutines são para <em>concorrência cooperativa</em>: intercalar tarefas de forma controlada dentro de um único thread.
+                    <strong>️ Coroutines não são threads:</strong> não executam em paralelo. Se você precisa de paralelismo real (múltiplos núcleos), coroutines não resolvem — você precisaria de múltiplos processos ou de uma biblioteca externa. Coroutines são para <em>concorrência cooperativa</em>: intercalar tarefas de forma controlada dentro de um único thread.
                 </div>
             </section>
 
             <!-- Modules Profissional -->
             <section id="modules-pro">
-                <h2>require �?" Sistema de Módulos</h2>
+                <h2>require — Sistema de Módulos</h2>
 
-                <p><code>require(nome)</code> carrega e executa um arquivo Lua externo, retornando o que esse arquivo retornar. �? o mecanismo de módulos da linguagem �?" equivalente ao <code>import</code> do Python ou ao <code>require</code> do Node.js. Serve para dividir o código em arquivos separados e reutilizáveis.</p>
+                <p><code>require(nome)</code> carrega e executa um arquivo Lua externo, retornando o que esse arquivo retornar. ? o mecanismo de módulos da linguagem — equivalente ao <code>import</code> do Python ou ao <code>require</code> do Node.js. Serve para dividir o código em arquivos separados e reutilizáveis.</p>
 
                 <h3>Como require funciona, passo a passo</h3>
                 <p>Quando você chama <code>require("nome")</code>, Lua executa esta sequência:</p>
 
                 <div class="flow-diagram">1. Verifica package.loaded["nome"]
-   �?' se já foi carregado antes, retorna o valor em cache imediatamente
-   �?' o arquivo N�fO é executado de novo
+   Se já foi carregado antes, retorna o valor em cache imediatamente
+   O arquivo não é executado de novo
 
 2. Percorre package.searchers (lista de buscadores)
-   �?' procura "nome.lua" nos caminhos listados em package.path
-   �?' procura "nome.so" / "nome.dll" nos caminhos de package.cpath
+   Procura "nome.lua" nos caminhos listados em package.path
+   Procura "nome.so" / "nome.dll" nos caminhos de package.cpath
 
 3. Executa o arquivo encontrado uma única vez
 
@@ -4269,7 +4269,7 @@ end</pre>
 5. Retorna esse valor para quem chamou require</div>
 
                 <div class="box box-info">
-                    <strong>�Y'� Cache automático:</strong> <code>require</code> executa o arquivo <strong>uma única vez</strong>, não importa quantas vezes você o chame. Na segunda chamada em diante, retorna o valor que está em <code>package.loaded</code>. Isso significa que o estado interno do módulo é compartilhado por todo o programa �?" se um lugar modifica o módulo, todos os outros veem a mudança.
+                    <strong>' Cache automático:</strong> <code>require</code> executa o arquivo <strong>uma única vez</strong>, não importa quantas vezes você o chame. Na segunda chamada em diante, retorna o valor que está em <code>package.loaded</code>. Isso significa que o estado interno do módulo é compartilhado por todo o programa — se um lugar modifica o módulo, todos os outros veem a mudança.
                 </div>
 
                 <h3>package.path</h3>
@@ -4306,7 +4306,7 @@ function M.media(lista)
     return soma / #lista
 end
 
-return M               -- OBRIGAT�"RIO: sem isso, require retorna true</pre>
+return M               -- OBRIGAT"RIO: sem isso, require retorna true</pre>
 
                 <pre>-- main.lua
 local mat = require("matematica")   -- executa matematica.lua, recebe M
@@ -4316,7 +4316,7 @@ print(mat.subtrair(10, 5))          -- 5
 print(mat.media({4, 8, 6, 10}))     -- 7.0</pre>
 
                 <h3>Dados privados em módulos</h3>
-                <p>Variáveis declaradas com <code>local</code> fora da tabela <code>M</code> são <strong>privadas</strong> �?" existem apenas dentro do arquivo e são invisíveis para quem fez o <code>require</code>. Isso é encapsulamento real: o módulo expõe só o que você colocar em <code>M</code>.</p>
+                <p>Variáveis declaradas com <code>local</code> fora da tabela <code>M</code> são <strong>privadas</strong> — existem apenas dentro do arquivo e são invisíveis para quem fez o <code>require</code>. Isso é encapsulamento real: o módulo expõe só o que você colocar em <code>M</code>.</p>
                 <pre>-- contador.lua
 local M = {}
 
@@ -4350,17 +4350,17 @@ print(contador.obter())     -- 6
 print(contador.valor)       -- nil  (privado, não acessível)</pre>
 
                 <h3>require com subpastas</h3>
-                <p>Para módulos dentro de subpastas, use <strong>ponto</strong> como separador de diretório �?" não barra. Lua converte o ponto em separador de pasta automaticamente ao buscar o arquivo.</p>
+                <p>Para módulos dentro de subpastas, use <strong>ponto</strong> como separador de diretório — não barra. Lua converte o ponto em separador de pasta automaticamente ao buscar o arquivo.</p>
                 <pre>-- Para carregar o arquivo lib/utils.lua:
 local utils = require("lib.utils")      -- ponto, não barra
 
 -- Para carregar modules/db/query.lua:
 local query = require("modules.db.query")
 
--- ERRADO �?" não funciona:
+-- ERRADO — não funciona:
 local utils = require("lib/utils")      -- barra não é suportada</pre>
 
-                <h3>package.loaded �?" inspecionar e forçar recarga</h3>
+                <h3>package.loaded — inspecionar e forçar recarga</h3>
                 <p><code>package.loaded</code> é a tabela de cache do <code>require</code>. Você pode consultá-la para saber se um módulo já foi carregado, e pode apagar uma entrada para forçar que o arquivo seja executado de novo na próxima chamada.</p>
                 <pre>-- Verificar se um módulo já está carregado
 if package.loaded["utils"] then
@@ -4410,25 +4410,25 @@ u:desativar()
 print(u.ativo)                  -- false</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ Erros comuns com require:</strong>
+                    <strong>️ Erros comuns com require:</strong>
                     <ul>
-                        <li><strong>module 'x' not found</strong> �?" o arquivo não está em nenhum caminho de <code>package.path</code>. Verifique o path e o nome do arquivo.</li>
-                        <li><strong>Esquecer o return</strong> �?" sem <code>return M</code> no final, <code>require</code> retorna <code>true</code> em vez do módulo.</li>
-                        <li><strong>Usar barra no nome</strong> �?" <code>require("lib/utils")</code> não funciona. Use <code>require("lib.utils")</code>.</li>
-                        <li><strong>Estado compartilhado inesperado</strong> �?" como o módulo é executado uma vez e cacheado, variáveis locais do módulo persistem entre chamadas. Isso é intencional, mas pode surpreender.</li>
+                        <li><strong>module 'x' not found</strong> — o arquivo não está em nenhum caminho de <code>package.path</code>. Verifique o path e o nome do arquivo.</li>
+                        <li><strong>Esquecer o return</strong> — sem <code>return M</code> no final, <code>require</code> retorna <code>true</code> em vez do módulo.</li>
+                        <li><strong>Usar barra no nome</strong> — <code>require("lib/utils")</code> não funciona. Use <code>require("lib.utils")</code>.</li>
+                        <li><strong>Estado compartilhado inesperado</strong> — como o módulo é executado uma vez e cacheado, variáveis locais do módulo persistem entre chamadas. Isso é intencional, mas pode surpreender.</li>
                     </ul>
                 </div>
 
                 <div class="box box-success">
-                    <strong>�o. Padrão recomendado:</strong> sempre use <code>local M = {}</code> no topo, defina tudo dentro de <code>M</code>, e termine com <code>return M</code>. Dados que não devem ser acessados de fora ficam como variáveis <code>local</code> do arquivo, fora de <code>M</code>.
+                    <strong>✅ Padrão recomendado:</strong> sempre use <code>local M = {}</code> no topo, defina tudo dentro de <code>M</code>, e termine com <code>return M</code>. Dados que não devem ser acessados de fora ficam como variáveis <code>local</code> do arquivo, fora de <code>M</code>.
                 </div>
             </section>
 
             <!-- String Library -->
             <section id="lib-string">
-                <h2>string �?" biblioteca de strings</h2>
+                <h2>string — biblioteca de strings</h2>
 
-                <p>A biblioteca <code>string</code> fornece funções para manipular texto. Todas as funções podem ser chamadas como <code>string.funcao(s, ...)</code> ou usando a sintaxe de método <code>s:funcao(...)</code> �?" as duas formas são equivalentes porque strings têm <code>string</code> como metatable com <code>__index</code>.</p>
+                <p>A biblioteca <code>string</code> fornece funções para manipular texto. Todas as funções podem ser chamadas como <code>string.funcao(s, ...)</code> ou usando a sintaxe de método <code>s:funcao(...)</code> — as duas formas são equivalentes porque strings têm <code>string</code> como metatable com <code>__index</code>.</p>
 
                 <h3>string.len(s)</h3>
                 <p>Retorna o comprimento da string em bytes. Para strings ASCII é igual ao número de caracteres. Para UTF-8, um caractere pode ocupar mais de um byte. O operador <code>#s</code> é equivalente e mais idiomático.</p>
@@ -4437,7 +4437,7 @@ print(string.len(s))  -- 3
 print(#s)             -- 3  (equivalente, preferido)</pre>
 
                 <h3>string.upper(s) / string.lower(s)</h3>
-                <p><code>upper</code> retorna uma nova string com todos os caracteres convertidos para maiúsculas. <code>lower</code> faz o oposto. A string original não é modificada �?" strings são imutáveis.</p>
+                <p><code>upper</code> retorna uma nova string com todos os caracteres convertidos para maiúsculas. <code>lower</code> faz o oposto. A string original não é modificada — strings são imutáveis.</p>
                 <pre>print(string.upper("Lua"))   -- LUA
 print(string.lower("LUA"))   -- lua
 print(("hello"):upper())     -- HELLO  (sintaxe de método)</pre>
@@ -4477,7 +4477,7 @@ print(string.gsub(s, "Lua", "Ruby", 1))
 -- Ruby é ótima. Lua é rápida.    1</pre>
 
                 <h3>string.format(fmt, ...)</h3>
-                <p>Formata uma string usando especificadores de formato, similar ao <code>printf</code> do C. Retorna a string formatada. �? a forma correta de construir strings com valores mistos �?" mais eficiente e legível do que concatenação.</p>
+                <p>Formata uma string usando especificadores de formato, similar ao <code>printf</code> do C. Retorna a string formatada. A forma correta de construir strings com valores mistos — mais eficiente e legível do que concatenação.</p>
                 <pre>-- %s = string, %d = inteiro, %f = float, %q = string com aspas
 print(string.format("%s tem %d anos", "João", 30))
 -- João tem 30 anos
@@ -4538,18 +4538,23 @@ end
 -- x  10 / y  20 / z  30</pre>
 
                 <div class="box box-info">
-                    <strong>�Y'� Padrões Lua vs Regex:</strong> Lua usa seu próprio sistema de padrões, mais simples que regex completo. Os mais usados: <code>%d</code> = dígito, <code>%a</code> = letra, <code>%s</code> = espaço, <code>%w</code> = alfanumérico, <code>%p</code> = pontuação, <code>.</code> = qualquer caractere. Quantificadores: <code>+</code> (um ou mais), <code>*</code> (zero ou mais), <code>?</code> (zero ou um), <code>-</code> (zero ou mais, não-guloso).
+                    <strong>' Padrões Lua vs Regex:</strong> Lua usa seu próprio sistema de padrões, mais simples que regex completo. Os mais usados: <code>%d</code> = dígito, <code>%a</code> = letra, <code>%s</code> = espaço, <code>%w</code> = alfanumérico, <code>%p</code> = pontuação, <code>.</code> = qualquer caractere. Quantificadores: <code>+</code> (um ou mais), <code>*</code> (zero ou mais), <code>?</code> (zero ou um), <code>-</code> (zero ou mais, não-guloso).
                 </div>
             </section>
 
             <!-- Table Library -->
             <section id="lib-table">
-                <h2>table �?" biblioteca de tables</h2>
+                <h2>table — biblioteca de tables</h2>
 
                 <p>A biblioteca <code>table</code> fornece funções para manipular a parte sequencial (array) de tables. A maioria das funções opera sobre índices numéricos e assume que a table é uma sequência contígua começando em 1.</p>
 
                 <h3>table.insert(t, [pos,] valor)</h3>
-                <p>Insere <code>valor</code> na table <code>t</code>. Com dois argumentos, insere no final (equivalente a <code>t[#t+1] = valor</code>). Com três argumentos, insere na posição <code>pos</code> e desloca todos os elementos seguintes uma posição para frente. Retorna nada.</p>
+                <p>A função <code>table.insert</code> é utilizada para adicionar um <code>valor</code> a uma table <code>t</code>, que é tratada como uma sequência (array). Ela é fundamental para manipular listas e filas em Lua.</p>
+                <ul>
+                    <li><strong>Com dois argumentos (<code>t, valor</code>):</strong> O <code>valor</code> é inserido no final da sequência da table <code>t</code>. Isso é equivalente a atribuir o valor à próxima posição numérica disponível, ou seja, <code>t[#t + 1] = valor</code>. O operador <code>#t</code> retorna o tamanho da parte sequencial da table.</li>
+                    <li><strong>Com três argumentos (<code>t, pos, valor</code>):</strong> O <code>valor</code> é inserido na posição específica <code>pos</code> dentro da table <code>t</code>. Todos os elementos que estavam na posição <code>pos</code> ou em posições posteriores são deslocados uma posição para frente para acomodar o novo valor. A posição <code>pos</code> deve ser um número inteiro entre 1 e <code>#t + 1</code>.</li>
+                </ul>
+                <p>Esta função não retorna nenhum valor. É importante lembrar que Lua utiliza indexação baseada em 1 para arrays, o que significa que o primeiro elemento está na posição 1.</p>
                 <pre>local t = {1, 2, 3}
 
 table.insert(t, 4)          -- insere no final
@@ -4561,7 +4566,12 @@ table.insert(t, 2, 1.5)     -- insere na posição 2, desloca os demais
 print(table.concat(t, ", ")) -- 1, 1.5, 2, 3, 4</pre>
 
                 <h3>table.remove(t, [pos])</h3>
-                <p>Remove e retorna o elemento na posição <code>pos</code>. Os elementos seguintes são deslocados para preencher o espaço. Sem <code>pos</code>, remove e retorna o último elemento �?" equivalente a um pop de pilha.</p>
+                <p>A função <code>table.remove</code> é usada para remover um elemento de uma table <code>t</code> (tratada como sequência) e retornar o valor removido. Ela também ajusta os índices dos elementos restantes.</p>
+                <ul>
+                    <li><strong>Com dois argumentos (<code>t, pos</code>):</strong> Remove o elemento que está na posição <code>pos</code> da table <code>t</code>. Todos os elementos que estavam após <code>pos</code> são deslocados uma posição para trás para preencher o espaço. A posição <code>pos</code> deve ser um número inteiro entre 1 e <code>#t</code>.</li>
+                    <li><strong>Com um argumento (<code>t</code>):</strong> Se <code>pos</code> for omitido, a função remove e retorna o último elemento da table (<code>t[#t]</code>). Isso é análogo à operação "pop" em uma estrutura de pilha.</li>
+                </ul>
+                <p>A função retorna o valor do elemento que foi removido. Se a posição especificada for inválida ou a table estiver vazia, o comportamento pode ser indefinido ou resultar em erro, dependendo da implementação de Lua.</p>
                 <pre>local t = {10, 20, 30, 40, 50}
 
 local removido = table.remove(t, 2)  -- remove posição 2
@@ -4573,7 +4583,14 @@ print(ultimo)                         -- 50
 print(table.concat(t, ", "))          -- 10, 30, 40</pre>
 
                 <h3>table.concat(t, sep, i, j)</h3>
-                <p>Junta os elementos da table em uma única string, separados por <code>sep</code>. Os elementos precisam ser strings ou números. <code>i</code> e <code>j</code> definem o intervalo (padrão: 1 até <code>#t</code>). �? muito mais eficiente do que concatenar com <code>..</code> em um loop.</p>
+                <p>A função <code>table.concat</code> concatena (junta) os elementos de uma table <code>t</code> em uma única string. É uma forma eficiente de construir strings a partir de arrays, especialmente útil para evitar a concatenação repetitiva com o operador <code>..</code> em loops, que pode ser ineficiente.</p>
+                <ul>
+                    <li><strong><code>t</code>:</strong> A table cujos elementos serão concatenados.</li>
+                    <li><strong><code>sep</code> (opcional):</strong> Uma string que será inserida entre cada elemento concatenado. Se omitido, os elementos são unidos sem separador.</li>
+                    <li><strong><code>i</code> (opcional):</strong> O índice inicial (base 1) da table a partir do qual a concatenação deve começar. O padrão é 1.</li>
+                    <li><strong><code>j</code> (opcional):</strong> O índice final (base 1) da table até o qual a concatenação deve ir. O padrão é <code>#t</code> (o último elemento da parte sequencial da table).</li>
+                </ul>
+                <p>Os elementos da table <code>t</code> entre os índices <code>i</code> e <code>j</code> devem ser strings ou números. Se houver um valor de outro tipo (como <code>nil</code> ou uma table), a função pode gerar um erro.</p>
                 <pre>local t = {"a", "b", "c", "d"}
 
 print(table.concat(t))           -- abcd  (sem separador)
@@ -4581,7 +4598,17 @@ print(table.concat(t, ", "))     -- a, b, c, d
 print(table.concat(t, "-", 2, 3)) -- b-c  (só posições 2 a 3)</pre>
 
                 <h3>table.sort(t, [comp])</h3>
-                <p>Ordena a table <em>in-place</em> (modifica a table original). Sem segundo argumento, usa a ordem padrão (<code><</code>). Com uma função de comparação <code>comp(a, b)</code>, ordena de acordo com ela �?" a função deve retornar <code>true</code> se <code>a</code> deve vir antes de <code>b</code>. A ordenação não é estável (elementos iguais podem trocar de posição).</p>
+                <p>A função <code>table.sort</code> ordena os elementos da parte sequencial de uma table <code>t</code> <em>in-place</em>, ou seja, modifica a table original diretamente. Esta função é útil para organizar dados em ordem crescente ou decrescente, ou de acordo com critérios personalizados.</p>
+                <ul>
+                    <li><strong><code>t</code>:</strong> A table a ser ordenada.</li>
+                    <li><strong><code>comp</code> (opcional):</strong> Uma função de comparação. Se fornecida, esta função deve aceitar dois argumentos (<code>a</code> e <code>b</code>) e retornar <code>true</code> se <code>a</code> deve vir antes de <code>b</code> na ordem final, e <code>false</code> caso contrário. Se <code>comp</code> for omitida, a função usa a ordem padrão de Lua (operador <code><</code>), que funciona para números e strings.</li>
+                </ul>
+                <p><strong>Observações Importantes:</strong></p>
+                <ul>
+                    <li>A ordenação não é garantidamente estável. Isso significa que a ordem relativa de elementos considerados "iguais" pela função de comparação pode não ser preservada.</li>
+                    <li>A função opera apenas na parte sequencial da table (elementos com chaves numéricas inteiras de 1 até <code>#t</code>).</li>
+                    <li>Para ordenar tables de objetos ou estruturas mais complexas, a função <code>comp</code> é essencial para definir o critério de ordenação (ex: ordenar uma lista de usuários por idade).</li>
+                </ul>
                 <pre>local nums = {3, 1, 4, 1, 5, 9, 2, 6}
 table.sort(nums)
 print(table.concat(nums, " "))   -- 1 1 2 3 4 5 6 9
@@ -4603,7 +4630,13 @@ end
 -- Ana 25 / Carlos 30 / Bruno 35</pre>
 
                 <h3>table.unpack(t, i, j)</h3>
-                <p>Retorna os elementos da table como múltiplos valores separados. Equivalente a escrever <code>t[i], t[i+1], ..., t[j]</code>. �stil para passar um array como argumentos de uma função. Em Lua 5.1 a função se chama <code>unpack()</code> (sem o prefixo <code>table.</code>).</p>
+                <p>A função <code>table.unpack</code> (ou simplesmente <code>unpack</code> em Lua 5.1) é usada para retornar os elementos de uma table <code>t</code> como múltiplos valores separados. Isso é extremamente útil para passar os elementos de um array como argumentos individuais para uma função.</p>
+                <ul>
+                    <li><strong><code>t</code>:</strong> A table cujos elementos serão "desempacotados".</li>
+                    <li><strong><code>i</code> (opcional):</strong> O índice inicial (base 1) a partir do qual os elementos devem ser retornados. O padrão é 1.</li>
+                    <li><strong><code>j</code> (opcional):</strong> O índice final (base 1) até o qual os elementos devem ser retornados. O padrão é <code>#t</code> (o último elemento da parte sequencial da table).</li>
+                </ul>
+                <p>A chamada <code>table.unpack(t, i, j)</code> é equivalente a escrever manualmente <code>t[i], t[i+1], ..., t[j]</code>. É frequentemente usada em conjunto com chamadas de função para aplicar todos os elementos de um array como argumentos.</p>
                 <pre>local t = {10, 20, 30}
 
 print(table.unpack(t))          -- 10    20    30
@@ -4618,19 +4651,19 @@ print(table.unpack(t, 2, 3))    -- 20    30</pre>
 
             <!-- Math Library -->
             <section id="lib-math">
-                <h2>math �?" biblioteca matemática</h2>
+                <h2>math — biblioteca matemática</h2>
 
                 <p>A biblioteca <code>math</code> fornece funções matemáticas e constantes. Todas as funções trigonométricas trabalham em <strong>radianos</strong>, não graus.</p>
 
                 <h3>math.floor(x) / math.ceil(x)</h3>
-                <p><code>floor</code> arredonda para baixo (retorna o maior inteiro �?� x). <code>ceil</code> arredonda para cima (retorna o menor inteiro �?� x). Ambos retornam um número, não uma string.</p>
+                <p><code>floor</code> arredonda para baixo (retorna o maior inteiro menor ou igual a x). <code>ceil</code> arredonda para cima (retorna o menor inteiro maior ou igual a x). Ambos retornam um número, não uma string.</p>
                 <pre>print(math.floor(3.9))   -- 3
 print(math.floor(-3.1))  -- -4  (atenção: vai para baixo, não para zero)
 print(math.ceil(3.1))    -- 4
 print(math.ceil(-3.9))   -- -3</pre>
 
                 <h3>math.abs(x)</h3>
-                <p>Retorna o valor absoluto de <code>x</code> �?" sempre positivo ou zero.</p>
+                <p>Retorna o valor absoluto de <code>x</code> — sempre positivo ou zero.</p>
                 <pre>print(math.abs(-5))    -- 5
 print(math.abs(3.14))  -- 3.14
 print(math.abs(0))     -- 0</pre>
@@ -4640,7 +4673,7 @@ print(math.abs(0))     -- 0</pre>
                 <pre>print(math.max(3, 1, 4, 1, 5, 9))  -- 9
 print(math.min(3, 1, 4, 1, 5, 9))  -- 1
 
--- �stil para limitar valores a um intervalo
+--  para limitar valores a um intervalo
 local function clamp(v, min, max)
     return math.max(min, math.min(max, v))
 end
@@ -4654,7 +4687,7 @@ print(clamp(7,  0, 10))   -- 7</pre>
 print(math.sqrt(2))    -- 1.4142135623731</pre>
 
                 <h3>math.modf(x)</h3>
-                <p>Retorna dois valores: a parte inteira e a parte fracionária de <code>x</code>. �stil quando você precisa dos dois separadamente.</p>
+                <p>Retorna dois valores: a parte inteira e a parte fracionária de <code>x</code>.  quando você precisa dos dois separadamente.</p>
                 <pre>local inteira, fracao = math.modf(3.75)
 print(inteira, fracao)   -- 3    0.75
 
@@ -4662,7 +4695,7 @@ local i, f = math.modf(-3.75)
 print(i, f)              -- -3   -0.75</pre>
 
                 <h3>math.random([m, n]) / math.randomseed(x)</h3>
-                <p><code>math.random()</code> sem argumentos retorna um float aleatório entre 0 e 1. Com um argumento <code>m</code>, retorna um inteiro entre 1 e <code>m</code>. Com dois argumentos, retorna um inteiro entre <code>m</code> e <code>n</code>. Sempre chame <code>math.randomseed(os.time())</code> no início do programa para gerar sequências diferentes a cada execução �?" sem isso, a sequência é sempre a mesma.</p>
+                <p><code>math.random()</code> sem argumentos retorna um float aleatório entre 0 e 1. Com um argumento <code>m</code>, retorna um inteiro entre 1 e <code>m</code>. Com dois argumentos, retorna um inteiro entre <code>m</code> e <code>n</code>. Sempre chame <code>math.randomseed(os.time())</code> no início do programa para gerar sequências diferentes a cada execução — sem isso, a sequência é sempre a mesma.</p>
                 <pre>math.randomseed(os.time())   -- inicializar com tempo atual
 
 print(math.random())         -- float entre 0.0 e 1.0
@@ -4670,7 +4703,7 @@ print(math.random(6))        -- inteiro entre 1 e 6 (dado)
 print(math.random(10, 20))   -- inteiro entre 10 e 20</pre>
 
                 <h3>math.huge / math.pi</h3>
-                <p><code>math.huge</code> representa infinito positivo. �stil como valor inicial em buscas de mínimo. <code>-math.huge</code> é infinito negativo. <code>math.pi</code> é �? com precisão double.</p>
+                <p><code>math.huge</code> representa infinito positivo. É útil como valor inicial em buscas de mínimo ou para representar valores que excedem os limites numéricos. <code>-math.huge</code> é infinito negativo. <code>math.pi</code> é um número com precisão double, representando a constante matemática Pi (aproximadamente 3.14159).</p>
                 <pre>print(math.pi)      -- 3.1415926535898
 print(math.huge)    -- inf
 print(-math.huge)   -- -inf
@@ -4689,19 +4722,19 @@ print(math.deg(math.pi))       -- 180.0</pre>
                 <h3>math.log(x, base)</h3>
                 <p>Retorna o logaritmo de <code>x</code>. Sem segundo argumento, retorna o logaritmo natural (base e). Com base especificada, retorna o logaritmo nessa base.</p>
                 <pre>print(math.log(math.exp(1)))  -- 1.0  (ln(e) = 1)
-print(math.log(100, 10))      -- 2.0  (log�,��,?(100) = 2)
-print(math.log(8, 2))         -- 3.0  (log�,,(8) = 3)</pre>
+print(math.log(100, 10))      -- 2.0  (log base 10 de 100 = 2)
+print(math.log(8, 2))         -- 3.0  (log base 2 de 8 = 3)</pre>
             </section>
 
             <!-- IO Library -->
             <section id="lib-io">
-                <h2>io �?" Input e Output</h2>
+                <h2>io — Input e Output</h2>
 
                 <p>A biblioteca <code>io</code> é responsável por toda comunicação com o mundo externo: ler o que o usuário digita, escrever no terminal, abrir arquivos, ler e gravar dados em disco. Ela funciona em dois modelos: o <strong>modelo simples</strong>, que usa stdin/stdout diretamente, e o <strong>modelo completo</strong>, que trabalha com handles de arquivo explícitos.</p>
 
-                <!-- �"?�"?�"? SAÍDA �"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"? -->
+                <!-- SAÍDA -->
                 <h3>print()</h3>
-                <p><code>print()</code> escreve valores no terminal e <strong>sempre adiciona uma quebra de linha no final</strong>. Aceita qualquer número de argumentos separados por vírgula �?" cada um é convertido para string automaticamente e separado por um caractere de tabulação na saída. �? a função mais simples para exibir informação.</p>
+                <p><code>print()</code> escreve valores no terminal e <strong>sempre adiciona uma quebra de linha no final</strong>. Aceita qualquer número de argumentos separados por vírgula — cada um é convertido para string automaticamente e separado por um caractere de tabulação na saída. É a função mais simples para exibir informação.</p>
                 <pre>print("Olá, mundo")          -- Olá, mundo
 print(42)                    -- 42  (number convertido automaticamente)
 print(true)                  -- true
@@ -4709,7 +4742,7 @@ print(nil)                   -- nil
 print("a", "b", "c")        -- a   b   c  (separados por tab)</pre>
 
                 <h3>io.write()</h3>
-                <p><code>io.write()</code> escreve no terminal <strong>sem adicionar quebra de linha</strong> e <strong>sem converter automaticamente</strong> �?" você precisa passar strings. �? útil quando quer controlar exatamente o que aparece, como exibir um prompt na mesma linha que o cursor de entrada.</p>
+                <p><code>io.write()</code> escreve no terminal <strong>sem adicionar quebra de linha</strong> e <strong>sem converter automaticamente</strong> — você precisa passar strings. ? útil quando quer controlar exatamente o que aparece, como exibir um prompt na mesma linha que o cursor de entrada.</p>
                 <pre>io.write("Digite seu nome: ")   -- cursor fica na mesma linha
 local nome = io.read()
 
@@ -4721,7 +4754,7 @@ io.write("\n")                  -- quebra de linha manual
 print("a", "b")                 -- a   b   (com tab e \n)
 io.write("a", "b", "\n")        -- ab  (sem separador, sem \n automático)</pre>
 
-                <!-- �"?�"?�"? ENTRADA �"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"? -->
+                <!-- ENTRADA -->
                 <h3>io.read()</h3>
                 <p><code>io.read()</code> lê dados da entrada padrão (o que o usuário digita no terminal). O comportamento muda conforme o argumento que você passa. Sem argumento, lê uma linha inteira e retorna como string, sem o <code>\n</code> do final. Se o usuário pressionar Ctrl+D (EOF), retorna <code>nil</code>.</p>
 
@@ -4738,7 +4771,7 @@ io.write("a", "b", "\n")        -- ab  (sem separador, sem \n automático)</pre>
                     </tr>
                     <tr>
                         <td><code>io.read("l")</code></td>
-                        <td>Igual ao padrão �?" lê uma linha sem o <code>\n</code></td>
+                        <td>Igual ao padrão — lê uma linha sem o <code>\n</code></td>
                         <td><code>string</code> ou <code>nil</code> no EOF</td>
                     </tr>
                     <tr>
@@ -4763,13 +4796,13 @@ io.write("a", "b", "\n")        -- ab  (sem separador, sem \n automático)</pre>
                     </tr>
                 </table>
 
-                <p>Você também pode passar múltiplos argumentos de uma vez �?" <code>io.read()</code> retorna múltiplos valores, um para cada argumento:</p>
+                <p>Você também pode passar múltiplos argumentos de uma vez — <code>io.read()</code> retorna múltiplos valores, um para cada argumento:</p>
                 <pre>-- Leitura básica de uma linha
 io.write("Seu nome: ")
 local nome = io.read()          -- retorna string com o que o usuário digitou
 print("Olá, " .. nome)
 
--- Leitura de número �?" retorna number, não string
+-- Leitura de número — retorna number, não string
 io.write("Sua idade: ")
 local idade = io.read("n")
 -- Se o usuário digitar "abc", idade será nil
@@ -4790,12 +4823,12 @@ local tudo = io.read("a")
 print("Recebi " .. #tudo .. " bytes")</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ Problema comum com io.read("n"):</strong> quando você lê um número com <code>"n"</code>, o <code>\n</code> que o usuário digitou ao pressionar Enter <strong>fica no buffer</strong>. A próxima chamada a <code>io.read()</code> vai capturar essa linha vazia. Para limpar, chame <code>io.read()</code> logo depois:
+                    <strong>️ Problema comum com io.read("n"):</strong> quando você lê um número com <code>"n"</code>, o <code>\n</code> que o usuário digitou ao pressionar Enter <strong>fica no buffer</strong>. A próxima chamada a <code>io.read()</code> vai capturar essa linha vazia. Para limpar, chame <code>io.read()</code> logo depois:
                     <pre>local n = io.read("n")
 io.read()               -- descarta o \n que ficou no buffer</pre>
                 </div>
 
-                <h3>Validar entrada �?" padrão recomendado</h3>
+                <h3>Validar entrada — padrão recomendado</h3>
                 <p>Como <code>io.read("n")</code> retorna <code>nil</code> para entradas inválidas, o padrão correto é sempre verificar o retorno antes de usar. Para entradas obrigatórias, use um loop que repete até receber um valor válido:</p>
                 <pre>-- Função reutilizável: lê número dentro de um intervalo
 local function ler_numero(mensagem, min, max)
@@ -4805,11 +4838,11 @@ local function ler_numero(mensagem, min, max)
         io.read()                       -- limpa o \n do buffer
 
         if n == nil then
-            print("  �?' Digite um número")
+            print("  Digite um número")
         elseif min and n < min then
-            print("  �?' Valor mínimo: " .. min)
+            print("  Valor mínimo: " .. min)
         elseif max and n > max then
-            print("  �?' Valor máximo: " .. max)
+            print("  Valor máximo: " .. max)
         else
             return n                    -- entrada válida, sai do loop
         end
@@ -4819,9 +4852,9 @@ end
 local nota = ler_numero("Nota (0 a 10): ", 0, 10)
 print("Nota registrada: " .. nota)</pre>
 
-                <!-- �"?�"?�"? ARQUIVOS �"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"? -->
+                <!-- ARQUIVOS -->
                 <h3>io.open()</h3>
-                <p><code>io.open(caminho, modo)</code> abre um arquivo e retorna um <strong>handle</strong> �?" um objeto que representa o arquivo aberto. Você usa esse handle para ler, escrever e fechar o arquivo. Se algo der errado (arquivo não existe, sem permissão), retorna <code>nil</code> mais uma string de erro como segundo valor.</p>
+                <p><code>io.open(caminho, modo)</code> abre um arquivo e retorna um <strong>handle</strong> — um objeto que representa o arquivo aberto. Você usa esse handle para ler, escrever e fechar o arquivo. Se algo der errado (arquivo não existe, sem permissão), retorna <code>nil</code> mais uma string de erro como segundo valor.</p>
 
                 <table>
                     <tr>
@@ -4862,9 +4895,9 @@ print("Nota registrada: " .. nota)</pre>
                     </tr>
                     <tr>
                         <td><code>"rb"</code>, <code>"wb"</code></td>
-                        <td>Modo binário �?" não converte <code>\n</code>. Necessário para imagens, executáveis, etc.</td>
-                        <td>�?"</td>
-                        <td>�?"</td>
+                        <td>Modo binário — não converte <code>\n</code>. Necessário para imagens, executáveis, etc.</td>
+                        <td>—</td>
+                        <td>—</td>
                     </tr>
                 </table>
 
@@ -4885,14 +4918,14 @@ local conteudo = f:read("a")    -- retorna string com todo o conteúdo
 f:close()
 print(conteudo)
 
--- Ler linha por linha �?" eficiente para arquivos grandes
+-- Ler linha por linha — eficiente para arquivos grandes
 local f = io.open("log.txt", "r")
 for linha in f:lines() do       -- f:lines() é um iterador de linhas
     print(linha)
 end
 f:close()
 
--- Ler em blocos de bytes �?" para arquivos binários ou muito grandes
+-- Ler em blocos de bytes — para arquivos binários ou muito grandes
 local f = io.open("video.mp4", "rb")
 while true do
     local bloco = f:read(4096)  -- lê 4096 bytes por vez
@@ -4902,7 +4935,7 @@ end
 f:close()</pre>
 
                 <h3>handle:write()</h3>
-                <p><code>handle:write()</code> grava strings no arquivo. Só aceita strings �?" números precisam ser convertidos com <code>tostring()</code> ou <code>string.format()</code>. Os dados ficam em buffer e são gravados no disco quando você chama <code>f:close()</code> ou <code>f:flush()</code>.</p>
+                <p><code>handle:write()</code> grava strings no arquivo. Só aceita strings — números precisam ser convertidos com <code>tostring()</code> ou <code>string.format()</code>. Os dados ficam em buffer e são gravados no disco quando você chama <code>f:close()</code> ou <code>f:flush()</code>.</p>
                 <pre>-- Escrever linhas simples
 local f = io.open("saida.txt", "w")
 f:write("Primeira linha\n")
@@ -4910,7 +4943,7 @@ f:write("Segunda linha\n")
 f:write(string.format("Valor calculado: %.2f\n", 3.14159))
 f:close()
 
--- Append �?" adiciona ao final sem apagar o que já existe
+-- Append — adiciona ao final sem apagar o que já existe
 local f = io.open("log.txt", "a")
 local timestamp = os.date("[%Y-%m-%d %H:%M:%S]")
 f:write(timestamp .. " Usuário fez login\n")
@@ -4929,7 +4962,7 @@ f:seek("cur", -5)               -- volta 5 bytes a partir da posição atual
 f:close()</pre>
 
                 <h3>handle:close() e handle:flush()</h3>
-                <p><code>close()</code> fecha o arquivo e garante que todos os dados em buffer sejam gravados no disco. <code>flush()</code> força a gravação do buffer sem fechar o arquivo �?" útil para logs onde você quer que os dados apareçam imediatamente sem fechar o handle.</p>
+                <p><code>close()</code> fecha o arquivo e garante que todos os dados em buffer sejam gravados no disco. <code>flush()</code> força a gravação do buffer sem fechar o arquivo — útil para logs onde você quer que os dados apareçam imediatamente sem fechar o handle.</p>
                 <pre>local f = io.open("log.txt", "a")
 
 f:write("Iniciando processo...\n")
@@ -4939,7 +4972,7 @@ f:write("Processo concluído\n")
 f:close()                       -- grava e fecha</pre>
 
                 <h3>io.lines()</h3>
-                <p><code>io.lines(caminho)</code> é um atalho que abre o arquivo, retorna um iterador de linhas e fecha o arquivo automaticamente quando termina. �? a forma mais limpa de ler um arquivo linha por linha quando você não precisa de controle extra.</p>
+                <p><code>io.lines(caminho)</code> é um atalho que abre o arquivo, retorna um iterador de linhas e fecha o arquivo automaticamente quando termina. É a forma mais limpa de ler um arquivo linha por linha quando você não precisa de controle extra.</p>
                 <pre>-- Sem precisar abrir/fechar manualmente
 for linha in io.lines("arquivo.txt") do
     print(linha)
@@ -4947,7 +4980,7 @@ end
 -- arquivo é fechado automaticamente ao terminar o loop</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ Sempre feche arquivos:</strong> não fechar um arquivo pode causar perda de dados, porque os dados ficam em buffer e nunca chegam ao disco. Também consome recursos do sistema operacional. Se houver risco de erro no meio do código, use <code>pcall</code> para garantir o fechamento:
+                    <strong>️ Sempre feche arquivos:</strong> não fechar um arquivo pode causar perda de dados, porque os dados ficam em buffer e nunca chegam ao disco. Também consome recursos do sistema operacional. Se houver risco de erro no meio do código, use <code>pcall</code> para garantir o fechamento:
                     <pre>local f = assert(io.open("saida.txt", "w"))
 local ok, err = pcall(function()
     f:write("dados importantes\n")
@@ -4956,7 +4989,7 @@ end)
 f:close()                       -- fecha mesmo se deu erro
 if not ok then print("Erro:", err) end</pre>
                 </div>
-            </section>                <h3>f:seek() �?" navegar no arquivo</h3>
+            </section>                <h3>f:seek() — navegar no arquivo</h3>
                 <pre>local f = io.open("dados.txt", "r+")
 
 -- Posições: "set" (início), "cur" (atual), "end" (fim)
@@ -4992,11 +5025,11 @@ if not ok then
 end</pre>
 
                 <div class="box box-warning">
-                    <strong>�s�️ Sempre feche arquivos:</strong> Não fechar um arquivo pode causar perda de dados (buffer não descarregado) e vazamento de recursos. Use sempre <code>f:close()</code> ou envolva em <code>pcall</code> para garantir o fechamento mesmo em caso de erro.
+                    <strong>️ Sempre feche arquivos:</strong> Não fechar um arquivo pode causar perda de dados (buffer não descarregado) e vazamento de recursos. Use sempre <code>f:close()</code> ou envolva em <code>pcall</code> para garantir o fechamento mesmo em caso de erro.
                 </div>
 
                 <div class="box box-info">
-                    <strong>�Y'� io.lines() �?" atalho para leitura:</strong>
+                    <strong>' io.lines() — atalho para leitura:</strong>
                     <pre>-- Sem precisar abrir/fechar manualmente
 for linha in io.lines("arquivo.txt") do
     print(linha)
@@ -5007,12 +5040,12 @@ end
 
             <!-- OS Library -->
             <section id="lib-os">
-                <h2>os �?" sistema operacional</h2>
+                <h2>os — sistema operacional</h2>
 
                 <p>A biblioteca <code>os</code> fornece acesso a funcionalidades do sistema operacional: tempo, datas, variáveis de ambiente, execução de comandos e gerenciamento de arquivos.</p>
 
                 <h3>os.time([tabela])</h3>
-                <p>Sem argumentos, retorna o tempo atual como um número inteiro �?" segundos desde o epoch Unix (1 de janeiro de 1970, 00:00:00 UTC). Com uma tabela de data/hora, converte essa data para o número de segundos correspondente.</p>
+                <p>Sem argumentos, retorna o tempo atual como um número inteiro — segundos desde o epoch Unix (1 de janeiro de 1970, 00:00:00 UTC). Com uma tabela de data/hora, converte essa data para o número de segundos correspondente.</p>
                 <pre>local agora = os.time()
 print(agora)   -- ex: 1700000000  (segundos desde epoch)
 
@@ -5042,7 +5075,7 @@ local segundos = os.difftime(fim, inicio)
 print(string.format("Levou %.1f segundos", segundos))</pre>
 
                 <h3>os.clock()</h3>
-                <p>Retorna o tempo de CPU usado pelo programa em segundos. Diferente de <code>os.time()</code>, mede tempo de processamento, não tempo real. �stil para medir performance de código.</p>
+                <p>Retorna o tempo de CPU usado pelo programa em segundos. Diferente de <code>os.time()</code>, mede tempo de processamento, não tempo real.  para medir performance de código.</p>
                 <pre>local t0 = os.clock()
 -- ... código para medir ...
 local t1 = os.clock()
@@ -5082,7 +5115,7 @@ local ok, err = os.rename("antigo.txt", "novo.txt")
 if not ok then print("Erro:", err) end</pre>
 
                 <h3>os.exit([codigo])</h3>
-                <p>Encerra o programa imediatamente. O código de saída padrão é 0 (sucesso). Qualquer outro valor indica erro �?" por convenção, valores diferentes de 0 indicam falha. Você pode passar <code>true</code> (equivale a 0) ou <code>false</code> (equivale a 1).</p>
+                <p>Encerra o programa imediatamente. O código de saída padrão é 0 (sucesso). Qualquer outro valor indica erro — por convenção, valores diferentes de 0 indicam falha. Você pode passar <code>true</code> (equivale a 0) ou <code>false</code> (equivale a 1).</p>
                 <pre>-- Sair com sucesso
 os.exit(0)
 os.exit(true)   -- equivalente
@@ -5106,7 +5139,7 @@ end</pre>
                 <p>Lua tem dois mecanismos para lidar com erros: <code>error()</code> para lançar erros e <code>pcall()</code>/<code>xpcall()</code> para capturá-los sem encerrar o programa. A biblioteca <code>debug</code> fornece ferramentas de introspecção para inspecionar o estado do programa em tempo de execução.</p>
 
                 <h3>error(mensagem, nivel)</h3>
-                <p><code>error(msg)</code> lança um erro que interrompe a execução da função atual e propaga para cima até ser capturado por um <code>pcall</code> ou encerrar o programa. O argumento <code>nivel</code> controla onde o erro é reportado: <code>1</code> (padrão) aponta para onde <code>error</code> foi chamado, <code>2</code> aponta para quem chamou a função que chamou <code>error</code>. Você pode passar qualquer valor como mensagem �?" não precisa ser string.</p>
+                <p><code>error(msg)</code> lança um erro que interrompe a execução da função atual e propaga para cima até ser capturado por um <code>pcall</code> ou encerrar o programa. O argumento <code>nivel</code> controla onde o erro é reportado: <code>1</code> (padrão) aponta para onde <code>error</code> foi chamado, <code>2</code> aponta para quem chamou a função que chamou <code>error</code>. Você pode passar qualquer valor como mensagem — não precisa ser string.</p>
                 <pre>local function dividir(a, b)
     if b == 0 then
         error("divisão por zero")   -- nível 1: aponta para esta linha
@@ -5137,7 +5170,7 @@ end)
 print(ok, err)   -- false    input:...: attempt to index a nil value</pre>
 
                 <h3>xpcall(f, handler, ...)</h3>
-                <p><code>xpcall</code> é como <code>pcall</code>, mas aceita uma função de tratamento de erro como segundo argumento. Essa função é chamada com a mensagem de erro antes que o stack seja desfeito �?" o que permite capturar o stack trace. Retorna <code>true/false</code> mais o retorno da função handler.</p>
+                <p><code>xpcall</code> é como <code>pcall</code>, mas aceita uma função de tratamento de erro como segundo argumento. Essa função é chamada com a mensagem de erro antes que o stack seja desfeito — o que permite capturar o stack trace. Retorna <code>true/false</code> mais o retorno da função handler.</p>
                 <pre>local function handler(err)
     return err .. "\n" .. debug.traceback("", 2)
 end
@@ -5151,7 +5184,7 @@ if not ok then
 end</pre>
 
                 <h3>debug.traceback(mensagem, nivel)</h3>
-                <p>Retorna uma string com o stack trace atual �?" a sequência de chamadas de função que levou ao ponto atual. Muito útil dentro de handlers de <code>xpcall</code> para saber exatamente onde o erro ocorreu.</p>
+                <p>Retorna uma string com o stack trace atual — a sequência de chamadas de função que levou ao ponto atual. Muito útil dentro de handlers de <code>xpcall</code> para saber exatamente onde o erro ocorreu.</p>
                 <pre>local function c() error("erro em c") end
 local function b() c() end
 local function a() b() end
@@ -5168,7 +5201,7 @@ print(err)
 --   ...</pre>
 
                 <h3>debug.getinfo(f, campos)</h3>
-                <p>Retorna uma table com informações sobre uma função ou nível de stack. �stil para logging e ferramentas de debug. O argumento pode ser uma função ou um número (nível do stack: 1 = função atual, 2 = quem chamou, etc.).</p>
+                <p>Retorna uma table com informações sobre uma função ou nível de stack.  para logging e ferramentas de debug. O argumento pode ser uma função ou um número (nível do stack: 1 = função atual, 2 = quem chamou, etc.).</p>
                 <pre>local function minha_funcao()
     local info = debug.getinfo(1, "nSl")  -- nome, source, linha
     print("função:", info.name)
@@ -5179,7 +5212,7 @@ end
 minha_funcao()</pre>
 
                 <div class="box box-info">
-                    <strong>�Y'� Padrão recomendado para erros:</strong> use <code>pcall</code> para operações que podem falhar (I/O, parsing, chamadas externas). Para erros de programação (argumentos inválidos, estado inconsistente), use <code>error()</code> diretamente �?" esses erros devem ser corrigidos no código, não capturados em runtime.
+                    <strong>' Padrão recomendado para erros:</strong> use <code>pcall</code> para operações que podem falhar (I/O, parsing, chamadas externas). Para erros de programação (argumentos inválidos, estado inconsistente), use <code>error()</code> diretamente — esses erros devem ser corrigidos no código, não capturados em runtime.
                 </div>
             </section>
 
@@ -5190,17 +5223,17 @@ minha_funcao()</pre>
                 <p>Código consistente é mais fácil de ler, revisar e manter. Estas convenções são amplamente adotadas na comunidade Lua.</p>
 
                 <h3>Nomenclatura</h3>
-                <p>Use nomes descritivos em <code>snake_case</code> para variáveis e funções. Constantes em <code>UPPER_CASE</code>. Classes/módulos em <code>PascalCase</code>. Evite abreviações que não sejam óbvias �?" <code>usuario</code> é melhor que <code>usr</code>.</p>
+                <p>Use nomes descritivos em <code>snake_case</code> para variáveis e funções. Constantes em <code>UPPER_CASE</code>. Classes/módulos em <code>PascalCase</code>. Evite abreviações que não sejam óbvias — <code>usuario</code> é melhor que <code>usr</code>.</p>
                 <div class="comparison">
                     <div class="comparison-item bad">
-                        <div class="comparison-label">�O Ruim</div>
+                        <div class="comparison-label"> Ruim</div>
                         <pre>local x = 10
 local fn = function() end
 local db = get_db()
 local s = "string"</pre>
                     </div>
                     <div class="comparison-item good">
-                        <div class="comparison-label">�o. Bom</div>
+                        <div class="comparison-label">✅ Bom</div>
                         <pre>local idade = 10
 local validar = function() end
 local banco_dados = get_banco_dados()
@@ -5209,10 +5242,10 @@ local mensagem = "string"</pre>
                 </div>
 
                 <h3>Indentação</h3>
-                <p>Use 4 espaços por nível de indentação �?" não tabs. Editores modernos podem converter tabs em espaços automaticamente. Consistência é mais importante do que o número exato de espaços.</p>
+                <p>Use 4 espaços por nível de indentação — não tabs. Editores modernos podem converter tabs em espaços automaticamente. Consistência é mais importante do que o número exato de espaços.</p>
                 <div class="comparison">
                     <div class="comparison-item bad">
-                        <div class="comparison-label">�O Inconsistente</div>
+                        <div class="comparison-label"> Inconsistente</div>
                         <pre>function teste()
   if true then
     print("ok")
@@ -5220,7 +5253,7 @@ local mensagem = "string"</pre>
 end</pre>
                     </div>
                     <div class="comparison-item good">
-                        <div class="comparison-label">�o. Consistente</div>
+                        <div class="comparison-label">✅ Consistente</div>
                         <pre>function teste()
     if true then
         print("ok")
@@ -5244,17 +5277,17 @@ local y=20
 if x>y then print("maior")end</pre>
 
                 <h3>Comentários úteis</h3>
-                <p>Comente o <em>porquê</em>, não o <em>o quê</em>. O código já mostra o que está fazendo �?" o comentário deve explicar a intenção, a decisão de design, ou uma limitação não óbvia.</p>
-                <pre>-- �O Ruim (óbvio)
+                <p>Comente o <em>porquê</em>, não o <em>o quê</em>. O código já mostra o que está fazendo — o comentário deve explicar a intenção, a decisão de design, ou uma limitação não óbvia.</p>
+                <pre>--  Ruim (óbvio)
 local x = 10  -- x recebe 10
 
--- �o. Bom (explica POR QUE)
+-- ✅ Bom (explica POR QUE)
 local limite = 10  -- máximo de tentativas antes de cancelar
 
--- �O Ruim (vago)
+--  Ruim (vago)
 -- processa dados
 
--- �o. Bom (claro)
+-- ✅ Bom (claro)
 -- Valida e normaliza entrada do usuário</press>
 
                 <h3>Documentar funções</h3>
@@ -5290,10 +5323,10 @@ end</pre>
             <section id="lint">
                 <h2>Lint e testes</h2>
 
-                <p>Lint é a análise estática do código �?" encontrar problemas sem executar o programa. Testes verificam que o código faz o que deveria fazer. Ambos são essenciais para manter um projeto saudável.</p>
+                <p>Lint é a análise estática do código — encontrar problemas sem executar o programa. Testes verificam que o código faz o que deveria fazer. Ambos são essenciais para manter um projeto saudável.</p>
 
                 <h3>Luacheck</h3>
-                <p>Luacheck é a ferramenta de lint padrão para Lua. Ela analisa o código e reporta variáveis não usadas, globais não declaradas, código inacessível e outros problemas comuns. �? instalada via LuaRocks �?" o gerenciador de pacotes de Lua.</p>
+                <p>Luacheck é a ferramenta de lint padrão para Lua. Ela analisa o código e reporta variáveis não usadas, globais não declaradas, código inacessível e outros problemas comuns. É instalada via LuaRocks — o gerenciador de pacotes de Lua.</p>
                 <pre>-- Instalar via LuaRocks
 luarocks install luacheck
 
@@ -5349,8 +5382,8 @@ exclude_files = {"build/", "vendor/"} -- ignorar pastas</pre>
                     </tr>
                 </table>
 
-                <h3>assert() �?" testes simples</h3>
-                <p><code>assert(condicao, mensagem)</code> verifica se a condição é verdadeira. Se for falsa ou <code>nil</code>, lança um erro com a mensagem fornecida. �? a forma mais simples de escrever um teste �?" sem bibliotecas externas. Se o assert passar, o programa continua normalmente.</p>
+                <h3>assert() — testes simples</h3>
+                <p><code>assert(condicao, mensagem)</code> verifica se a condição é verdadeira. Se for falsa ou <code>nil</code>, lança um erro com a mensagem fornecida. É a forma mais simples de escrever um teste — sem bibliotecas externas. Se o assert passar, o programa continua normalmente.</p>
                 <pre>local function somar(a, b)
     return a + b
 end
@@ -5369,9 +5402,9 @@ print("Todos os testes passaram!")</pre>
 local function teste(nome, fn)
     local ok, err = pcall(fn)
     if ok then
-        print("�o" " .. nome)
+        print("✓ " .. nome)
     else
-        print("�o- " .. nome)
+        print("- " .. nome)
         print("  " .. tostring(err))
     end
 end
@@ -5396,12 +5429,12 @@ teste("divisão por zero lança erro", function()
 end)
 
 -- Saída:
--- �o" divisão normal
--- �o" divisão com float
--- �o" divisão por zero lança erro</pre>
+-- ✓ divisão normal
+-- ✓ divisão com float
+-- ✓ divisão por zero lança erro</pre>
 
                 <div class="box box-info">
-                    <strong>�Y'� Bibliotecas de teste:</strong> para projetos maiores, considere usar <strong>busted</strong> (instalável via <code>luarocks install busted</code>), que oferece describe/it/expect, mocks, e relatórios formatados. Para projetos simples, a abordagem com <code>pcall</code> acima é suficiente.
+                    <strong>' Bibliotecas de teste:</strong> para projetos maiores, considere usar <strong>busted</strong> (instalável via <code>luarocks install busted</code>), que oferece describe/it/expect, mocks, e relatórios formatados. Para projetos simples, a abordagem com <code>pcall</code> acima é suficiente.
                 </div>
             </section>
 
@@ -5411,9 +5444,9 @@ end)
 
                 <p>Lua já é rápida para uma linguagem interpretada, mas alguns padrões de código fazem diferença significativa, especialmente em loops críticos. As otimizações abaixo são ordenadas do impacto mais alto para o mais baixo.</p>
 
-                <h3>Local vs global �?" o mais importante</h3>
-                <p>Variáveis locais são acessadas por índice direto no stack da VM �?" operação O(1) muito rápida. Variáveis globais exigem uma busca na tabela <code>_G</code> �?" um hash lookup a cada acesso. Em loops com milhões de iterações, isso é mensurável. A regra é simples: <strong>sempre use <code>local</code></strong>.</p>
-                <pre>-- �O Lento: resultado é global, lookup em _G a cada iteração
+                <h3>Local vs global — o mais importante</h3>
+                <p>Variáveis locais são acessadas por índice direto no stack da VM — operação O(1) muito rápida. Variáveis globais exigem uma busca na tabela <code>_G</code> — um hash lookup a cada acesso. Em loops com milhões de iterações, isso é mensurável. A regra é simples: <strong>sempre use <code>local</code></strong>.</p>
+                <pre>--  Lento: resultado é global, lookup em _G a cada iteração
 function lento()
     resultado = 0
     for i = 1, 1000000 do
@@ -5422,7 +5455,7 @@ function lento()
     return resultado
 end
 
--- �o. Rápido: resultado é local, acesso direto no stack
+-- ✅ Rápido: resultado é local, acesso direto no stack
 local function rapido()
     local resultado = 0
     for i = 1, 1000000 do
@@ -5433,12 +5466,12 @@ end</pre>
 
                 <h3>Cache de funções de biblioteca</h3>
                 <p>Acessar <code>table.insert</code> dentro de um loop faz dois lookups a cada iteração: primeiro encontra a tabela <code>table</code> em <code>_G</code>, depois encontra <code>insert</code> dentro dela. Guardar a função em uma variável local antes do loop elimina esses lookups.</p>
-                <pre>-- �O Dois lookups por iteração: _G["table"] e table["insert"]
+                <pre>--  Dois lookups por iteração: _G["table"] e table["insert"]
 for i = 1, 1000000 do
     table.insert(lista, i)
 end
 
--- �o. Zero lookups por iteração: insert é local
+-- ✅ Zero lookups por iteração: insert é local
 local insert = table.insert
 for i = 1, 1000000 do
     insert(lista, i)
@@ -5449,14 +5482,14 @@ local floor = math.floor
 local format = string.format</pre>
 
                 <h3>Não criar tables dentro de loops</h3>
-                <p>Criar uma table a cada iteração gera pressão no garbage collector �?" cada table precisa ser alocada e eventualmente coletada. Se a table tem sempre a mesma estrutura, crie-a uma vez fora do loop e reutilize, limpando os campos necessários.</p>
-                <pre>-- �O Cria e descarta uma table por iteração
+                <p>Criar uma table a cada iteração gera pressão no garbage collector — cada table precisa ser alocada e eventualmente coletada. Se a table tem sempre a mesma estrutura, crie-a uma vez fora do loop e reutilize, limpando os campos necessários.</p>
+                <pre>--  Cria e descarta uma table por iteração
 for i = 1, 10000 do
     local ponto = {x = i, y = i * 2}
     processar(ponto)
 end
 
--- �o. Reutiliza a mesma table
+-- ✅ Reutiliza a mesma table
 local ponto = {}
 for i = 1, 10000 do
     ponto.x = i
@@ -5465,14 +5498,14 @@ for i = 1, 10000 do
 end</pre>
 
                 <h3>Concatenação de strings em loop</h3>
-                <p>O operador <code>..</code> cria uma nova string a cada uso �?" em um loop de N iterações, isso cria N strings intermediárias que precisam ser coletadas pelo GC. O padrão correto é acumular as partes em uma table e usar <code>table.concat()</code> uma única vez no final.</p>
-                <pre>-- �O Cria N strings intermediárias
+                <p>O operador <code>..</code> cria uma nova string a cada uso — em um loop de N iterações, isso cria N strings intermediárias que precisam ser coletadas pelo GC. O padrão correto é acumular as partes em uma table e usar <code>table.concat()</code> uma única vez no final.</p>
+                <pre>--  Cria N strings intermediárias
 local resultado = ""
 for i = 1, 10000 do
     resultado = resultado .. "linha " .. i .. "\n"
 end
 
--- �o. Uma única alocação no final
+-- ✅ Uma única alocação no final
 local partes = {}
 for i = 1, 10000 do
     partes[i] = "linha " .. i
@@ -5481,25 +5514,25 @@ local resultado = table.concat(partes, "\n")</pre>
 
                 <h3>Evitar acesso repetido a campos aninhados</h3>
                 <p>Cada ponto em <code>a.b.c.d</code> é um lookup separado. Se você acessa o mesmo caminho várias vezes, guarde o resultado intermediário em uma variável local.</p>
-                <pre>-- �O Três lookups por iteração
+                <pre>--  Três lookups por iteração
 for i = 1, 10000 do
     config.servidor.porta = config.servidor.porta + 1
 end
 
--- �o. Um lookup antes do loop
+-- ✅ Um lookup antes do loop
 local servidor = config.servidor
 for i = 1, 10000 do
     servidor.porta = servidor.porta + 1
 end</pre>
 
                 <div class="box box-info">
-                    <strong>�Y'� Meça antes de otimizar:</strong> use <code>os.clock()</code> para medir o tempo real de execução antes de aplicar otimizações. Otimização prematura complica o código sem necessidade. Otimize apenas os trechos que você mediu e confirmou serem gargalos.
+                    <strong>' Meça antes de otimizar:</strong> use <code>os.clock()</code> para medir o tempo real de execução antes de aplicar otimizações. Otimização prematura complica o código sem necessidade. Otimize apenas os trechos que você mediu e confirmou serem gargalos.
                 </div>
             </section>
 
             <!-- Footer -->
             <footer>
-                <p><strong>�Y"- Documentação Lua Profissional</strong> - Guia Completo e Detalhado</p>
+                <p><strong>📖 Documentação Lua Profissional</strong> - Guia Completo e Detalhado</p>
                 <p>Esta documentação cobre <strong>Lua 5.1</strong> com referências a versões mais recentes quando relevante.</p>
                 <p>Criada com ❤️ para desenvolvedores que querem dominar Lua | Atualizado em 2024</p>
                 <p>Para mais informações oficiais, visite <a href="https://www.lua.org" target="_blank" style="color: var(--accent); font-weight: 600; text-decoration: none;">www.lua.org</a> | 
@@ -5508,10 +5541,10 @@ end</pre>
                 <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
                     <p style="font-size: 0.9rem; color: var(--text-light);">
                         <strong>Recursos Adicionais:</strong><br>
-                        �?� <a href="https://luarocks.org" target="_blank" style="color: var(--secondary);">LuaRocks</a> - Gerenciador de pacotes<br>
-                        �?� <a href="https://github.com/LewisJEllis/awesome-lua" target="_blank" style="color: var(--secondary);">Awesome Lua</a> - Lista curada de bibliotecas<br>
-                        �?� <a href="https://www.reddit.com/r/lua/" target="_blank" style="color: var(--secondary);">r/lua</a> - Comunidade no Reddit<br>
-                        �?� <a href="https://discord.gg/lua" target="_blank" style="color: var(--secondary);">Discord Lua</a> - Chat da comunidade
+                        <a href="https://luarocks.org" target="_blank" style="color: var(--secondary);">LuaRocks</a> - Gerenciador de pacotes<br>
+                        <a href="https://github.com/LewisJEllis/awesome-lua" target="_blank" style="color: var(--secondary);">Awesome Lua</a> - Lista curada de bibliotecas<br>
+                        <a href="https://www.reddit.com/r/lua/" target="_blank" style="color: var(--secondary);">r/lua</a> - Comunidade no Reddit<br>
+                        <a href="https://discord.gg/lua" target="_blank" style="color: var(--secondary);">Discord Lua</a> - Chat da comunidade
                     </p>
                 </div>
             </footer>
@@ -5525,17 +5558,17 @@ end</pre>
         const savedTheme = localStorage.getItem('theme') || 'light';
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-mode');
-            themeToggle.textContent = '�~?️ Modo Claro';
+            themeToggle.textContent = '☀️ Modo Claro';
         }
 
         themeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            themeToggle.textContent = isDark ? '�~?️ Modo Claro' : '�YOT Modo Escuro';
+            themeToggle.textContent = isDark ? '☀️ Modo Claro' : '🌙 Modo Escuro';
         });
 
-        // �"?�"? Lua Syntax Highlighter �"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?
+        // Lua Syntax Highlighter
         (function() {
             const KW = new Set([
                 'local','if','then','else','elseif','end','for','while','do',
@@ -5616,7 +5649,7 @@ end</pre>
                         let j = i;
                         while (j < len && /[a-zA-Z0-9_]/.test(src[j])) j++;
                         const word = src.slice(i, j);
-                        // Check if followed by ( �?" function call
+                        // Check if followed by ( — function call
                         let k = j;
                         while (k < len && (src[k]===' '||src[k]==='\t')) k++;
                         const isCall = src[k]==='(';
@@ -5680,7 +5713,7 @@ end</pre>
                 btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';
                 btn.addEventListener('click', () => {
                     navigator.clipboard.writeText(raw.trim()).then(() => {
-                        btn.textContent = '�o" Copied';
+                        btn.textContent = '✓ Copied';
                         btn.classList.add('copied');
                         setTimeout(() => {
                             btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';
