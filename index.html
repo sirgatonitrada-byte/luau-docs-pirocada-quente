@@ -1769,8 +1769,10 @@ luac -p script.lua
             <section id="seu-primeiro">
                 <h2>Seu Primeiro Script</h2>
 
+                <p>Com Lua instalado, você já pode criar e executar scripts. Um script Lua é um arquivo de texto com extensão <code>.lua</code>. Você executa com <code>lua nome_do_arquivo.lua</code> no terminal.</p>
+
                 <h3>Hello World</h3>
-                <p>Crie um arquivo chamado <code>hello.lua</code>:</p>
+                <p>Crie um arquivo chamado <code>hello.lua</code> com o conteúdo abaixo. <code>print()</code> escreve o texto no terminal e adiciona uma quebra de linha automaticamente.</p>
                 <pre>print("Olá, Lua!")</pre>
 
                 <p>Execute com:</p>
@@ -1781,7 +1783,8 @@ luac -p script.lua
                     <div class="example-output">Olá, Lua!</div>
                 </div>
 
-                <h3>Script Mais Interessante</h3>
+                <h3>Script com variáveis, funções e entrada</h3>
+                <p>Um script mais completo que usa variáveis locais, define uma função e lê entrada do usuário com <code>io.read()</code>. O operador <code>..</code> concatena strings.</p>
                 <pre>-- Variáveis simples
 local nome = "João"
 local idade = 25
@@ -2217,7 +2220,8 @@ local m, n = 10, 20
 m, n = n, m
 print(m, n)                 -- 20    10</pre>
 
-                <h3>Escopo em Blocos</h3>
+                <h3>Escopo em blocos</h3>
+                <p>Cada estrutura de controle (<code>if</code>, <code>for</code>, <code>while</code>, <code>do...end</code>) cria um novo escopo. Variáveis declaradas com <code>local</code> dentro desse bloco existem apenas até o <code>end</code> correspondente. Isso é útil para limitar o tempo de vida de variáveis temporárias.</p>
                 <pre>local x = "global"
 
 if true then
@@ -3044,7 +3048,8 @@ else
     print("Precisa estudar mais")
 end</pre>
 
-                <h3>Condições Complexas</h3>
+                <h3>Condições complexas</h3>
+                <p>Você pode combinar múltiplas condições com <code>and</code> e <code>or</code>. Use parênteses para deixar a precedência explícita e o código mais legível.</p>
                 <pre>local idade = 25
 local temCarteira = true
 local temCarro = true
@@ -3258,7 +3263,8 @@ end
 
 print("Fim da busca")</pre>
 
-                <h3>Break com While</h3>
+                <h3>break com while</h3>
+                <p><code>break</code> funciona da mesma forma em <code>while true do</code> — o padrão mais comum para loops que precisam de uma condição de saída no meio do corpo, não no início.</p>
                 <pre>local contador = 0
 
 while true do
@@ -5231,89 +5237,132 @@ end</pre>
 
             <!-- Lint e Testing -->
             <section id="lint">
-                <h2>Lint e Testes</h2>
+                <h2>Lint e testes</h2>
 
-                <h3>Luacheck - Ferramenta de Análise</h3>
-                <pre>-- Instalar
+                <p>Lint é a análise estática do código — encontrar problemas sem executar o programa. Testes verificam que o código faz o que deveria fazer. Ambos são essenciais para manter um projeto saudável.</p>
+
+                <h3>Luacheck</h3>
+                <p>Luacheck é a ferramenta de lint padrão para Lua. Ela analisa o código e reporta variáveis não usadas, globais não declaradas, código inacessível e outros problemas comuns. É instalada via LuaRocks — o gerenciador de pacotes de Lua.</p>
+                <pre>-- Instalar via LuaRocks
 luarocks install luacheck
 
--- Verificar arquivo
-luacheck arquivo.lua
+-- Verificar um arquivo
+luacheck meu_script.lua
 
--- Configurar .luacheckrc
-std = "lua51"
-max_line_length = 100
-exclude_files = {"build/", "vendor/"}</pre>
+-- Verificar um diretório inteiro
+luacheck src/
 
-                <h3>Erros Comuns Detectados</h3>
+-- Saída típica:
+-- meu_script.lua:5:7: (W212) unused variable 'x'
+-- meu_script.lua:10:1: (W111) setting non-standard global variable 'resultado'</pre>
+
+                <p>Você pode configurar o Luacheck criando um arquivo <code>.luacheckrc</code> na raiz do projeto:</p>
+                <pre>-- .luacheckrc
+std = "lua51"                          -- versão do Lua
+max_line_length = 100                  -- comprimento máximo de linha
+globals = {"minha_global"}            -- globais permitidas
+ignore = {"212"}                       -- ignorar aviso 212 (variável não usada)
+exclude_files = {"build/", "vendor/"} -- ignorar pastas</pre>
+
+                <h3>Erros comuns detectados pelo Luacheck</h3>
                 <table>
                     <tr>
-                        <th>Erro</th>
                         <th>Código</th>
+                        <th>Problema</th>
+                        <th>Causa típica</th>
                         <th>Solução</th>
                     </tr>
                     <tr>
-                        <td>Variável não usada</td>
-                        <td>212</td>
-                        <td>Remover ou usar com <code>_</code></td>
+                        <td><code>W111</code></td>
+                        <td>Global não declarada</td>
+                        <td>Esqueceu o <code>local</code></td>
+                        <td>Adicionar <code>local</code> ou declarar em <code>globals</code></td>
                     </tr>
                     <tr>
-                        <td>Variável indefinida</td>
-                        <td>111</td>
-                        <td>Declarar com <code>local</code></td>
+                        <td><code>W212</code></td>
+                        <td>Variável local não usada</td>
+                        <td>Declarou mas não usou</td>
+                        <td>Remover ou renomear para <code>_</code></td>
                     </tr>
                     <tr>
-                        <td>Global não intencional</td>
-                        <td>111</td>
-                        <td>Usar <code>local</code></td>
+                        <td><code>W311</code></td>
+                        <td>Variável redefinida</td>
+                        <td>Dois <code>local x</code> no mesmo escopo</td>
+                        <td>Renomear uma delas</td>
                     </tr>
                     <tr>
-                        <td>Redefinição</td>
-                        <td>311</td>
-                        <td>Renomear ou refatorar</td>
+                        <td><code>W421</code></td>
+                        <td>Shadowing de variável</td>
+                        <td>Local interna com mesmo nome da externa</td>
+                        <td>Renomear para evitar confusão</td>
                     </tr>
                 </table>
 
-                <h3>Testes Simples com assert</h3>
-                <pre>-- Teste básico
-local function somar(a, b)
+                <h3>assert() — testes simples</h3>
+                <p><code>assert(condicao, mensagem)</code> verifica se a condição é verdadeira. Se for falsa ou <code>nil</code>, lança um erro com a mensagem fornecida. É a forma mais simples de escrever um teste — sem bibliotecas externas. Se o assert passar, o programa continua normalmente.</p>
+                <pre>local function somar(a, b)
     return a + b
 end
 
-assert(somar(1, 1) == 2, "1 + 1 deve ser 2")
-assert(somar(5, 5) == 10, "5 + 5 deve ser 10")
+-- assert(condicao, mensagem_de_erro)
+assert(somar(1, 1) == 2,   "1 + 1 deve ser 2")
+assert(somar(0, 0) == 0,   "0 + 0 deve ser 0")
+assert(somar(-1, 1) == 0,  "-1 + 1 deve ser 0")
+assert(somar(10, -3) == 7, "10 + (-3) deve ser 7")
+
 print("Todos os testes passaram!")</pre>
 
-                <h3>Testes com Função Helper</h3>
-                <pre>local function teste(nome, funcao)
-    local ok, erro = pcall(funcao)
+                <h3>Função helper de teste com pcall</h3>
+                <p>Para testes que não devem encerrar o programa ao falhar, envolva cada teste em <code>pcall</code>. Isso permite rodar todos os testes e ver quais passaram e quais falharam, mesmo que alguns lancem erros.</p>
+                <pre>-- Função helper: roda um teste e reporta o resultado
+local function teste(nome, fn)
+    local ok, err = pcall(fn)
     if ok then
         print("✓ " .. nome)
     else
-        print("✗ " .. nome .. ": " .. erro)
+        print("✗ " .. nome)
+        print("  " .. tostring(err))
     end
 end
 
-teste("Somar números", function()
-    assert(1 + 1 == 2)
+-- Escrever os testes
+local function dividir(a, b)
+    assert(b ~= 0, "divisor não pode ser zero")
+    return a / b
+end
+
+teste("divisão normal", function()
+    assert(dividir(10, 2) == 5)
 end)
 
-teste("Concatenar strings", function()
-    assert("a" .. "b" == "ab")
+teste("divisão com float", function()
+    assert(math.abs(dividir(1, 3) - 0.333) < 0.001)
 end)
 
-teste("Inteiros", function()
-    assert(5 / 2 == 2.5)
-end)</pre>
+teste("divisão por zero lança erro", function()
+    local ok = pcall(dividir, 10, 0)
+    assert(not ok, "deveria ter lançado erro")
+end)
+
+-- Saída:
+-- ✓ divisão normal
+-- ✓ divisão com float
+-- ✓ divisão por zero lança erro</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Bibliotecas de teste:</strong> para projetos maiores, considere usar <strong>busted</strong> (instalável via <code>luarocks install busted</code>), que oferece describe/it/expect, mocks, e relatórios formatados. Para projetos simples, a abordagem com <code>pcall</code> acima é suficiente.
+                </div>
             </section>
 
             <!-- Performance -->
             <section id="performance">
-                <h2>Performance e Otimização</h2>
+                <h2>Performance</h2>
 
-                <h3>Local vs Global</h3>
-                <p>Locais são significativamente mais rápidas:</p>
-                <pre>-- ❌ Lento (global)
+                <p>Lua já é rápida para uma linguagem interpretada, mas alguns padrões de código fazem diferença significativa, especialmente em loops críticos. As otimizações abaixo são ordenadas do impacto mais alto para o mais baixo.</p>
+
+                <h3>Local vs global — o mais importante</h3>
+                <p>Variáveis locais são acessadas por índice direto no stack da VM — operação O(1) muito rápida. Variáveis globais exigem uma busca na tabela <code>_G</code> — um hash lookup a cada acesso. Em loops com milhões de iterações, isso é mensurável. A regra é simples: <strong>sempre use <code>local</code></strong>.</p>
+                <pre>-- ❌ Lento: resultado é global, lookup em _G a cada iteração
 function lento()
     resultado = 0
     for i = 1, 1000000 do
@@ -5322,7 +5371,7 @@ function lento()
     return resultado
 end
 
--- ✅ Rápido (local)
+-- ✅ Rápido: resultado é local, acesso direto no stack
 local function rapido()
     local resultado = 0
     for i = 1, 1000000 do
@@ -5331,44 +5380,70 @@ local function rapido()
     return resultado
 end</pre>
 
-                <h3>Cache de Funções</h3>
-                <pre>-- ❌ Lento: lookup toda vez
+                <h3>Cache de funções de biblioteca</h3>
+                <p>Acessar <code>table.insert</code> dentro de um loop faz dois lookups a cada iteração: primeiro encontra a tabela <code>table</code> em <code>_G</code>, depois encontra <code>insert</code> dentro dela. Guardar a função em uma variável local antes do loop elimina esses lookups.</p>
+                <pre>-- ❌ Dois lookups por iteração: _G["table"] e table["insert"]
 for i = 1, 1000000 do
     table.insert(lista, i)
 end
 
--- ✅ Rápido: cache local
+-- ✅ Zero lookups por iteração: insert é local
 local insert = table.insert
 for i = 1, 1000000 do
     insert(lista, i)
-end</pre>
-
-                <h3>Evitar Criação Desnecessária</h3>
-                <pre>-- ❌ Cria table a cada iteração
-for i = 1, 1000 do
-    local config = {debug = true, timeout = 30}
-    processar(config)
 end
 
--- ✅ Cria table uma vez
-local config = {debug = true, timeout = 30}
-for i = 1, 1000 do
-    processar(config)
+-- O mesmo vale para qualquer função usada em loop intenso
+local floor = math.floor
+local format = string.format</pre>
+
+                <h3>Não criar tables dentro de loops</h3>
+                <p>Criar uma table a cada iteração gera pressão no garbage collector — cada table precisa ser alocada e eventualmente coletada. Se a table tem sempre a mesma estrutura, crie-a uma vez fora do loop e reutilize, limpando os campos necessários.</p>
+                <pre>-- ❌ Cria e descarta uma table por iteração
+for i = 1, 10000 do
+    local ponto = {x = i, y = i * 2}
+    processar(ponto)
+end
+
+-- ✅ Reutiliza a mesma table
+local ponto = {}
+for i = 1, 10000 do
+    ponto.x = i
+    ponto.y = i * 2
+    processar(ponto)
 end</pre>
 
-                <h3>Concatenação Eficiente</h3>
-                <pre>-- ❌ Ineficiente com muitas strings
+                <h3>Concatenação de strings em loop</h3>
+                <p>O operador <code>..</code> cria uma nova string a cada uso — em um loop de N iterações, isso cria N strings intermediárias que precisam ser coletadas pelo GC. O padrão correto é acumular as partes em uma table e usar <code>table.concat()</code> uma única vez no final.</p>
+                <pre>-- ❌ Cria N strings intermediárias
 local resultado = ""
-for i = 1, 1000 do
+for i = 1, 10000 do
     resultado = resultado .. "linha " .. i .. "\n"
 end
 
--- ✅ Eficiente: usar table.concat
-local linhas = {}
-for i = 1, 1000 do
-    table.insert(linhas, "linha " .. i)
+-- ✅ Uma única alocação no final
+local partes = {}
+for i = 1, 10000 do
+    partes[i] = "linha " .. i
 end
-local resultado = table.concat(linhas, "\n")</pre>
+local resultado = table.concat(partes, "\n")</pre>
+
+                <h3>Evitar acesso repetido a campos aninhados</h3>
+                <p>Cada ponto em <code>a.b.c.d</code> é um lookup separado. Se você acessa o mesmo caminho várias vezes, guarde o resultado intermediário em uma variável local.</p>
+                <pre>-- ❌ Três lookups por iteração
+for i = 1, 10000 do
+    config.servidor.porta = config.servidor.porta + 1
+end
+
+-- ✅ Um lookup antes do loop
+local servidor = config.servidor
+for i = 1, 10000 do
+    servidor.porta = servidor.porta + 1
+end</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Meça antes de otimizar:</strong> use <code>os.clock()</code> para medir o tempo real de execução antes de aplicar otimizações. Otimização prematura complica o código sem necessidade. Otimize apenas os trechos que você mediu e confirmou serem gargalos.
+                </div>
             </section>
 
             <!-- Footer -->
