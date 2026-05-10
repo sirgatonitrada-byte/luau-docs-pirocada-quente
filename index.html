@@ -3753,10 +3753,10 @@ print(table.concat(maiorQue10({1,5,8,12,3}), ", "))
             <section id="higher-order">
                 <h2>Higher-Order Functions</h2>
 
-                <h3>O que são?</h3>
-                <p>Funções que recebem ou retornam outras funções como argumentos/valores.</p>
+                <p>Uma higher-order function é qualquer função que recebe outra função como argumento, ou retorna uma função como resultado. Isso não é um recurso especial em Lua — é consequência natural de funções serem valores de primeira classe. Os três padrões mais comuns são <code>map</code>, <code>filter</code> e <code>reduce</code>, que formam a base da programação funcional.</p>
 
-                <h3>map() - Aplicar Função a Lista</h3>
+                <h3>map()</h3>
+                <p><code>map</code> aplica uma função a cada elemento de uma lista e retorna uma nova lista com os resultados. A lista original não é modificada. O tamanho da lista resultante é sempre igual ao da original.</p>
                 <pre>local function map(funcao, lista)
     local resultado = {}
     for i, valor in ipairs(lista) do
@@ -3772,7 +3772,8 @@ print(table.concat(dobrados, ", "))  -- Output: 2, 4, 6, 8, 10
 local quadrados = map(function(x) return x ^ 2 end, numeros)
 print(table.concat(quadrados, ", "))  -- Output: 1, 4, 9, 16, 25</pre>
 
-                <h3>filter() - Selecionar Elementos</h3>
+                <h3>filter()</h3>
+                <p><code>filter</code> percorre uma lista e retorna uma nova lista contendo apenas os elementos para os quais a função predicado retornou verdadeiro. O predicado é uma função que recebe um elemento e retorna <code>true</code> ou <code>false</code>. A lista resultante pode ser menor que a original.</p>
                 <pre>local function filter(predicado, lista)
     local resultado = {}
     for i, valor in ipairs(lista) do
@@ -3791,7 +3792,8 @@ print(table.concat(pares, ", "))  -- Output: 2, 4, 6, 8, 10
 local maiores_que_5 = filter(function(x) return x > 5 end, numeros)
 print(table.concat(maiores_que_5, ", "))  -- Output: 6, 7, 8, 9, 10</pre>
 
-                <h3>reduce() - Agregar Valores</h3>
+                <h3>reduce()</h3>
+                <p><code>reduce</code> (também chamado de <code>fold</code>) combina todos os elementos de uma lista em um único valor. Recebe uma função acumuladora, a lista e um valor inicial. A função acumuladora recebe o acumulador atual e o próximo elemento, e retorna o novo acumulador. Útil para somas, produtos, concatenações e qualquer operação que agrega valores.</p>
                 <pre>local function reduce(funcao, lista, inicial)
     local acumulador = inicial
     for _, valor in ipairs(lista) do
@@ -3808,7 +3810,8 @@ print(soma)  -- Output: 15
 local produto = reduce(function(acc, x) return acc * x end, numeros, 1)
 print(produto)  -- Output: 120</pre>
 
-                <h3>compose() - Combinar Funções</h3>
+                <h3>compose()</h3>
+                <p><code>compose</code> combina duas funções em uma só: o resultado da segunda é passado como entrada para a primeira. <code>compose(f, g)(x)</code> é equivalente a <code>f(g(x))</code>. Útil para criar pipelines de transformação sem variáveis intermediárias.</p>
                 <pre>local function compose(f, g)
     return function(x)
         return f(g(x))
@@ -3824,18 +3827,12 @@ print(operacao(5))  -- Output: 20 (5 * 2 = 10, 10 + 10 = 20)</pre>
 
             <!-- Tables Detalhado -->
             <section id="tables">
-                <h2>Tables - A Estrutura de Tudo</h2>
+                <h2>Tables — detalhado</h2>
 
-                <h3>Entendendo Tables</h3>
-                <p>Tables são a <strong>única estrutura de dados complexa</strong> em Lua. Servem como:</p>
-                <ul>
-                    <li>Arrays (listas)</li>
-                    <li>Dicionários/Maps</li>
-                    <li>Objects/Classes</li>
-                    <li>Namespaces/Modules</li>
-                </ul>
+                <p>Tables são a única estrutura de dados complexa de Lua. Internamente, toda table tem duas partes: um <strong>array part</strong> para índices numéricos sequenciais (acesso O(1)) e um <strong>hash part</strong> para qualquer outra chave. Lua decide automaticamente onde colocar cada valor. Uma table pode ser usada como array, dicionário, objeto, namespace ou qualquer combinação.</p>
 
-                <h3>Array/Lista</h3>
+                <h3>Array — lista ordenada</h3>
+                <p>Quando você usa índices numéricos sequenciais começando em 1, a table se comporta como um array. O operador <code>#</code> retorna o tamanho da sequência contígua. <code>table.insert()</code> adiciona ao final e desloca os elementos seguintes. <code>table.remove()</code> remove e retorna o elemento, deslocando os seguintes para preencher o espaço.</p>
                 <pre>-- Declarar uma lista
 local frutas = {"maçã", "banana", "laranja"}
 
@@ -3855,7 +3852,8 @@ print(#frutas)             -- Output: 4
 table.remove(frutas, 2)    -- Remove banana
 print(frutas[2])           -- Output: laranja</pre>
 
-                <h3>Dicionário/Map</h3>
+                <h3>Dicionário — chaves nomeadas</h3>
+                <p>Quando você usa strings como chaves, a table funciona como um dicionário (ou mapa). Você acessa valores com a sintaxe de ponto (<code>t.chave</code>) ou de colchetes (<code>t["chave"]</code>) — são equivalentes. Atribuir <code>nil</code> a uma chave remove essa chave da table.</p>
                 <pre>local usuario = {
     id = 1,
     nome = "João",
@@ -3880,7 +3878,8 @@ if usuario.telefone then
     print("Tem telefone")
 end</pre>
 
-                <h3>Tabela Mista (Array + Mapa)</h3>
+                <h3>Table mista — array e dicionário juntos</h3>
+                <p>Uma table pode ter simultaneamente uma parte sequencial (array) e chaves nomeadas (hash). O operador <code>#</code> conta apenas a parte sequencial. <code>pairs()</code> itera sobre tudo; <code>ipairs()</code> itera apenas sobre a sequência.</p>
                 <pre>local configuracao = {
     "producao",           -- [1]
     "debug",              -- [2]
@@ -3892,7 +3891,8 @@ end</pre>
 print(configuracao[1])         -- Output: producao
 print(configuracao.versao)     -- Output: 1.0</pre>
 
-                <h3>Iteração com pairs</h3>
+                <h3>Iteração com pairs()</h3>
+                <p><code>pairs(t)</code> retorna um iterador que percorre todos os pares chave-valor da table, em ordem não determinada. Use quando precisar de todas as chaves, incluindo as não numéricas.</p>
                 <pre>local configuracoes = {
     nome = "App",
     versao = "1.0",
@@ -3907,7 +3907,8 @@ end
 -- versao = 1.0
 -- debug = true</pre>
 
-                <h3>Iteração com ipairs</h3>
+                <h3>Iteração com ipairs()</h3>
+                <p><code>ipairs(t)</code> percorre os índices 1, 2, 3... em ordem e para no primeiro <code>nil</code>. Use para arrays onde a ordem importa e você sabe que a sequência é contígua.</p>
                 <pre>local cores = {"vermelho", "verde", "azul"}
 
 for indice, cor in ipairs(cores) do
@@ -3918,7 +3919,8 @@ end
 -- 2: verde
 -- 3: azul</pre>
 
-                <h3>Copiar Table</h3>
+                <h3>Copiar uma table</h3>
+                <p>Atribuir uma table a outra variável copia apenas a <strong>referência</strong>, não os dados. Para copiar os valores, você precisa iterar e copiar manualmente. Isso é uma <em>cópia rasa</em> (shallow copy) — tables aninhadas ainda são referências compartilhadas.</p>
                 <pre>-- Cópia rasa (shallow copy)
 local original = {a = 1, b = 2}
 local copia = {}
@@ -3930,7 +3932,8 @@ end
 copia.a = 999
 print(original.a)  -- Output: 1 (original intacto)</pre>
 
-                <h3>Tabelas Aninhadas</h3>
+                <h3>Tables aninhadas</h3>
+                <p>Tables podem conter outras tables como valores. Você acessa elementos aninhados encadeando os operadores de acesso. Não há limite de profundidade.</p>
                 <pre>local projeto = {
     nome = "Meu App",
     versao = "1.0",
@@ -3949,7 +3952,8 @@ print(projeto.nome)                    -- Output: Meu App
 print(projeto.equipe[1].nome)          -- Output: João
 print(projeto.config.timeout)          -- Output: 30</pre>
 
-                <h3>Tabelas como Classes</h3>
+                <h3>Tables como objetos</h3>
+                <p>Você pode colocar funções dentro de uma table para criar algo parecido com um objeto. O parâmetro <code>self</code> (ou o uso de <code>:</code> na chamada) passa a própria table como primeiro argumento, dando acesso aos dados do "objeto".</p>
                 <pre>-- Definir classe
 local Pessoa = {}
 
@@ -3970,7 +3974,8 @@ end
 local joao = Pessoa:novo("João", 30)
 print(joao:apresentar())  -- Output: João tem 30 anos</pre>
 
-                <h3>Operações Úteis</h3>
+                <h3>Operações úteis da biblioteca table</h3>
+                <p>A biblioteca padrão <code>table</code> fornece funções para as operações mais comuns em arrays.</p>
                 <pre>-- Tamanho
 local lista = {1, 2, 3}
 print(#lista)  -- Output: 3
@@ -3998,72 +4003,63 @@ print(indice)  -- Output: 2</pre>
 
             <!-- Metatables -->
             <section id="metatables">
-                <h2>Metatables - Customizando Tables</h2>
+                <h2>Metatables</h2>
 
-                <h3>O que são Metatables?</h3>
-                <p>Metatables permitem customizar <strong>como</strong> operações funcionam em uma table.</p>
+                <p>Uma metatable é uma table comum que define como outra table se comporta em operações especiais — aritméticas, comparações, acesso a chaves inexistentes, conversão para string, e mais. Você associa uma metatable a uma table com <code>setmetatable(t, mt)</code>. Os campos especiais da metatable são chamados de <strong>metamétodos</strong> e têm nomes que começam com <code>__</code>.</p>
 
-                <pre>-- Definir metatable
-local tabela = {a = 1, b = 2}
-local metatable = {
-    __index = function(t, chave)
-        return "Chave não encontrada: " .. chave
-    end
-}
+                <p>Metatables são o mecanismo que permite implementar OOP, sobrecarga de operadores e comportamentos customizados em Lua — tudo sem sintaxe especial na linguagem.</p>
 
-setmetatable(tabela, metatable)
+                <h3>setmetatable() e getmetatable()</h3>
+                <p><code>setmetatable(t, mt)</code> associa a metatable <code>mt</code> à table <code>t</code> e retorna <code>t</code>. <code>getmetatable(t)</code> retorna a metatable atual de <code>t</code>, ou <code>nil</code> se não tiver nenhuma. Se a metatable tiver um campo <code>__metatable</code>, <code>getmetatable</code> retorna esse valor em vez da metatable real — isso protege a metatable de ser lida ou modificada externamente.</p>
 
-print(tabela.a)    -- Output: 1 (existe)
-print(tabela.xyz)  -- Output: Chave não encontrada: xyz</pre>
-
-                <h3>Metamétodo __index</h3>
-                <p>Chamado quando acessa chave que não existe.</p>
+                <h3>__index — acesso a chaves inexistentes</h3>
+                <p>Quando você acessa uma chave que não existe na table, Lua verifica se a metatable tem <code>__index</code>. Se for uma <strong>função</strong>, Lua a chama passando a table e a chave — você decide o que retornar. Se for uma <strong>table</strong>, Lua procura a chave nessa table (base da herança em OOP). Se a chave existir na table original, <code>__index</code> nunca é chamado.</p>
                 <pre>local tabela = {x = 10}
 
 setmetatable(tabela, {
     __index = function(t, k)
-        print("Acessando: " .. k)
-        return 0  -- Valor padrão
+        print("Acessando chave inexistente: " .. k)
+        return 0  -- valor padrão para qualquer chave não encontrada
     end
 })
 
-print(tabela.x)       -- Output: 10 (sem chamar __index)
-print(tabela.y)       -- Output: Acessando: y | 0</pre>
+print(tabela.x)   -- 10  (existe na table, __index não é chamado)
+print(tabela.y)   -- Acessando chave inexistente: y  →  0
+print(tabela.z)   -- Acessando chave inexistente: z  →  0</pre>
 
-                <h3>Metamétodo __newindex</h3>
-                <p>Chamado quando atribui valor.</p>
+                <h3>__newindex — interceptar atribuições</h3>
+                <p><code>__newindex</code> é chamado quando você tenta atribuir um valor a uma chave que <strong>ainda não existe</strong> na table. Se a chave já existir, a atribuição acontece normalmente sem chamar <code>__newindex</code>. Para gravar o valor dentro do <code>__newindex</code> sem causar recursão infinita, use <code>rawset(t, k, v)</code> — que ignora metamétodos.</p>
                 <pre>local tabela = {}
 
 setmetatable(tabela, {
     __newindex = function(t, k, v)
-        print("Atribuindo " .. k .. " = " .. v)
-        rawset(t, k, v)  -- rawset ignora metamétodos
+        print("Nova chave '" .. k .. "' = " .. tostring(v))
+        rawset(t, k, v)  -- grava sem chamar __newindex de novo
     end
 })
 
-tabela.nome = "João"  -- Output: Atribuindo nome = João</print></pre>
+tabela.nome = "João"   -- Nova chave 'nome' = João
+tabela.nome = "Maria"  -- silencioso: chave já existe, __newindex não é chamado</pre>
 
-                <h3>Metamétodos Aritméticos</h3>
-                <pre>-- Somar dois vetores
-local vetor1 = {x = 10, y = 20}
-local vetor2 = {x = 5, y = 15}
+                <h3>__add e outros metamétodos aritméticos</h3>
+                <p>Você pode definir o comportamento de operadores aritméticos para suas tables. <code>__add</code> é chamado quando você usa <code>+</code> entre duas tables que têm essa metatable. Os mesmos padrões se aplicam a <code>__sub</code> (-), <code>__mul</code> (*), <code>__div</code> (/), <code>__mod</code> (%), <code>__pow</code> (^) e <code>__unm</code> (negação unária).</p>
+                <pre>local vetor1 = {x = 10, y = 20}
+local vetor2 = {x = 5,  y = 15}
 
 local meta = {
     __add = function(v1, v2)
-        return {
-            x = v1.x + v2.x,
-            y = v1.y + v2.y
-        }
+        return {x = v1.x + v2.x, y = v1.y + v2.y}
     end
 }
 
 setmetatable(vetor1, meta)
 setmetatable(vetor2, meta)
 
-local vetor3 = vetor1 + vetor2
-print(vetor3.x, vetor3.y)  -- Output: 15    35</pre>
+local v3 = vetor1 + vetor2
+print(v3.x, v3.y)   -- 15    35</pre>
 
-                <h3>Metamétodo __tostring</h3>
+                <h3>__tostring — conversão para string</h3>
+                <p><code>__tostring</code> é chamado quando você passa a table para <code>tostring()</code> ou para <code>print()</code>. Sem esse metamétodo, <code>print(t)</code> mostra algo como <code>table: 0x55a3b2</code>. Com ele, você controla exatamente o que aparece.</p>
                 <pre>local pessoa = {nome = "João", idade = 30}
 
 setmetatable(pessoa, {
@@ -4072,135 +4068,123 @@ setmetatable(pessoa, {
     end
 })
 
-print(pessoa)  -- Output: João (30 anos)</pre>
+print(pessoa)           -- João (30 anos)
+print(tostring(pessoa)) -- João (30 anos)</pre>
 
-                <h3>Metamétodo __call</h3>
-                <p>Permite chamar uma table como função!</p>
+                <h3>__call — chamar table como função</h3>
+                <p><code>__call</code> é chamado quando você usa a table como se fosse uma função — <code>t(args)</code>. O primeiro argumento recebido é a própria table (<code>self</code>), seguido dos argumentos passados na chamada. Útil para criar objetos que têm um comportamento "padrão" ao serem invocados.</p>
                 <pre>local contador = {valor = 0}
 
 setmetatable(contador, {
-    __call = function(self, quantidade)
-        quantidade = quantidade or 1
-        self.valor = self.valor + quantidade
+    __call = function(self, n)
+        n = n or 1
+        self.valor = self.valor + n
         return self.valor
     end
 })
 
-print(contador())       -- Output: 1
-print(contador(5))      -- Output: 6
-print(contador(3))      -- Output: 9</pre>
+print(contador())    -- 1  (incrementa por 1)
+print(contador(5))   -- 6  (incrementa por 5)
+print(contador(3))   -- 9</pre>
 
-                <h3>Comparações com __lt e __le</h3>
-                <pre>local p1 = {nome = "João", idade = 30}
+                <h3>__lt e __le — comparações</h3>
+                <p><code>__lt</code> define o comportamento de <code><</code> (menor que). <code>__le</code> define <code><=</code>. Se apenas <code>__lt</code> estiver definido, Lua deriva <code><=</code> automaticamente como <code>not (b < a)</code>.</p>
+                <pre>local p1 = {nome = "João",  idade = 30}
 local p2 = {nome = "Maria", idade = 25}
 
-setmetatable(p1, {__lt = function(a,b) return a.idade < b.idade end})
-setmetatable(p2, {__lt = function(a,b) return a.idade < b.idade end})
+local meta = {__lt = function(a, b) return a.idade < b.idade end}
+setmetatable(p1, meta)
+setmetatable(p2, meta)
 
 if p2 < p1 then
-    print("Maria é mais jovem")
+    print(p2.nome .. " é mais jovem")  -- Maria é mais jovem
 end</pre>
             </section>
 
             <!-- Coroutines -->
             <section id="coroutines">
-                <h2>Coroutines - Execução Suspensível</h2>
+                <h2>Coroutines</h2>
 
-                <h3>O que é Coroutine?</h3>
-                <p>Uma coroutine (não é thread real) permite <strong>suspender e retomar</strong> execução.</p>
+                <p>Uma coroutine é uma função que pode <strong>pausar sua própria execução</strong> no meio e ser retomada de onde parou. Diferente de threads do sistema operacional, coroutines são <strong>cooperativas</strong> — só executam quando explicitamente retomadas, e só pausam quando explicitamente cedem o controle com <code>yield</code>. Não há paralelismo real: apenas uma coroutine executa por vez.</p>
 
-                <pre>-- Criar coroutine
-local co = coroutine.create(function()
-    print("1")
-    coroutine.yield()
-    print("2")
-    coroutine.yield()
-    print("3")
-end)
+                <p>O caso de uso principal é quando você precisa de uma função que produz valores ao longo do tempo (generators), implementa uma máquina de estados, ou precisa intercalar execução entre produtor e consumidor sem callbacks.</p>
 
--- Retomar
-coroutine.resume(co)  -- Output: 1
-coroutine.resume(co)  -- Output: 2
-coroutine.resume(co)  -- Output: 3</press></pre>
+                <h3>coroutine.create()</h3>
+                <p><code>coroutine.create(f)</code> cria uma nova coroutine a partir da função <code>f</code>, mas <strong>não a executa ainda</strong>. Retorna um objeto do tipo <code>thread</code>. A coroutine começa no estado <code>"suspended"</code> e só executa quando você chamar <code>coroutine.resume()</code>.</p>
 
-                <h3>coroutine.wrap</h3>
-                <p>Alternativa mais simples a create + resume.</p>
-                <pre>local co = coroutine.wrap(function()
-    print("A")
-    coroutine.yield()
-    print("B")
-    return "Resultado"
-end)
+                <h3>coroutine.resume()</h3>
+                <p><code>coroutine.resume(co, ...)</code> inicia ou continua a execução da coroutine <code>co</code>. Os argumentos extras são passados para a coroutine — na primeira chamada, chegam como parâmetros da função; nas chamadas seguintes, chegam como retorno do <code>yield</code>. Retorna <code>true</code> mais os valores passados ao <code>yield</code> (ou os valores retornados pela função quando termina). Se a coroutine lançar um erro, retorna <code>false</code> mais a mensagem de erro.</p>
 
-print(co())  -- Output: A
-print(co())  -- Output: B | Resultado</pre>
-
-                <h3>Passar Valores Entre Coroutines</h3>
+                <h3>coroutine.yield()</h3>
+                <p><code>coroutine.yield(...)</code> pausa a coroutine e devolve o controle para quem chamou <code>resume</code>. Os argumentos do <code>yield</code> se tornam os valores de retorno do <code>resume</code>. Quando a coroutine for retomada, o <code>yield</code> retorna os argumentos passados ao próximo <code>resume</code>.</p>
                 <pre>local co = coroutine.create(function()
-    local valor = coroutine.yield()  -- Recebe valor
-    print("Recebi: " .. valor)
-    return "Resposta"
+    print("passo 1")
+    coroutine.yield()       -- pausa aqui, devolve controle
+    print("passo 2")
+    coroutine.yield()       -- pausa aqui de novo
+    print("passo 3")        -- executa quando resume for chamado pela 3ª vez
 end)
 
-local _, res = coroutine.resume(co, "Olá")  -- Envia "Olá"
--- Output: Recebi: Olá</pre>
+coroutine.resume(co)        -- passo 1
+coroutine.resume(co)        -- passo 2
+coroutine.resume(co)        -- passo 3
+coroutine.resume(co)        -- não faz nada: coroutine já terminou (dead)</pre>
 
-                <h3>Status de Coroutine</h3>
-                <pre>local co = coroutine.create(function()
-    coroutine.yield()
+                <h3>Passar valores entre resume e yield</h3>
+                <p>Valores fluem nos dois sentidos: <code>resume(co, valor)</code> envia um valor para dentro da coroutine (retornado pelo <code>yield</code>), e <code>yield(valor)</code> envia um valor para fora (retornado pelo <code>resume</code>).</p>
+                <pre>local co = coroutine.create(function(inicial)
+    print("recebi:", inicial)           -- recebi: 10
+    local segundo = coroutine.yield("primeiro yield")
+    print("recebi:", segundo)           -- recebi: 20
+    return "fim"
 end)
 
-print(coroutine.status(co))  -- Output: suspended
+local ok, v1 = coroutine.resume(co, 10)
+print("yield retornou:", v1)            -- yield retornou: primeiro yield
 
-coroutine.resume(co)
-print(coroutine.status(co))  -- Output: suspended
+local ok, v2 = coroutine.resume(co, 20)
+print("função retornou:", v2)           -- função retornou: fim</pre>
 
-coroutine.resume(co)
-print(coroutine.status(co))  -- Output: dead</pre>
+                <h3>coroutine.wrap()</h3>
+                <p><code>coroutine.wrap(f)</code> é um atalho que cria uma coroutine e retorna uma função que chama <code>resume</code> automaticamente. Mais simples que <code>create + resume</code>, mas não captura erros — se a coroutine lançar um erro, ele se propaga normalmente.</p>
+                <pre>local gen = coroutine.wrap(function()
+    coroutine.yield("a")
+    coroutine.yield("b")
+    return "c"
+end)
 
-                <h3>Caso de Uso: Iterator Customizado</h3>
-                <pre>local function contador(inicio, fim)
+print(gen())   -- a
+print(gen())   -- b
+print(gen())   -- c
+-- gen()       -- erro: coroutine já terminou</pre>
+
+                <h3>coroutine.status()</h3>
+                <p><code>coroutine.status(co)</code> retorna o estado atual da coroutine como string:</p>
+                <table>
+                    <tr><th>Status</th><th>Significado</th></tr>
+                    <tr><td><code>"suspended"</code></td><td>Criada mas não iniciada, ou pausada em um yield</td></tr>
+                    <tr><td><code>"running"</code></td><td>Executando agora (só visível de dentro da própria coroutine)</td></tr>
+                    <tr><td><code>"normal"</code></td><td>Ativa mas não executando — resumiu outra coroutine</td></tr>
+                    <tr><td><code>"dead"</code></td><td>Terminou (retornou ou lançou erro) — não pode ser retomada</td></tr>
+                </table>
+
+                <h3>Caso de uso: generator / iterador</h3>
+                <p>Coroutines são perfeitas para criar iteradores que mantêm estado interno sem precisar de variáveis externas ou closures complexas.</p>
+                <pre>local function range(inicio, fim, passo)
+    passo = passo or 1
     return coroutine.wrap(function()
-        for i = inicio, fim do
+        for i = inicio, fim, passo do
             coroutine.yield(i)
         end
     end)
 end
 
-for numero in contador(1, 5) do
-    print(numero)
-end
--- Output: 1 2 3 4 5</press></pre>
-
-                <h3>Produzir-Consumir</h3>
-                <pre>local function produtor()
-    return coroutine.wrap(function()
-        for i = 1, 3 do
-            print("Produzindo " .. i)
-            coroutine.yield(i)
-        end
-    end)
-end
-
-local gen = produtor()
-for valor in gen do
-    print("Consumindo " .. valor)
-end
--- Output:
--- Produzindo 1
--- Consumindo 1
--- Produzindo 2
--- Consumindo 2
--- ...</pre>
+for n in range(1, 10, 2) do
+    io.write(n .. " ")      -- 1 3 5 7 9
+end</pre>
 
                 <div class="box box-warning">
-                    <strong>⚠️ Importante:</strong> Coroutines NÃO são paralelismo real. Uma coroutine só executa quando explicitamente retomada. Úeis para:
-                    <ul>
-                        <li>Manter estado entre iterações</li>
-                        <li>Implementar generators</li>
-                        <li>Máquinas de estado</li>
-                        <li>Callbacks assíncronos em frameworks</li>
-                    </ul>
+                    <strong>⚠️ Coroutines não são threads:</strong> não executam em paralelo. Se você precisa de paralelismo real (múltiplos núcleos), coroutines não resolvem — você precisaria de múltiplos processos ou de uma biblioteca externa. Coroutines são para <em>concorrência cooperativa</em>: intercalar tarefas de forma controlada dentro de um único thread.
                 </div>
             </section>
 
@@ -4385,200 +4369,271 @@ print(u.ativo)                  -- false</pre>
 
             <!-- String Library -->
             <section id="lib-string">
-                <h2>Biblioteca de Strings</h2>
+                <h2>string — biblioteca de strings</h2>
 
-                <h3>string.len() / #</h3>
-                <pre>local texto = "Lua"
-print(string.len(texto))  -- Output: 3
-print(#texto)             -- Output: 3 (equivalente)</pre>
+                <p>A biblioteca <code>string</code> fornece funções para manipular texto. Todas as funções podem ser chamadas como <code>string.funcao(s, ...)</code> ou usando a sintaxe de método <code>s:funcao(...)</code> — as duas formas são equivalentes porque strings têm <code>string</code> como metatable com <code>__index</code>.</p>
 
-                <h3>string.upper() / lower()</h3>
-                <pre>print(string.upper("Lua"))  -- Output: LUA
-print(string.lower("Lua"))  -- Output: lua</pre>
+                <h3>string.len(s)</h3>
+                <p>Retorna o comprimento da string em bytes. Para strings ASCII é igual ao número de caracteres. Para UTF-8, um caractere pode ocupar mais de um byte. O operador <code>#s</code> é equivalente e mais idiomático.</p>
+                <pre>local s = "Lua"
+print(string.len(s))  -- 3
+print(#s)             -- 3  (equivalente, preferido)</pre>
 
-                <h3>string.sub() - Substring</h3>
-                <pre>local texto = "Linguagem Lua"
-print(string.sub(texto, 1, 9))   -- Output: Linguagem
-print(string.sub(texto, 11))     -- Output: Lua
-print(string.sub(texto, -3))     -- Output: Lua (últimos 3)</print>
+                <h3>string.upper(s) / string.lower(s)</h3>
+                <p><code>upper</code> retorna uma nova string com todos os caracteres convertidos para maiúsculas. <code>lower</code> faz o oposto. A string original não é modificada — strings são imutáveis.</p>
+                <pre>print(string.upper("Lua"))   -- LUA
+print(string.lower("LUA"))   -- lua
+print(("hello"):upper())     -- HELLO  (sintaxe de método)</pre>
 
-                <h3>string.find() - Procurar</h3>
-                <pre>local texto = "Olá Lua Lua"
+                <h3>string.sub(s, i, j)</h3>
+                <p>Retorna a substring de <code>s</code> do índice <code>i</code> até <code>j</code> (inclusive). Índices negativos contam do final: <code>-1</code> é o último caractere, <code>-2</code> é o penúltimo, etc. Se <code>j</code> for omitido, vai até o final da string.</p>
+                <pre>local s = "Linguagem Lua"
+print(string.sub(s, 1, 9))   -- Linguagem  (posições 1 a 9)
+print(string.sub(s, 11))     -- Lua        (posição 11 até o fim)
+print(string.sub(s, -3))     -- Lua        (últimos 3 caracteres)
+print(string.sub(s, -3, -1)) -- Lua        (equivalente)</pre>
 
--- Encontrar posição
-local inicio, fim = string.find(texto, "Lua")
-print(inicio, fim)  -- Output: 5    7
+                <h3>string.find(s, padrão, inicio, simples)</h3>
+                <p>Procura <code>padrão</code> dentro de <code>s</code> e retorna as posições de início e fim da primeira ocorrência, ou <code>nil</code> se não encontrar. O argumento <code>inicio</code> define a posição de onde começar a busca (padrão: 1). Se <code>simples</code> for <code>true</code>, trata o padrão como texto literal em vez de padrão Lua.</p>
+                <pre>local s = "Olá Lua Lua"
+local ini, fim = string.find(s, "Lua")
+print(ini, fim)   -- 5    7
 
--- Procurar todas
-local s = 1
-while true do
-    local ini, fim = string.find(texto, "Lua", s)
-    if not ini then break end
-    print("Encontrado em: " .. ini .. "-" .. fim)
-    s = fim + 1
-end</pre>
+-- Buscar a partir da posição 8 (para encontrar a segunda ocorrência)
+local ini2, fim2 = string.find(s, "Lua", 8)
+print(ini2, fim2) -- 9    11
 
-                <h3>string.gsub() - Substituir</h3>
-                <pre>local texto = "Lua é ótima. Lua é poderosa."
-local novo = string.gsub(texto, "Lua", "Python")
-print(novo)
--- Output: Python é ótima. Python é poderosa.
+-- Retorna nil se não encontrar
+print(string.find(s, "Python"))  -- nil</pre>
 
--- Com limite de substituições
-local novo2 = string.gsub(texto, "Lua", "Ruby", 1)
-print(novo2)
--- Output: Ruby é ótima. Lua é poderosa.</pre>
+                <h3>string.gsub(s, padrão, substituição, n)</h3>
+                <p>Substitui todas as ocorrências de <code>padrão</code> em <code>s</code> pela <code>substituição</code>. Retorna a nova string e o número de substituições feitas. O argumento <code>n</code> limita o número de substituições. A substituição pode ser uma string, uma table (chave = captura, valor = substituto) ou uma função (recebe as capturas, retorna o substituto).</p>
+                <pre>local s = "Lua é ótima. Lua é rápida."
 
-                <h3>string.format() - Formatação</h3>
-                <pre>print(string.format("%s tem %d anos", "João", 30))
--- Output: João tem 30 anos
+-- Substituir todas as ocorrências
+local novo, n = string.gsub(s, "Lua", "Python")
+print(novo)   -- Python é ótima. Python é rápida.
+print(n)      -- 2  (número de substituições)
 
-print(string.format("PI = %.2f", math.pi))
--- Output: PI = 3.14
+-- Limitar a 1 substituição
+print(string.gsub(s, "Lua", "Ruby", 1))
+-- Ruby é ótima. Lua é rápida.    1</pre>
 
--- Especificadores comuns:
--- %s = string
--- %d = integer
--- %f = float
--- %x = hexadecimal
--- %.Nf = float com N casas decimais</pre>
+                <h3>string.format(fmt, ...)</h3>
+                <p>Formata uma string usando especificadores de formato, similar ao <code>printf</code> do C. Retorna a string formatada. É a forma correta de construir strings com valores mistos — mais eficiente e legível do que concatenação.</p>
+                <pre>-- %s = string, %d = inteiro, %f = float, %q = string com aspas
+print(string.format("%s tem %d anos", "João", 30))
+-- João tem 30 anos
 
-                <h3>string.char() / byte()</h3>
-                <pre>print(string.char(65, 66, 67))  -- Output: ABC
-print(string.byte("ABC"))        -- Output: 65
+print(string.format("PI = %.4f", math.pi))
+-- PI = 3.1416
 
-local a, b, c = string.byte("ABC", 1, 3)
-print(a, b, c)  -- Output: 65    66    67</pre>
+print(string.format("Hex: %x  Oct: %o", 255, 255))
+-- Hex: ff  Oct: 377
 
-                <h3>string.rep() - Repetir</h3>
-                <pre>print(string.rep("ab", 3))   -- Output: ababab
-print(string.rep("-", 10))   -- Output: ----------</pre>
+print(string.format("%-10s|%10s", "esq", "dir"))
+-- esq       |       dir  (alinhamento)</pre>
 
-                <h3>string.reverse() - Inverter</h3>
-                <pre>print(string.reverse("Lua"))  -- Output: auL</pre>
+                <h3>string.byte(s, i, j) / string.char(...)</h3>
+                <p><code>byte</code> retorna os valores numéricos (ASCII/UTF-8) dos caracteres nas posições <code>i</code> a <code>j</code>. <code>char</code> faz o inverso: recebe números e retorna a string com os caracteres correspondentes.</p>
+                <pre>print(string.byte("ABC"))        -- 65  (só o primeiro)
+print(string.byte("ABC", 1, 3))  -- 65  66  67
 
-                <h3>string.match() / gmatch() - Padrões</h3>
-                <p>Lua tem um sistema de padrões simples (não é regex completo):</p>
-                <pre>local email = "joao@example.com"
-local usuario, dominio = string.match(email, "(.+)@(.+)")
-print(usuario, dominio)  -- Output: joao    example.com
+print(string.char(65, 66, 67))   -- ABC
+print(string.char(104, 105))     -- hi</pre>
 
--- gmatch: iterador
-for palavra in string.gmatch("um dois três", "%S+") do
+                <h3>string.rep(s, n, sep)</h3>
+                <p>Retorna a string <code>s</code> repetida <code>n</code> vezes. O argumento opcional <code>sep</code> é inserido entre cada repetição.</p>
+                <pre>print(string.rep("ab", 3))        -- ababab
+print(string.rep("-", 20))        -- --------------------
+print(string.rep("ha", 3, ", "))  -- ha, ha, ha</pre>
+
+                <h3>string.reverse(s)</h3>
+                <p>Retorna a string com os bytes em ordem inversa.</p>
+                <pre>print(string.reverse("Lua"))    -- auL
+print(string.reverse("12345"))  -- 54321</pre>
+
+                <h3>string.match(s, padrão, inicio)</h3>
+                <p>Procura <code>padrão</code> em <code>s</code> e retorna as capturas (partes entre parênteses no padrão). Se não houver capturas, retorna a substring que casou. Retorna <code>nil</code> se não encontrar. Diferente de <code>find</code>, não retorna posições.</p>
+                <pre>-- Sem capturas: retorna a substring que casou
+print(string.match("2024-01-15", "%d+"))   -- 2024
+
+-- Com capturas: retorna cada captura separada
+local ano, mes, dia = string.match("2024-01-15", "(%d+)-(%d+)-(%d+)")
+print(ano, mes, dia)   -- 2024    01    15
+
+-- Extrair usuário e domínio de email
+local user, dom = string.match("joao@example.com", "(.+)@(.+)")
+print(user, dom)       -- joao    example.com</pre>
+
+                <h3>string.gmatch(s, padrão)</h3>
+                <p>Retorna um iterador que percorre todas as ocorrências de <code>padrão</code> em <code>s</code>. Cada chamada ao iterador retorna as capturas da próxima ocorrência. Ideal para dividir strings ou extrair múltiplos valores.</p>
+                <pre>-- Iterar sobre todas as palavras
+for palavra in string.gmatch("um dois três quatro", "%a+") do
     print(palavra)
 end
--- Output: um dois três (em linhas)
+-- um / dois / três / quatro
 
--- Padrões comuns:
--- . = qualquer caractere
--- %a = letra
--- %d = dígito
--- %s = espaço
--- %w = alphanúmerico
--- + = uma ou mais
--- * = zero ou mais
--- ? = zero ou um</pre>
+-- Extrair pares chave=valor
+for chave, valor in string.gmatch("x=10, y=20, z=30", "(%w+)=(%d+)") do
+    print(chave, valor)
+end
+-- x  10 / y  20 / z  30</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Padrões Lua vs Regex:</strong> Lua usa seu próprio sistema de padrões, mais simples que regex completo. Os mais usados: <code>%d</code> = dígito, <code>%a</code> = letra, <code>%s</code> = espaço, <code>%w</code> = alfanumérico, <code>%p</code> = pontuação, <code>.</code> = qualquer caractere. Quantificadores: <code>+</code> (um ou mais), <code>*</code> (zero ou mais), <code>?</code> (zero ou um), <code>-</code> (zero ou mais, não-guloso).
+                </div>
             </section>
 
             <!-- Table Library -->
             <section id="lib-table">
-                <h2>Biblioteca de Tables</h2>
+                <h2>table — biblioteca de tables</h2>
 
-                <h3>table.insert()</h3>
-                <pre>local lista = {1, 2, 3}
-table.insert(lista, 4)
-print(table.concat(lista, ", "))  -- Output: 1, 2, 3, 4
+                <p>A biblioteca <code>table</code> fornece funções para manipular a parte sequencial (array) de tables. A maioria das funções opera sobre índices numéricos e assume que a table é uma sequência contígua começando em 1.</p>
 
--- Inserir em posição específica
-table.insert(lista, 2, 1.5)
-print(table.concat(lista, ", "))  -- Output: 1, 1.5, 2, 3, 4</pre>
+                <h3>table.insert(t, [pos,] valor)</h3>
+                <p>Insere <code>valor</code> na table <code>t</code>. Com dois argumentos, insere no final (equivalente a <code>t[#t+1] = valor</code>). Com três argumentos, insere na posição <code>pos</code> e desloca todos os elementos seguintes uma posição para frente. Retorna nada.</p>
+                <pre>local t = {1, 2, 3}
 
-                <h3>table.remove()</h3>
-                <pre>local lista = {1, 2, 3, 4, 5}
-table.remove(lista, 3)
-print(table.concat(lista, ", "))  -- Output: 1, 2, 4, 5
+table.insert(t, 4)          -- insere no final
+-- t = {1, 2, 3, 4}
 
-local ultimo = table.remove(lista)  -- Remove último
-print(ultimo)  -- Output: 5</pre>
+table.insert(t, 2, 1.5)     -- insere na posição 2, desloca os demais
+-- t = {1, 1.5, 2, 3, 4}
 
-                <h3>table.concat()</h3>
-                <pre>local lista = {"a", "b", "c"}
-print(table.concat(lista))           -- Output: abc
-print(table.concat(lista, ", "))     -- Output: a, b, c
-print(table.concat(lista, "-", 1, 2)) -- Output: a-b</print>
+print(table.concat(t, ", ")) -- 1, 1.5, 2, 3, 4</pre>
 
-                <h3>table.sort()</h3>
-                <pre>local numeros = {3, 1, 4, 1, 5, 9, 2, 6}
-table.sort(numeros)
-print(table.concat(numeros, ", "))
--- Output: 1, 1, 2, 3, 4, 5, 6, 9
+                <h3>table.remove(t, [pos])</h3>
+                <p>Remove e retorna o elemento na posição <code>pos</code>. Os elementos seguintes são deslocados para preencher o espaço. Sem <code>pos</code>, remove e retorna o último elemento — equivalente a um pop de pilha.</p>
+                <pre>local t = {10, 20, 30, 40, 50}
 
--- Ordenação customizada
-local nomes = {"Bob", "Alice", "Charlie"}
-table.sort(nomes, function(a, b)
-    return string.len(a) < string.len(b)  -- Por tamanho
-end)
-print(table.concat(nomes, ", "))
--- Output: Bob, Alice, Charlie</print>
+local removido = table.remove(t, 2)  -- remove posição 2
+print(removido)                       -- 20
+print(table.concat(t, ", "))          -- 10, 30, 40, 50
 
-                <h3>table.maxn()</h3>
-                <pre>local tabela = {10, 20, 30}
-print(table.maxn(tabela))  -- Output: 3
+local ultimo = table.remove(t)        -- remove o último
+print(ultimo)                         -- 50
+print(table.concat(t, ", "))          -- 10, 30, 40</pre>
 
-local com_buraco = {[1] = "a", [5] = "b"}
-print(table.maxn(com_buraco))  -- Output: 5</pre>
+                <h3>table.concat(t, sep, i, j)</h3>
+                <p>Junta os elementos da table em uma única string, separados por <code>sep</code>. Os elementos precisam ser strings ou números. <code>i</code> e <code>j</code> definem o intervalo (padrão: 1 até <code>#t</code>). É muito mais eficiente do que concatenar com <code>..</code> em um loop.</p>
+                <pre>local t = {"a", "b", "c", "d"}
+
+print(table.concat(t))           -- abcd  (sem separador)
+print(table.concat(t, ", "))     -- a, b, c, d
+print(table.concat(t, "-", 2, 3)) -- b-c  (só posições 2 a 3)</pre>
+
+                <h3>table.sort(t, [comp])</h3>
+                <p>Ordena a table <em>in-place</em> (modifica a table original). Sem segundo argumento, usa a ordem padrão (<code><</code>). Com uma função de comparação <code>comp(a, b)</code>, ordena de acordo com ela — a função deve retornar <code>true</code> se <code>a</code> deve vir antes de <code>b</code>. A ordenação não é estável (elementos iguais podem trocar de posição).</p>
+                <pre>local nums = {3, 1, 4, 1, 5, 9, 2, 6}
+table.sort(nums)
+print(table.concat(nums, " "))   -- 1 1 2 3 4 5 6 9
+
+-- Ordem decrescente
+table.sort(nums, function(a, b) return a > b end)
+print(table.concat(nums, " "))   -- 9 6 5 4 3 2 1 1
+
+-- Ordenar table de objetos por campo
+local pessoas = {
+    {nome = "Carlos", idade = 30},
+    {nome = "Ana",    idade = 25},
+    {nome = "Bruno",  idade = 35},
+}
+table.sort(pessoas, function(a, b) return a.idade < b.idade end)
+for _, p in ipairs(pessoas) do
+    print(p.nome, p.idade)
+end
+-- Ana 25 / Carlos 30 / Bruno 35</pre>
+
+                <h3>table.unpack(t, i, j)</h3>
+                <p>Retorna os elementos da table como múltiplos valores separados. Equivalente a escrever <code>t[i], t[i+1], ..., t[j]</code>. Útil para passar um array como argumentos de uma função. Em Lua 5.1 a função se chama <code>unpack()</code> (sem o prefixo <code>table.</code>).</p>
+                <pre>local t = {10, 20, 30}
+
+print(table.unpack(t))          -- 10    20    30
+
+-- Passar array como argumentos de função
+local function somar(a, b, c) return a + b + c end
+print(somar(table.unpack(t)))   -- 60
+
+-- Intervalo específico
+print(table.unpack(t, 2, 3))    -- 20    30</pre>
             </section>
 
             <!-- Math Library -->
             <section id="lib-math">
-                <h2>Biblioteca de Matemática</h2>
+                <h2>math — biblioteca matemática</h2>
+
+                <p>A biblioteca <code>math</code> fornece funções matemáticas e constantes. Todas as funções trigonométricas trabalham em <strong>radianos</strong>, não graus.</p>
+
+                <h3>math.floor(x) / math.ceil(x)</h3>
+                <p><code>floor</code> arredonda para baixo (retorna o maior inteiro ≤ x). <code>ceil</code> arredonda para cima (retorna o menor inteiro ≥ x). Ambos retornam um número, não uma string.</p>
+                <pre>print(math.floor(3.9))   -- 3
+print(math.floor(-3.1))  -- -4  (atenção: vai para baixo, não para zero)
+print(math.ceil(3.1))    -- 4
+print(math.ceil(-3.9))   -- -3</pre>
+
+                <h3>math.abs(x)</h3>
+                <p>Retorna o valor absoluto de <code>x</code> — sempre positivo ou zero.</p>
+                <pre>print(math.abs(-5))    -- 5
+print(math.abs(3.14))  -- 3.14
+print(math.abs(0))     -- 0</pre>
+
+                <h3>math.max(...) / math.min(...)</h3>
+                <p>Retornam o maior e o menor valor entre os argumentos passados. Aceitam qualquer número de argumentos.</p>
+                <pre>print(math.max(3, 1, 4, 1, 5, 9))  -- 9
+print(math.min(3, 1, 4, 1, 5, 9))  -- 1
+
+-- Útil para limitar valores a um intervalo
+local function clamp(v, min, max)
+    return math.max(min, math.min(max, v))
+end
+print(clamp(15, 0, 10))   -- 10
+print(clamp(-5, 0, 10))   -- 0
+print(clamp(7,  0, 10))   -- 7</pre>
+
+                <h3>math.sqrt(x)</h3>
+                <p>Retorna a raiz quadrada de <code>x</code>. Equivalente a <code>x ^ 0.5</code>, mas pode ser mais rápido.</p>
+                <pre>print(math.sqrt(9))    -- 3.0
+print(math.sqrt(2))    -- 1.4142135623731</pre>
+
+                <h3>math.modf(x)</h3>
+                <p>Retorna dois valores: a parte inteira e a parte fracionária de <code>x</code>. Útil quando você precisa dos dois separadamente.</p>
+                <pre>local inteira, fracao = math.modf(3.75)
+print(inteira, fracao)   -- 3    0.75
+
+local i, f = math.modf(-3.75)
+print(i, f)              -- -3   -0.75</pre>
+
+                <h3>math.random([m, n]) / math.randomseed(x)</h3>
+                <p><code>math.random()</code> sem argumentos retorna um float aleatório entre 0 e 1. Com um argumento <code>m</code>, retorna um inteiro entre 1 e <code>m</code>. Com dois argumentos, retorna um inteiro entre <code>m</code> e <code>n</code>. Sempre chame <code>math.randomseed(os.time())</code> no início do programa para gerar sequências diferentes a cada execução — sem isso, a sequência é sempre a mesma.</p>
+                <pre>math.randomseed(os.time())   -- inicializar com tempo atual
+
+print(math.random())         -- float entre 0.0 e 1.0
+print(math.random(6))        -- inteiro entre 1 e 6 (dado)
+print(math.random(10, 20))   -- inteiro entre 10 e 20</pre>
+
+                <h3>math.huge / math.pi</h3>
+                <p><code>math.huge</code> representa infinito positivo. Útil como valor inicial em buscas de mínimo. <code>-math.huge</code> é infinito negativo. <code>math.pi</code> é π com precisão double.</p>
+                <pre>print(math.pi)      -- 3.1415926535898
+print(math.huge)    -- inf
+print(-math.huge)   -- -inf
+print(1/0)          -- inf  (divisão por zero retorna inf, não erro)</pre>
 
                 <h3>Trigonometria</h3>
-                <pre>print(math.sin(math.pi / 2))    -- Output: 1
-print(math.cos(0))              -- Output: 1
-print(math.tan(math.pi / 4))    -- Output: 1
+                <p>Todas as funções trigonométricas usam radianos. Use <code>math.rad(graus)</code> para converter graus em radianos e <code>math.deg(rad)</code> para o inverso.</p>
+                <pre>print(math.sin(math.pi / 2))   -- 1.0  (seno de 90°)
+print(math.cos(0))             -- 1.0  (cosseno de 0°)
+print(math.tan(math.pi / 4))   -- 1.0  (tangente de 45°)
 
-print(math.asin(0.5))           -- Arcseno: ~0.5236 rad (30°)
-print(math.acos(1))             -- Arccoseno: 0
-print(math.atan(1))             -- Arctangente: ~0.7854 rad (45°)</pre>
+-- Converter graus para radianos
+print(math.sin(math.rad(90)))  -- 1.0  (mesmo resultado)
+print(math.deg(math.pi))       -- 180.0</pre>
 
-                <h3>Radianos e Graus</h3>
-                <pre>print(math.deg(math.pi))  -- Output: 180
-print(math.rad(180))      -- Output: ~3.14159</pre>
-
-                <h3>Exponencial e Logarítmica</h3>
-                <pre>print(math.exp(1))        -- Output: ~2.71828 (e)
-print(math.log(10))       -- Output: ~2.30259 (ln)
-print(math.log10(100))    -- Output: 2 (log base 10)
-print(math.pow(2, 8))     -- Output: 256
-print(2 ^ 8)              -- Output: 256 (equivalente)</pre>
-
-                <h3>Arredondamento</h3>
-                <pre>print(math.floor(3.7))   -- Output: 3
-print(math.ceil(3.2))    -- Output: 4
-print(math.abs(-5))      -- Output: 5
-print(math.modf(3.14))   -- Output: 3    0.14</press>
-
-                <h3>Min e Max</h3>
-                <pre>print(math.min(5, 2, 8, 1))  -- Output: 1
-print(math.max(5, 2, 8, 1))  -- Output: 8</press>
-
-                <h3>Aleatórios</h3>
-                <pre>-- Seed (para reprodução)
-math.randomseed(os.time())
-
--- Entre 0 e 1
-print(math.random())
-
--- Inteiro entre 1 e 10
-print(math.random(1, 10))
-
--- Inteiro entre 1 e 100
-print(math.random(100))</pre>
-
-                <h3>Constantes</h3>
-                <pre>print(math.pi)    -- Output: ~3.14159
-print(math.huge)  -- Output: inf (infinito)</print>
+                <h3>math.log(x, base)</h3>
+                <p>Retorna o logaritmo de <code>x</code>. Sem segundo argumento, retorna o logaritmo natural (base e). Com base especificada, retorna o logaritmo nessa base.</p>
+                <pre>print(math.log(math.exp(1)))  -- 1.0  (ln(e) = 1)
+print(math.log(100, 10))      -- 2.0  (log₁₀(100) = 2)
+print(math.log(8, 2))         -- 3.0  (log₂(8) = 3)</pre>
             </section>
 
             <!-- IO Library -->
@@ -4895,102 +4950,190 @@ end
 
             <!-- OS Library -->
             <section id="lib-os">
-                <h2>Biblioteca de Sistema Operacional</h2>
+                <h2>os — sistema operacional</h2>
 
-                <h3>Data e Hora</h3>
+                <p>A biblioteca <code>os</code> fornece acesso a funcionalidades do sistema operacional: tempo, datas, variáveis de ambiente, execução de comandos e gerenciamento de arquivos.</p>
+
+                <h3>os.time([tabela])</h3>
+                <p>Sem argumentos, retorna o tempo atual como um número inteiro — segundos desde o epoch Unix (1 de janeiro de 1970, 00:00:00 UTC). Com uma tabela de data/hora, converte essa data para o número de segundos correspondente.</p>
                 <pre>local agora = os.time()
-print(agora)  -- Output: 1699564800 (segundos desde epoch)
+print(agora)   -- ex: 1700000000  (segundos desde epoch)
 
--- Formatar data
-print(os.date())                    -- Padrão
-print(os.date("%Y-%m-%d"))          -- 2023-11-09
-print(os.date("%H:%M:%S"))          -- 15:30:45
-print(os.date("%A, %B %d, %Y"))     -- Thursday, November 09, 2023</pre>
+-- Converter data específica para timestamp
+local t = os.time({year=2024, month=1, day=15, hour=12, min=0, sec=0})
+print(t)</pre>
 
-                <h3>Diferença de Tempo</h3>
-                <pre>local tempo1 = os.time()
--- ... fazer algo demorado ...
-local tempo2 = os.time()
-local diferenca = os.difftime(tempo2, tempo1)
-print("Levou " .. diferenca .. " segundos")</pre>
+                <h3>os.date([formato, tempo])</h3>
+                <p>Formata uma data/hora como string. Sem argumentos, retorna a data atual em formato padrão do sistema. O formato usa especificadores precedidos de <code>%</code>. Se o formato começar com <code>!</code>, usa UTC em vez do horário local. Se o formato for <code>"*t"</code>, retorna uma table com campos <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>min</code>, <code>sec</code>, <code>wday</code>, <code>yday</code>, <code>isdst</code>.</p>
+                <pre>print(os.date())                     -- Thu Jan 15 12:00:00 2024
+print(os.date("%Y-%m-%d"))           -- 2024-01-15
+print(os.date("%H:%M:%S"))           -- 12:00:00
+print(os.date("%d/%m/%Y %H:%M"))     -- 15/01/2024 12:00
 
-                <h3>Executar Comandos</h3>
+-- Retornar como table
+local t = os.date("*t")
+print(t.year, t.month, t.day)        -- 2024    1    15
+print(t.hour, t.min, t.sec)          -- 12    0    0</pre>
+
+                <h3>os.difftime(t2, t1)</h3>
+                <p>Retorna a diferença em segundos entre dois timestamps. Embora em muitos sistemas seja simplesmente <code>t2 - t1</code>, usar <code>difftime</code> é mais portável.</p>
+                <pre>local inicio = os.time()
+-- ... código que demora ...
+local fim = os.time()
+
+local segundos = os.difftime(fim, inicio)
+print(string.format("Levou %.1f segundos", segundos))</pre>
+
+                <h3>os.clock()</h3>
+                <p>Retorna o tempo de CPU usado pelo programa em segundos. Diferente de <code>os.time()</code>, mede tempo de processamento, não tempo real. Útil para medir performance de código.</p>
+                <pre>local t0 = os.clock()
+-- ... código para medir ...
+local t1 = os.clock()
+print(string.format("CPU: %.4f segundos", t1 - t0))</pre>
+
+                <h3>os.getenv(nome)</h3>
+                <p>Retorna o valor da variável de ambiente <code>nome</code> como string, ou <code>nil</code> se a variável não existir.</p>
+                <pre>print(os.getenv("HOME"))    -- /home/usuario  (Linux/Mac)
+print(os.getenv("PATH"))    -- lista de diretórios
+print(os.getenv("USER"))    -- nome do usuário atual
+print(os.getenv("NAOEXISTE"))  -- nil</pre>
+
+                <h3>os.execute(comando)</h3>
+                <p>Executa um comando do shell. Retorna <code>true</code> se o comando terminou com sucesso (código de saída 0), ou <code>nil</code> mais o código de saída em caso de falha. O programa Lua fica bloqueado até o comando terminar.</p>
                 <pre>-- Linux/Mac
 os.execute("ls -la")
-os.execute("mkdir nova_pasta")
+os.execute("mkdir -p nova_pasta")
 
 -- Windows
 os.execute("dir")
-os.execute("mkdir nova_pasta")</pre>
+os.execute("mkdir nova_pasta")
 
-                <h3>Variáveis de Ambiente</h3>
-                <pre>print(os.getenv("HOME"))  -- Linux/Mac
-print(os.getenv("PATH"))  -- Lista de caminhos
-print(os.getenv("USER"))  -- Usuário atual</pre>
+-- Verificar sucesso
+local ok = os.execute("test -f arquivo.txt")
+if ok then
+    print("arquivo existe")
+end</pre>
 
-                <h3>Gerenciamento de Arquivos</h3>
+                <h3>os.remove(caminho) / os.rename(antigo, novo)</h3>
+                <p><code>os.remove</code> deleta um arquivo ou diretório vazio. <code>os.rename</code> renomeia ou move um arquivo. Ambos retornam <code>true</code> em caso de sucesso, ou <code>nil</code> mais uma mensagem de erro em caso de falha.</p>
                 <pre>-- Deletar arquivo
-os.remove("arquivo.txt")
+local ok, err = os.remove("temp.txt")
+if not ok then print("Erro:", err) end
 
--- Renomear
-os.rename("antigo.txt", "novo.txt")
+-- Renomear / mover
+local ok, err = os.rename("antigo.txt", "novo.txt")
+if not ok then print("Erro:", err) end</pre>
 
--- Nome temporário
-local temp = os.tmpname()
-print(temp)  -- Output: /tmp/lua_XXXXX (ou similar)</press>
+                <h3>os.exit([codigo])</h3>
+                <p>Encerra o programa imediatamente. O código de saída padrão é 0 (sucesso). Qualquer outro valor indica erro — por convenção, valores diferentes de 0 indicam falha. Você pode passar <code>true</code> (equivale a 0) ou <code>false</code> (equivale a 1).</p>
+                <pre>-- Sair com sucesso
+os.exit(0)
+os.exit(true)   -- equivalente
 
-                <h3>Sair do Programa</h3>
-                <pre>if not arquivo then
-    print("Erro: arquivo não encontrado")
-    os.exit(1)  -- Código de erro
-end
+-- Sair com erro
+os.exit(1)
+os.exit(false)  -- equivalente
 
-os.exit(0)  -- Sucesso</press>
+-- Uso típico: sair cedo em caso de erro
+local f, err = io.open("config.txt", "r")
+if not f then
+    io.stderr:write("Erro: " .. err .. "\n")
+    os.exit(1)
+end</pre>
             </section>
 
             <!-- Debug Library -->
             <section id="debug">
-                <h2>Debug e Tratamento de Erros</h2>
+                <h2>Debug e tratamento de erros</h2>
 
-                <h3>error() e pcall()</h3>
+                <p>Lua tem dois mecanismos para lidar com erros: <code>error()</code> para lançar erros e <code>pcall()</code>/<code>xpcall()</code> para capturá-los sem encerrar o programa. A biblioteca <code>debug</code> fornece ferramentas de introspecção para inspecionar o estado do programa em tempo de execução.</p>
+
+                <h3>error(mensagem, nivel)</h3>
+                <p><code>error(msg)</code> lança um erro que interrompe a execução da função atual e propaga para cima até ser capturado por um <code>pcall</code> ou encerrar o programa. O argumento <code>nivel</code> controla onde o erro é reportado: <code>1</code> (padrão) aponta para onde <code>error</code> foi chamado, <code>2</code> aponta para quem chamou a função que chamou <code>error</code>. Você pode passar qualquer valor como mensagem — não precisa ser string.</p>
                 <pre>local function dividir(a, b)
     if b == 0 then
-        error("Divisão por zero!")
+        error("divisão por zero")   -- nível 1: aponta para esta linha
     end
     return a / b
 end
 
--- Capturar erro com pcall
-local sucesso, resultado = pcall(dividir, 10, 0)
-if sucesso then
-    print("Resultado: " .. resultado)
-else
-    print("Erro: " .. resultado)
-end</press>
+-- Sem pcall: o programa encerra com a mensagem de erro
+-- dividir(10, 0)   -- input:3: divisão por zero</pre>
 
-                <h3>debug.traceback()</h3>
-                <pre>function funcao_a()
-    funcao_b()
+                <h3>pcall(f, ...)</h3>
+                <p><code>pcall</code> (protected call) chama a função <code>f</code> com os argumentos <code>...</code> em modo protegido. Se a função executar sem erros, retorna <code>true</code> seguido dos valores retornados pela função. Se ocorrer um erro, retorna <code>false</code> seguido da mensagem de erro. O programa continua normalmente após o <code>pcall</code>.</p>
+                <pre>local ok, resultado = pcall(dividir, 10, 2)
+if ok then
+    print("Resultado:", resultado)   -- Resultado: 5.0
 end
 
-function funcao_b()
-    error(debug.traceback("Erro encontrado", 2))
+local ok, err = pcall(dividir, 10, 0)
+if not ok then
+    print("Erro capturado:", err)    -- Erro capturado: input:3: divisão por zero
 end
 
-funcao_a()  -- Imprime stack trace</press>
+-- pcall com função anônima (útil para capturar erros em blocos)
+local ok, err = pcall(function()
+    local t = nil
+    return t.campo   -- erro: tentativa de indexar nil
+end)
+print(ok, err)   -- false    input:...: attempt to index a nil value</pre>
 
-                <h3>debug.getinfo()</h3>
-                <pre>local info = debug.getinfo(1)
-print(info.name)         -- Nome da função
-print(info.source)       -- Arquivo
-print(info.currentline)  -- Linha atual</press>
+                <h3>xpcall(f, handler, ...)</h3>
+                <p><code>xpcall</code> é como <code>pcall</code>, mas aceita uma função de tratamento de erro como segundo argumento. Essa função é chamada com a mensagem de erro antes que o stack seja desfeito — o que permite capturar o stack trace. Retorna <code>true/false</code> mais o retorno da função handler.</p>
+                <pre>local function handler(err)
+    return err .. "\n" .. debug.traceback("", 2)
+end
+
+local ok, info = xpcall(function()
+    error("algo deu errado")
+end, handler)
+
+if not ok then
+    print(info)   -- mensagem + stack trace completo
+end</pre>
+
+                <h3>debug.traceback(mensagem, nivel)</h3>
+                <p>Retorna uma string com o stack trace atual — a sequência de chamadas de função que levou ao ponto atual. Muito útil dentro de handlers de <code>xpcall</code> para saber exatamente onde o erro ocorreu.</p>
+                <pre>local function c() error("erro em c") end
+local function b() c() end
+local function a() b() end
+
+local ok, err = xpcall(a, function(e)
+    return e .. "\n" .. debug.traceback()
+end)
+print(err)
+-- input:1: erro em c
+-- stack traceback:
+--   input:1: in function 'c'
+--   input:2: in function 'b'
+--   input:3: in function 'a'
+--   ...</pre>
+
+                <h3>debug.getinfo(f, campos)</h3>
+                <p>Retorna uma table com informações sobre uma função ou nível de stack. Útil para logging e ferramentas de debug. O argumento pode ser uma função ou um número (nível do stack: 1 = função atual, 2 = quem chamou, etc.).</p>
+                <pre>local function minha_funcao()
+    local info = debug.getinfo(1, "nSl")  -- nome, source, linha
+    print("função:", info.name)
+    print("arquivo:", info.short_src)
+    print("linha atual:", info.currentline)
+end
+
+minha_funcao()</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Padrão recomendado para erros:</strong> use <code>pcall</code> para operações que podem falhar (I/O, parsing, chamadas externas). Para erros de programação (argumentos inválidos, estado inconsistente), use <code>error()</code> diretamente — esses erros devem ser corrigidos no código, não capturados em runtime.
+                </div>
             </section>
 
             <!-- Style Guide -->
             <section id="style-guide">
-                <h2>Style Guide - Código Limpo</h2>
+                <h2>Style Guide</h2>
+
+                <p>Código consistente é mais fácil de ler, revisar e manter. Estas convenções são amplamente adotadas na comunidade Lua.</p>
 
                 <h3>Nomenclatura</h3>
+                <p>Use nomes descritivos em <code>snake_case</code> para variáveis e funções. Constantes em <code>UPPER_CASE</code>. Classes/módulos em <code>PascalCase</code>. Evite abreviações que não sejam óbvias — <code>usuario</code> é melhor que <code>usr</code>.</p>
                 <div class="comparison">
                     <div class="comparison-item bad">
                         <div class="comparison-label">❌ Ruim</div>
@@ -5009,7 +5152,7 @@ local mensagem = "string"</pre>
                 </div>
 
                 <h3>Indentação</h3>
-                <p>Use 4 espaços (não tabs):</p>
+                <p>Use 4 espaços por nível de indentação — não tabs. Editores modernos podem converter tabs em espaços automaticamente. Consistência é mais importante do que o número exato de espaços.</p>
                 <div class="comparison">
                     <div class="comparison-item bad">
                         <div class="comparison-label">❌ Inconsistente</div>
@@ -5043,7 +5186,8 @@ local x=10
 local y=20
 if x>y then print("maior")end</pre>
 
-                <h3>Comentários Úteis</h3>
+                <h3>Comentários úteis</h3>
+                <p>Comente o <em>porquê</em>, não o <em>o quê</em>. O código já mostra o que está fazendo — o comentário deve explicar a intenção, a decisão de design, ou uma limitação não óbvia.</p>
                 <pre>-- ❌ Ruim (óbvio)
 local x = 10  -- x recebe 10
 
@@ -5056,7 +5200,8 @@ local limite = 10  -- máximo de tentativas antes de cancelar
 -- ✅ Bom (claro)
 -- Valida e normaliza entrada do usuário</press>
 
-                <h3>Funções Bem Documentadas</h3>
+                <h3>Documentar funções</h3>
+                <p>Para funções públicas (especialmente em módulos), documente os parâmetros, o retorno e um exemplo de uso. Ferramentas como LDoc podem gerar documentação HTML a partir desses comentários.</p>
                 <pre>--[[
     Calcula a média aritmética de números
     
