@@ -1,0 +1,2190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação Completa de Lua</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2a1a4e;
+            --secondary: #5a3a8a;
+            --accent: #ffc857;
+            --text: #1a1a2e;
+            --text-light: #6b7280;
+            --bg: #f8f9fa;
+            --code-bg: #1e1e2e;
+            --code-text: #e0e0e0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            width: 280px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+        }
+
+        aside h1 {
+            font-size: 1.5rem;
+            padding: 0 1.5rem 2rem;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-section h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            padding: 0 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .nav-section ul {
+            list-style: none;
+        }
+
+        .nav-section a {
+            display: block;
+            padding: 0.6rem 1.5rem;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-section a:hover {
+            background: rgba(255,255,255,0.1);
+            border-left-color: var(--accent);
+            color: white;
+            padding-left: 1.7rem;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: 280px;
+            flex: 1;
+            padding: 3rem;
+            max-width: 1200px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        p code, li code {
+            background: rgba(42, 26, 78, 0.1);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            color: var(--primary);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border: none;
+        }
+
+        td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover {
+            background: rgba(42, 26, 78, 0.03);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Boxes de Destaque */
+        .box {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+        }
+
+        .box-info {
+            background: rgba(59, 130, 246, 0.1);
+            border-left-color: #3b82f6;
+        }
+
+        .box-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-left-color: var(--warning);
+        }
+
+        .box-success {
+            background: rgba(16, 185, 129, 0.1);
+            border-left-color: var(--success);
+        }
+
+        .box strong {
+            color: var(--primary);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.2rem;
+        }
+
+        .badge-lua {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .badge-function {
+            background: rgba(59, 130, 246, 0.2);
+            color: #1e40af;
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: #92400e;
+        }
+
+        /* Exemplo com Output */
+        .example-block {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .example-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .example-output {
+            background: #f0f4f8;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            border-left: 3px solid var(--success);
+            color: var(--text);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Scrollbar */
+        aside::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        aside::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+        }
+
+        aside::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+        }
+
+        aside::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            aside {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-bottom: 2px solid var(--border);
+            }
+
+            main {
+                margin-left: 0;
+                padding: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, rgba(42,26,78,0.05), rgba(90,58,138,0.05));
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 2px solid var(--accent);
+        }
+
+        .intro-box h2 {
+            border: none;
+            margin-top: 0;
+            font-size: 2.2rem;
+        }
+
+        .function-signature {
+            background: var(--code-bg);
+            color: #e879f9;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            border-left: 3px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside>
+            <h1>🌙 Lua Docs</h1>
+            
+            <div class="nav-section">
+                <h2>Fundamentos</h2>
+                <ul>
+                    <li><a href="#introducao">Introdução</a></li>
+                    <li><a href="#sintaxe">Sintaxe Básica</a></li>
+                    <li><a href="#tipos">Tipos de Dados</a></li>
+                    <li><a href="#variaveis">Variáveis e Escopo</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <h2>Programação</h2>
+                <ul>
+                    <li><a href="#funcoes">Funções</a></li>
+                    <li><a href="#argumentos">Argumentos e Retornos</a></li>
+                    <li><a href="#varargs">Varargs (...)</a></li>
+                    <li><a href="#closures">Closures</a></li>
+                    <li><a href="#operadores">Operadores</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <h2>Conceitos Avançados</h2>
+                <ul>
+                    <li><a href="#metatables">Metatables</a></li>
+                    <li><a href="#metamethods">Metamétodos</a></li>
+                    <li><a href="#coroutines">Coroutines (Threads)</a></li>
+                    <li><a href="#modules">Modules</a></li>
+                    <li><a href="#environment">Environment</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <h2>Bibliotecas Padrão</h2>
+                <ul>
+                    <li><a href="#lib-basic">Basic Functions</a></li>
+                    <li><a href="#lib-string">String Library</a></li>
+                    <li><a href="#lib-table">Table Library</a></li>
+                    <li><a href="#lib-math">Math Library</a></li>
+                    <li><a href="#lib-io">I/O Library</a></li>
+                    <li><a href="#lib-os">OS Library</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-section">
+                <h2>Debugging</h2>
+                <ul>
+                    <li><a href="#debug">Debug Library</a></li>
+                    <li><a href="#lint">Lint e Boas Práticas</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Introdução -->
+            <section id="introducao">
+                <div class="intro-box">
+                    <h2>Bem-vindo à Documentação Lua</h2>
+                    <p>Lua é uma linguagem de programação leve, eficiente e poderosa, projetada para ser incorporada em outras aplicações. Com uma sintaxe simples e poderosa, é amplamente usada em games, scripts, e aplicações que precisam de extensibilidade.</p>
+                </div>
+
+                <h3>Por que Lua?</h3>
+                <ul>
+                    <li><strong>Leve:</strong> Interpretador pequeno e rápido</li>
+                    <li><strong>Dinâmica:</strong> Tipagem dinâmica com flexibilidade</li>
+                    <li><strong>Poderosa:</strong> First-class functions, closures e coroutines</li>
+                    <li><strong>Extensível:</strong> Fácil integração com C/C++</li>
+                    <li><strong>Portável:</strong> Roda em praticamente qualquer plataforma</li>
+                </ul>
+
+                <div class="box box-info">
+                    <strong>📌 Nota:</strong> Esta documentação cobre Lua 5.1, o padrão mais usado. Conceitos podem variar em versões posteriores.
+                </div>
+            </section>
+
+            <!-- Sintaxe Básica -->
+            <section id="sintaxe">
+                <h2>Sintaxe Básica</h2>
+
+                <h3>Comentários</h3>
+                <p>Em Lua, existem dois tipos de comentários:</p>
+                <pre>-- Comentário de linha única
+
+--[[
+    Comentário de múltiplas linhas
+    Pode ocupar vários linhas
+]]</pre>
+
+                <h3>Estrutura Básica de um Script</h3>
+                <pre>-- Variáveis simples
+local nome = "Lua"
+local idade = 25
+
+-- Funções básicas
+function saudacao(nome)
+    print("Olá, " .. nome)
+end
+
+-- Chamar função
+saudacao(nome)</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Dica:</strong> Use <code>local</code> para declarar variáveis locais. Isso evita poluição do escopo global e melhora performance.
+                </div>
+
+                <h3>Palabras-chave Reservadas</h3>
+                <table>
+                    <tr>
+                        <th>Palavra-chave</th>
+                        <th>Uso</th>
+                    </tr>
+                    <tr>
+                        <td><code>and</code>, <code>or</code>, <code>not</code></td>
+                        <td>Operadores lógicos</td>
+                    </tr>
+                    <tr>
+                        <td><code>if</code>, <code>then</code>, <code>else</code>, <code>elseif</code>, <code>end</code></td>
+                        <td>Condicionais</td>
+                    </tr>
+                    <tr>
+                        <td><code>for</code>, <code>while</code>, <code>repeat</code>, <code>until</code>, <code>do</code></td>
+                        <td>Loops</td>
+                    </tr>
+                    <tr>
+                        <td><code>function</code>, <code>return</code></td>
+                        <td>Definição e retorno de funções</td>
+                    </tr>
+                    <tr>
+                        <td><code>local</code>, <code>global</code></td>
+                        <td>Escopo de variáveis</td>
+                    </tr>
+                    <tr>
+                        <td><code>in</code>, <code>pairs</code>, <code>ipairs</code></td>
+                        <td>Iteração</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Tipos de Dados -->
+            <section id="tipos">
+                <h2>Tipos de Dados</h2>
+
+                <p>Lua tem 8 tipos de dados básicos:</p>
+
+                <h3>1. Nil</h3>
+                <p>Representa a ausência de valor. Variáveis não inicializadas são <code>nil</code>.</p>
+                <pre>local x
+print(x)  -- Output: nil
+
+local y = nil
+print(type(y))  -- Output: nil</pre>
+
+                <h3>2. Boolean</h3>
+                <p>Valores verdadeiro e falso.</p>
+                <pre>local ativo = true
+local desativo = false
+
+if ativo then
+    print("Está ativo")
+end</pre>
+
+                <div class="box box-warning">
+                    <strong>⚠️ Importante:</strong> Em Lua, <code>nil</code> e <code>false</code> são "falsy", mas <code>0</code> e strings vazias são "truthy"!
+                </div>
+
+                <h3>3. Number</h3>
+                <p>Números inteiros ou ponto flutuante. Lua trata todos como números.</p>
+                <pre>local inteiro = 42
+local decimal = 3.14
+local negativo = -100
+local cientifico = 1.5e3  -- 1500
+
+print(type(inteiro))  -- Output: number</pre>
+
+                <h3>4. String</h3>
+                <p>Sequências de caracteres. Imutáveis.</p>
+                <pre>local texto = "Olá Lua"
+local entre_aspas = 'Lua é ótima'
+local multilinha = [[
+    Texto que ocupa
+    várias linhas
+]]
+
+-- Concatenação
+local mensagem = "Hello" .. " " .. "Lua"
+print(mensagem)  -- Output: Hello Lua</pre>
+
+                <h3>5. Table</h3>
+                <p>A estrutura de dados mais importante em Lua. Arrays, maps e objetos.</p>
+                <pre>-- Array
+local numeros = {1, 2, 3, 4, 5}
+
+-- Map/Dicionário
+local pessoa = {
+    nome = "João",
+    idade = 30,
+    ativo = true
+}
+
+-- Acesso
+print(numeros[1])       -- Output: 1
+print(pessoa.nome)      -- Output: João
+print(pessoa["idade"])  -- Output: 30</pre>
+
+                <h3>6. Function</h3>
+                <p>Funções são valores de primeira classe em Lua.</p>
+                <pre>local minhaFuncao = function(x)
+    return x * 2
+end
+
+print(minhaFuncao(5))  -- Output: 10</pre>
+
+                <h3>7. Userdata</h3>
+                <p>Dados C/C++ envolvidos para Lua. Normalmente usado em integração com C.</p>
+
+                <h3>8. Thread</h3>
+                <p>Coroutines (não threads do SO). Veremos mais adiante.</p>
+
+                <div class="example-block">
+                    <div class="example-label">Verificar Tipo</div>
+                    <pre>local valor = "texto"
+print(type(valor))  -- Output: string</pre>
+                    <div class="example-output">string</div>
+                </div>
+            </section>
+
+            <!-- Variáveis e Escopo -->
+            <section id="variaveis">
+                <h2>Variáveis e Escopo</h2>
+
+                <h3>Escopo Global vs Local</h3>
+                <pre>global = "Sou global"  -- Acessível em qualquer lugar
+
+function minha_funcao()
+    local local_var = "Sou local"  -- Só acessível nesta função
+    print(global)      -- OK
+    print(local_var)   -- OK
+end
+
+print(local_var)  -- Erro: nil (não existe fora da função)</pre>
+
+                <h3>Escopo em Blocos</h3>
+                <p>Em Lua, variáveis locais têm escopo até o fim do bloco onde foram declaradas:</p>
+                <pre>if true then
+    local x = 10
+    print(x)  -- Output: 10
+end
+
+print(x)  -- Output: nil</pre>
+
+                <h3>Shadowing</h3>
+                <p>Você pode redeclarar variáveis em escopos internos:</p>
+                <pre>local x = "global"
+
+function teste()
+    local x = "local"  -- Diferente do x global
+    print(x)  -- Output: local
+end
+
+print(x)  -- Output: global</pre>
+
+                <div class="box box-success">
+                    <strong>✅ Melhor Prática:</strong> Sempre use <code>local</code> por padrão. Variáveis globais devem ser evitadas a menos que absolutamente necessário.
+                </div>
+
+                <h3>Inicialização Múltipla</h3>
+                <pre>local a, b, c = 1, 2, 3
+print(a, b, c)  -- Output: 1    2    3
+
+local x, y = 10
+print(x, y)  -- Output: 10    nil
+
+local p, q, r = 1, 2, 3, 4
+print(p, q, r)  -- Output: 1    2    3 (r ignora o 4)</pre>
+            </section>
+
+            <!-- Operadores -->
+            <section id="operadores">
+                <h2>Operadores</h2>
+
+                <h3>Operadores Aritméticos</h3>
+                <table>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td><code>+</code></td>
+                        <td>Adição</td>
+                        <td><code>10 + 5 = 15</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>-</code></td>
+                        <td>Subtração</td>
+                        <td><code>10 - 5 = 5</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>*</code></td>
+                        <td>Multiplicação</td>
+                        <td><code>10 * 5 = 50</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>/</code></td>
+                        <td>Divisão</td>
+                        <td><code>10 / 5 = 2</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>%</code></td>
+                        <td>Módulo</td>
+                        <td><code>10 % 3 = 1</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>^</code></td>
+                        <td>Exponenciação</td>
+                        <td><code>2 ^ 3 = 8</code></td>
+                    </tr>
+                </table>
+
+                <h3>Operadores de Comparação</h3>
+                <table>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td><code>==</code></td>
+                        <td>Igual a</td>
+                    </tr>
+                    <tr>
+                        <td><code>~=</code></td>
+                        <td>Diferente de</td>
+                    </tr>
+                    <tr>
+                        <td><code><</code></td>
+                        <td>Menor que</td>
+                    </tr>
+                    <tr>
+                        <td><code>></code></td>
+                        <td>Maior que</td>
+                    </tr>
+                    <tr>
+                        <td><code><=</code></td>
+                        <td>Menor ou igual</td>
+                    </tr>
+                    <tr>
+                        <td><code>>=</code></td>
+                        <td>Maior ou igual</td>
+                    </tr>
+                </table>
+
+                <h3>Operadores Lógicos</h3>
+                <pre>local a = true
+local b = false
+
+print(a and b)  -- Output: false
+print(a or b)   -- Output: true
+print(not a)    -- Output: false</pre>
+
+                <h3>Operador de Concatenação</h3>
+                <pre>local texto = "Lua" .. " " .. "é ótima"
+print(texto)  -- Output: Lua é ótima
+
+-- Também funciona com números (que são convertidos)
+local mensagem = "Tenho " .. 25 .. " anos"
+print(mensagem)  -- Output: Tenho 25 anos</pre>
+
+                <h3>Operador de Comprimento (#)</h3>
+                <pre>local texto = "Lua"
+print(#texto)  -- Output: 3
+
+local tabela = {1, 2, 3, 4, 5}
+print(#tabela)  -- Output: 5</pre>
+            </section>
+
+            <!-- Funções -->
+            <section id="funcoes">
+                <h2>Funções</h2>
+
+                <h3>Definição Básica</h3>
+                <p>Funções em Lua podem ser definidas usando <code>function</code> ou como valores anônimos:</p>
+                <pre>-- Forma 1: Nomeada
+function saudacao(nome)
+    return "Olá, " .. nome
+end
+
+-- Forma 2: Anônima/Lambda
+local saudacao2 = function(nome)
+    return "Olá, " .. nome
+end
+
+print(saudacao("João"))   -- Output: Olá, João
+print(saudacao2("Maria")) -- Output: Olá, Maria</pre>
+
+                <h3>Retornos Múltiplos</h3>
+                <p>Lua permite retornar múltiplos valores:</p>
+                <pre>function obter_dados()
+    return "João", 30, true
+end
+
+local nome, idade, ativo = obter_dados()
+print(nome, idade, ativo)  -- Output: João    30    true
+
+-- Ignorar valores
+local nome = obter_dados()
+print(nome)  -- Output: João</pre>
+
+                <h3>Funções Aninhadas</h3>
+                <pre>function externa()
+    local valor = 10
+    
+    function interna()
+        return valor * 2
+    end
+    
+    return interna()
+end
+
+print(externa())  -- Output: 20</pre>
+
+                <h3>Funções como Parâmetros</h3>
+                <pre>function aplicar_operacao(a, b, operacao)
+    return operacao(a, b)
+end
+
+function somar(x, y)
+    return x + y
+end
+
+function multiplicar(x, y)
+    return x * y
+end
+
+print(aplicar_operacao(5, 3, somar))       -- Output: 8
+print(aplicar_operacao(5, 3, multiplicar)) -- Output: 15</pre>
+
+                <h3>Funções que Retornam Funções</h3>
+                <pre>function criar_multiplicador(fator)
+    return function(numero)
+        return numero * fator
+    end
+end
+
+local multiplicar_por_2 = criar_multiplicador(2)
+local multiplicar_por_5 = criar_multiplicador(5)
+
+print(multiplicar_por_2(10))  -- Output: 20
+print(multiplicar_por_5(10))  -- Output: 50</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Dica:</strong> Em Lua, <code>local function nome() end</code> é equivalente a <code>local nome = function() end</code>, mas é mais legível.
+                </div>
+            </section>
+
+            <!-- Argumentos -->
+            <section id="argumentos">
+                <h2>Argumentos e Retornos</h2>
+
+                <h3>Argumentos Opcionais</h3>
+                <pre>function saudacao(nome, titulo)
+    titulo = titulo or "Sr."
+    return titulo .. " " .. nome
+end
+
+print(saudacao("João"))         -- Output: Sr. João
+print(saudacao("Maria", "Dra.")) -- Output: Dra. Maria</pre>
+
+                <h3>Argumentos com Valores Padrão</h3>
+                <pre>function criar_usuario(nome, age, ativo)
+    age = age or 18
+    ativo = ativo or true
+    
+    return {
+        nome = nome,
+        age = age,
+        ativo = ativo
+    }
+end
+
+local user1 = criar_usuario("João")
+local user2 = criar_usuario("Maria", 25, false)
+
+print(user1.age)    -- Output: 18
+print(user2.ativo)  -- Output: false</pre>
+
+                <h3>Retorno Condicional</h3>
+                <pre>function dividir(a, b)
+    if b == 0 then
+        return nil, "Erro: divisão por zero"
+    end
+    return a / b, nil
+end
+
+local resultado, erro = dividir(10, 2)
+if erro then
+    print("Erro: " .. erro)
+else
+    print("Resultado: " .. resultado)
+end</pre>
+
+                <h3>Descarte de Retornos Não Utilizados</h3>
+                <pre>function tres_valores()
+    return 1, 2, 3
+end
+
+-- Pega apenas o primeiro
+local primeiro = tres_valores()
+print(primeiro)  -- Output: 1
+
+-- Ignora alguns
+local a, _, c = tres_valores()
+print(a, c)  -- Output: 1    3</pre>
+            </section>
+
+            <!-- Varargs -->
+            <section id="varargs">
+                <h2>Varargs (...) - Argumentos Variáveis</h2>
+
+                <h3>O que são Varargs?</h3>
+                <p>Varargs (variadic arguments) permitem que uma função aceite um número indefinido de argumentos:</p>
+
+                <pre>function somar(...)
+    local total = 0
+    local args = {...}  -- Converte ... em tabela
+    
+    for i = 1, #args do
+        total = total + args[i]
+    end
+    
+    return total
+end
+
+print(somar(1, 2, 3))         -- Output: 6
+print(somar(1, 2, 3, 4, 5))   -- Output: 15</pre>
+
+                <h3>Acessar Varargs Diretamente</h3>
+                <pre>function imprimir_todos(...)
+    -- select(n, ...) retorna o n-ésimo argumento
+    -- select('#', ...) retorna o número total de argumentos
+    
+    local count = select('#', ...)
+    print("Total de argumentos: " .. count)
+    
+    for i = 1, count do
+        print(i .. ": " .. select(i, ...))
+    end
+end
+
+imprimir_todos("a", "b", "c")</pre>
+
+                <h3>Misturar Parâmetros Nomeados e Varargs</h3>
+                <pre>function criar_lista(titulo, ...)
+    local items = {...}
+    
+    print("Lista: " .. titulo)
+    for i, item in ipairs(items) do
+        print("  " .. i .. ". " .. item)
+    end
+end
+
+criar_lista("Compras", "Leite", "Pão", "Ovos", "Queijo")</pre>
+
+                <h3>Passar Varargs para Outra Função</h3>
+                <pre>function wrapper(...)
+    -- Passa os argumentos adiante
+    return original_function(...)
+end
+
+function original_function(a, b, c)
+    return a + b + c
+end
+
+print(wrapper(1, 2, 3))  -- Output: 6</pre>
+
+                <div class="example-block">
+                    <div class="example-label">Exemplo Prático: Concatenar com Separador</div>
+                    <pre>function concatenar_com_separador(separador, ...)
+    local args = {...}
+    local resultado = ""
+    
+    for i = 1, #args do
+        resultado = resultado .. tostring(args[i])
+        if i < #args then
+            resultado = resultado .. separador
+        end
+    end
+    
+    return resultado
+end
+
+print(concatenar_com_separador(", ", "a", "b", "c", "d"))
+-- Output: a, b, c, d</pre>
+                    <div class="example-output">a, b, c, d</div>
+                </div>
+            </section>
+
+            <!-- Closures -->
+            <section id="closures">
+                <h2>Closures</h2>
+
+                <h3>O que são Closures?</h3>
+                <p>Um closure é uma função que "captura" variáveis do escopo onde foi definida, mesmo após a função externa terminar:</p>
+
+                <pre>function criar_contador()
+    local contagem = 0  -- Variável capturada
+    
+    return function()
+        contagem = contagem + 1
+        return contagem
+    end
+end
+
+local contador = criar_contador()
+print(contador())  -- Output: 1
+print(contador())  -- Output: 2
+print(contador())  -- Output: 3</pre>
+
+                <h3>Múltiplas Closures Independentes</h3>
+                <pre>function criar_contador()
+    local contagem = 0
+    return function()
+        contagem = contagem + 1
+        return contagem
+    end
+end
+
+local contador1 = criar_contador()
+local contador2 = criar_contador()
+
+print(contador1())  -- Output: 1
+print(contador1())  -- Output: 2
+print(contador2())  -- Output: 1  (Independente!)
+print(contador1())  -- Output: 3</pre>
+
+                <h3>Closures com Múltiplas Variáveis</h3>
+                <pre>function criar_pessoa(nome)
+    local historico = {}
+    
+    return {
+        registrar = function(acao)
+            table.insert(historico, acao)
+        end,
+        obter_historico = function()
+            return historico
+        end,
+        obter_nome = function()
+            return nome
+        end
+    }
+end
+
+local pessoa = criar_pessoa("João")
+pessoa.registrar("Acordou")
+pessoa.registrar("Comeu")
+pessoa.registrar("Dormiu")
+
+for _, acao in ipairs(pessoa.obter_historico()) do
+    print(pessoa.obter_nome() .. " " .. acao)
+end</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Caso de Uso:</strong> Closures são perfeitos para criar dados privados e métodos, simulando "encapsulamento" em linguagens orientadas a objetos.
+                </div>
+            </section>
+
+            <!-- Metatables -->
+            <section id="metatables">
+                <h2>Metatables e Metamétodos</h2>
+
+                <h3>O que são Metatables?</h3>
+                <p>Metatables permitem customizar o comportamento de tables. Elas definem como operações e operadores funcionam em uma table.</p>
+
+                <h3>Definir uma Metatable</h3>
+                <pre>local tabela = {a = 1, b = 2}
+local metatable = {}
+
+setmetatable(tabela, metatable)
+print(getmetatable(tabela))  -- Output: table: 0x...
+
+-- Também pode ser feito em uma linha
+local tabela = setmetatable({a = 1}, {})</pre>
+
+                <h3>Metamétodo __index</h3>
+                <p>Chamado quando você tenta acessar uma chave que não existe:</p>
+                <pre>local tabela = {a = 1}
+local meta = {
+    __index = function(t, chave)
+        return "Chave '" .. chave .. "' não encontrada"
+    end
+}
+setmetatable(tabela, meta)
+
+print(tabela.a)    -- Output: 1
+print(tabela.xyz)  -- Output: Chave 'xyz' não encontrada</pre>
+
+                <h3>Metamétodo __newindex</h3>
+                <p>Chamado quando você tenta atribuir uma chave:</p>
+                <pre>local tabela = {}
+local meta = {
+    __newindex = function(t, chave, valor)
+        print("Tentando atribuir " .. chave .. " = " .. valor)
+        rawset(t, chave, valor)  -- rawset ignora metamétodos
+    end
+}
+setmetatable(tabela, meta)
+
+tabela.nome = "João"  -- Output: Tentando atribuir nome = João
+print(tabela.nome)     -- Output: João</pre>
+
+                <h3>Metamétodo __add</h3>
+                <p>Permite usar o operador + com tables:</p>
+                <pre>local vetor1 = {x = 1, y = 2}
+local vetor2 = {x = 3, y = 4}
+
+local meta = {
+    __add = function(v1, v2)
+        return {
+            x = v1.x + v2.x,
+            y = v1.y + v2.y
+        }
+    end
+}
+
+setmetatable(vetor1, meta)
+setmetatable(vetor2, meta)
+
+local vetor3 = vetor1 + vetor2
+print(vetor3.x, vetor3.y)  -- Output: 4    6</pre>
+
+                <h3>Metamétodo __call</h3>
+                <p>Permite chamar uma table como função:</p>
+                <pre>local contador = {valor = 0}
+local meta = {
+    __call = function(self, quantidade)
+        quantidade = quantidade or 1
+        self.valor = self.valor + quantidade
+        return self.valor
+    end
+}
+setmetatable(contador, meta)
+
+print(contador())       -- Output: 1
+print(contador(5))      -- Output: 6
+print(contador(3))      -- Output: 9</pre>
+
+                <h3>Metamétodo __tostring</h3>
+                <p>Customiza como a table é convertida para string:</p>
+                <pre>local pessoa = {nome = "João", idade = 30}
+local meta = {
+    __tostring = function(self)
+        return self.nome .. " (" .. self.idade .. " anos)"
+    end
+}
+setmetatable(pessoa, meta)
+
+print(pessoa)  -- Output: João (30 anos)
+print("Pessoa: " .. pessoa)  -- Output: Pessoa: João (30 anos)</pre>
+
+                <h3>Metamétodo __lt e __le</h3>
+                <p>Customiza comparações:</p>
+                <pre>local pessoa1 = {nome = "João", idade = 30}
+local pessoa2 = {nome = "Maria", idade = 25}
+
+local meta = {
+    __lt = function(a, b)
+        return a.idade < b.idade
+    end
+}
+
+setmetatable(pessoa1, meta)
+setmetatable(pessoa2, meta)
+
+if pessoa2 < pessoa1 then
+    print("Maria é mais jovem")
+end</pre>
+
+                <h3>Lista de Metamétodos Comuns</h3>
+                <table>
+                    <tr>
+                        <th>Metamétodo</th>
+                        <th>Acionado por</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td><code>__add</code></td>
+                        <td><code>a + b</code></td>
+                        <td>Adição</td>
+                    </tr>
+                    <tr>
+                        <td><code>__sub</code></td>
+                        <td><code>a - b</code></td>
+                        <td>Subtração</td>
+                    </tr>
+                    <tr>
+                        <td><code>__mul</code></td>
+                        <td><code>a * b</code></td>
+                        <td>Multiplicação</td>
+                    </tr>
+                    <tr>
+                        <td><code>__div</code></td>
+                        <td><code>a / b</code></td>
+                        <td>Divisão</td>
+                    </tr>
+                    <tr>
+                        <td><code>__mod</code></td>
+                        <td><code>a % b</code></td>
+                        <td>Módulo</td>
+                    </tr>
+                    <tr>
+                        <td><code>__pow</code></td>
+                        <td><code>a ^ b</code></td>
+                        <td>Exponenciação</td>
+                    </tr>
+                    <tr>
+                        <td><code>__unm</code></td>
+                        <td><code>-a</code></td>
+                        <td>Negação</td>
+                    </tr>
+                    <tr>
+                        <td><code>__concat</code></td>
+                        <td><code>a .. b</code></td>
+                        <td>Concatenação</td>
+                    </tr>
+                    <tr>
+                        <td><code>__len</code></td>
+                        <td><code>#a</code></td>
+                        <td>Comprimento</td>
+                    </tr>
+                    <tr>
+                        <td><code>__eq</code></td>
+                        <td><code>a == b</code></td>
+                        <td>Igualdade</td>
+                    </tr>
+                    <tr>
+                        <td><code>__lt</code></td>
+                        <td><code>a < b</code></td>
+                        <td>Menor que</td>
+                    </tr>
+                    <tr>
+                        <td><code>__le</code></td>
+                        <td><code>a <= b</code></td>
+                        <td>Menor ou igual</td>
+                    </tr>
+                    <tr>
+                        <td><code>__index</code></td>
+                        <td><code>a[b]</code> (não encontrada)</td>
+                        <td>Índice</td>
+                    </tr>
+                    <tr>
+                        <td><code>__newindex</code></td>
+                        <td><code>a[b] = c</code></td>
+                        <td>Novo índice</td>
+                    </tr>
+                    <tr>
+                        <td><code>__call</code></td>
+                        <td><code>a()</code></td>
+                        <td>Chamada como função</td>
+                    </tr>
+                    <tr>
+                        <td><code>__tostring</code></td>
+                        <td><code>tostring(a)</code></td>
+                        <td>Conversão para string</td>
+                    </tr>
+                    <tr>
+                        <td><code>__metatable</code></td>
+                        <td><code>getmetatable(a)</code></td>
+                        <td>Protege a metatable</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Coroutines -->
+            <section id="coroutines">
+                <h2>Coroutines (Threads Leves)</h2>
+
+                <h3>O que são Coroutines?</h3>
+                <p>Coroutines são "threads leves" que permitem suspender e retomar execução. Não são threads reais do SO - Lua as controla inteiramente.</p>
+
+                <h3>Criar e Retomar</h3>
+                <pre>-- Criar coroutine
+local co = coroutine.create(function()
+    print("1")
+    coroutine.yield()  -- Suspende aqui
+    print("2")
+    coroutine.yield()
+    print("3")
+end)
+
+-- Retomar execução
+coroutine.resume(co)  -- Output: 1
+coroutine.resume(co)  -- Output: 2
+coroutine.resume(co)  -- Output: 3</pre>
+
+                <h3>Coroutine.wrap</h3>
+                <p>Alternativa mais simples a <code>create</code> e <code>resume</code>:</p>
+                <pre>local funcao = coroutine.wrap(function()
+    print("A")
+    coroutine.yield()
+    print("B")
+    return "Resultado"
+end)
+
+print(funcao())  -- Output: A
+print(funcao())  -- Output: B, Resultado</pre>
+
+                <h3>Passar Valores Entre Coroutines</h3>
+                <pre>local co = coroutine.create(function()
+    local valor = coroutine.yield()  -- Recebe valor
+    print("Recebi: " .. valor)
+    return "Resposta"
+end)
+
+local _, resultado = coroutine.resume(co, "Olá")  -- Envia valor
+coroutine.resume(co)
+-- Output: Recebi: Olá</pre>
+
+                <h3>Status de Coroutines</h3>
+                <pre>local co = coroutine.create(function()
+    coroutine.yield()
+end)
+
+print(coroutine.status(co))  -- Output: suspended
+
+coroutine.resume(co)
+print(coroutine.status(co))  -- Output: suspended
+
+coroutine.resume(co)
+print(coroutine.status(co))  -- Output: dead</pre>
+
+                <h3>Caso de Uso: Iterator Customizado</h3>
+                <pre>function contador_customizado(inicio, fim)
+    return coroutine.wrap(function()
+        for i = inicio, fim do
+            coroutine.yield(i)
+        end
+    end)
+end
+
+for numero in contador_customizado(1, 5) do
+    print(numero)
+end
+-- Output: 1 2 3 4 5</pre>
+
+                <div class="box box-info">
+                    <strong>💡 Diferença Importante:</strong> Coroutines não são paralelismo. Uma coroutine só executa quando explicitamente retomada. Úteis para manter estado entre iterações.
+                </div>
+            </section>
+
+            <!-- Modules -->
+            <section id="modules">
+                <h2>Modules</h2>
+
+                <h3>O que são Modules?</h3>
+                <p>Modules permitem organizar código em arquivos separados e reutilizáveis. São a forma de modularizar projetos Lua.</p>
+
+                <h3>Criar um Module Simples</h3>
+                <p>Arquivo: <code>matematica.lua</code></p>
+                <pre>-- matematica.lua
+local M = {}  -- Table do módulo
+
+function M.somar(a, b)
+    return a + b
+end
+
+function M.subtrair(a, b)
+    return a - b
+end
+
+function M.multiplicar(a, b)
+    return a * b
+end
+
+return M  -- Retorna o módulo</pre>
+
+                <h3>Usar um Module</h3>
+                <p>Arquivo: <code>main.lua</code></p>
+                <pre>-- main.lua
+local mat = require("matematica")
+
+print(mat.somar(10, 5))       -- Output: 15
+print(mat.subtrair(10, 5))    -- Output: 5
+print(mat.multiplicar(10, 5)) -- Output: 50</pre>
+
+                <h3>Módulo com Dados Privados</h3>
+                <p>Arquivo: <code>contador.lua</code></p>
+                <pre>-- contador.lua
+local M = {}
+local contagem = 0  -- Privado (não é retornado)
+
+function M.incrementar()
+    contagem = contagem + 1
+    return contagem
+end
+
+function M.obter()
+    return contagem
+end
+
+function M.resetar()
+    contagem = 0
+end
+
+return M</pre>
+
+                <h3>Módulos Hierarchicos</h3>
+                <p>Estrutura de diretório:</p>
+                <pre>projeto/
+├── main.lua
+└── lib/
+    ├── utils.lua
+    └── dados.lua</pre>
+
+                <p>Arquivo: <code>lib/utils.lua</code></p>
+                <pre>local M = {}
+
+function M.formatarmensagem(texto)
+    return ">>> " .. texto
+end
+
+return M</pre>
+
+                <p>Arquivo: <code>main.lua</code></p>
+                <pre>local utils = require("lib.utils")
+print(utils.formatarmensagem("Olá"))
+-- Output: >>> Olá</pre>
+
+                <h3>require com LUA_PATH</h3>
+                <p>O Lua procura modules no <code>LUA_PATH</code>. Para adicionar diretórios:</p>
+                <pre>-- No início de main.lua
+package.path = package.path .. ";./lib/?.lua"
+
+local utils = require("utils")  -- Procura em ./lib/utils.lua</pre>
+
+                <h3>Verificar se Module está Carregado</h3>
+                <pre>if package.loaded["meumodulo"] then
+    print("Módulo já foi carregado")
+else
+    print("Primeira vez carregando")
+    require("meumodulo")
+end</pre>
+
+                <div class="box box-success">
+                    <strong>✅ Padrão Comum:</strong> No Lua, é comum usar <code>require</code> uma única vez e guardar a referência em uma variável local.
+                </div>
+            </section>
+
+            <!-- Environment -->
+            <section id="environment">
+                <h2>Environment e Escopo Global</h2>
+
+                <h3>O que é Environment?</h3>
+                <p>Environment é a table que contém todas as variáveis globais. Você pode inspecionar e modificá-la programaticamente.</p>
+
+                <h3>Acessar o Environment Global</h3>
+                <pre>-- _G é a table de variáveis globais
+_G.minhaVariavel = 10
+print(minhaVariavel)  -- Output: 10
+
+-- Verificar se existe
+if _G.variavel then
+    print("Existe")
+else
+    print("Não existe")
+end</pre>
+
+                <h3>Listar Variáveis Globais</h3>
+                <pre>for nome, valor in pairs(_G) do
+    if type(valor) ~= "function" then
+        print(nome .. " = " .. tostring(valor))
+    end
+end</pre>
+
+                <h3>Environment de Função</h3>
+                <pre>function minhaFuncao()
+    local env = getfenv()  -- Obter ambiente da função
+    print(type(env))  -- Output: table
+end
+
+minhaFuncao()</pre>
+
+                <h3>Mudar o Environment de uma Função</h3>
+                <pre>local novo_env = {print = print}  -- Novo ambiente
+
+function original()
+    print("Olá")
+end
+
+setfenv(original, novo_env)  -- Muda para novo_env
+original()  -- Output: Olá
+
+-- Agora original não tem acesso ao ambiente global original</pre>
+            </section>
+
+            <!-- Biblioteca Basic -->
+            <section id="lib-basic">
+                <h2>Biblioteca de Funções Básicas</h2>
+
+                <h3>type()</h3>
+                <p>Retorna o tipo de um valor:</p>
+                <pre>print(type(5))           -- Output: number
+print(type("lua"))       -- Output: string
+print(type(true))        -- Output: boolean
+print(type(nil))         -- Output: nil
+print(type({}))          -- Output: table
+print(type(print))       -- Output: function</pre>
+
+                <h3>tostring() e tonumber()</h3>
+                <pre>print(tostring(42))      -- Output: 42 (como string)
+print(tostring(true))    -- Output: true
+
+print(tonumber("42"))    -- Output: 42
+print(tonumber("3.14"))  -- Output: 3.14
+print(tonumber("abc"))   -- Output: nil</pre>
+
+                <h3>assert()</h3>
+                <p>Verifica uma condição e lança erro se for falsa:</p>
+                <pre>local valor = 10
+
+assert(valor > 0, "Valor deve ser positivo")
+print("OK")
+
+-- Isto causaria erro:
+-- assert(valor < 0, "Erro: valor não pode ser negativo")</pre>
+
+                <h3>error()</h3>
+                <p>Lança um erro:</p>
+                <pre>function dividir(a, b)
+    if b == 0 then
+        error("Divisão por zero!")
+    end
+    return a / b
+end
+
+local status, resultado = pcall(dividir, 10, 0)
+if not status then
+    print("Erro capturado: " .. resultado)
+end</pre>
+
+                <h3>pcall() - Protected Call</h3>
+                <p>Executa uma função protegida contra erros:</p>
+                <pre>function funcao_com_risco()
+    return 10 / 0  -- Erro
+end
+
+local sucesso, resultado = pcall(funcao_com_risco)
+if sucesso then
+    print(resultado)
+else
+    print("Erro: " .. resultado)
+end</pre>
+
+                <h3>pairs() e ipairs()</h3>
+                <pre>local tabela = {a = 1, b = 2, c = 3}
+
+-- pairs: itera sobre todos os elementos
+for chave, valor in pairs(tabela) do
+    print(chave .. " = " .. valor)
+end
+
+-- ipairs: itera apenas sobre índices numéricos em sequência
+local numeros = {10, 20, 30}
+for indice, valor in ipairs(numeros) do
+    print(indice .. ": " .. valor)
+end</pre>
+
+                <h3>next()</h3>
+                <p>Retorna próximo par chave-valor:</p>
+                <pre>local tabela = {a = 1, b = 2, c = 3}
+local chave, valor = next(tabela)
+print(chave, valor)  -- Output: a    1 (ou outro par)</pre>
+
+                <h3>select()</h3>
+                <p>Seleciona argumentos de uma lista variável:</p>
+                <pre>function teste(...)
+    print(select(1, ...))    -- Primeiro argumento
+    print(select(2, ...))    -- Segundo argumento
+    print(select('#', ...))  -- Total de argumentos
+end
+
+teste("a", "b", "c")</pre>
+
+                <h3>unpack()</h3>
+                <p>Desempacota elementos de uma table como argumentos:</p>
+                <pre>local numeros = {1, 2, 3, 4, 5}
+print(unpack(numeros))  -- Output: 1    2    3    4    5
+
+function somar(a, b, c)
+    return a + b + c
+end
+
+print(somar(unpack({10, 20, 30})))  -- Output: 60</pre>
+
+                <h3>print()</h3>
+                <p>Imprime valores na saída padrão:</p>
+                <pre>print("Olá", "mundo", 123)
+-- Output: Olá    mundo    123
+
+local tabela = {1, 2, 3}
+print(tabela)  -- Output: table: 0x...</pre>
+
+                <h3>getmetatable() e setmetatable()</h3>
+                <pre>local tabela = {}
+local mt = {__index = function() return "padrão" end}
+setmetatable(tabela, mt)
+
+print(getmetatable(tabela) == mt)  -- Output: true</pre>
+
+                <h3>rawget() e rawset()</h3>
+                <p>Acessam table ignorando metamétodos:</p>
+                <pre>local tabela = {}
+setmetatable(tabela, {
+    __index = function() return "custom" end
+})
+
+print(tabela.x)           -- Output: custom (usa __index)
+print(rawget(tabela, "x")) -- Output: nil (ignora __index)</pre>
+            </section>
+
+            <!-- Biblioteca String -->
+            <section id="lib-string">
+                <h2>Biblioteca de Strings</h2>
+
+                <h3>string.len()</h3>
+                <pre>local texto = "Lua"
+print(string.len(texto))  -- Output: 3
+print(#texto)             -- Equivalente</pre>
+
+                <h3>string.upper() e string.lower()</h3>
+                <pre>print(string.upper("Lua"))  -- Output: LUA
+print(string.lower("Lua"))  -- Output: lua</pre>
+
+                <h3>string.sub()</h3>
+                <p>Extrai substring:</p>
+                <pre>local texto = "Linguagem Lua"
+print(string.sub(texto, 1, 9))   -- Output: Linguagem
+print(string.sub(texto, 11))     -- Output: Lua
+print(string.sub(texto, -3))     -- Output: Lua (últimos 3 caracteres)</pre>
+
+                <h3>string.find()</h3>
+                <p>Procura substring:</p>
+                <pre>local texto = "Olá Lua Lua"
+local inicio, fim = string.find(texto, "Lua")
+print(inicio, fim)  -- Output: 5    7
+
+-- Procurar todas as ocorrências
+local s = string.find(texto, "Lua", 1)
+while s do
+    print("Encontrado em: " .. s)
+    s = string.find(texto, "Lua", s + 1)
+end</pre>
+
+                <h3>string.gsub()</h3>
+                <p>Substitui todas as ocorrências:</p>
+                <pre>local texto = "Lua é ótima. Lua é poderosa."
+local novo = string.gsub(texto, "Lua", "Python")
+print(novo)
+-- Output: Python é ótima. Python é poderosa.</pre>
+
+                <h3>string.format()</h3>
+                <p>Formata strings (like printf em C):</p>
+                <pre>print(string.format("%s tem %d anos", "João", 30))
+-- Output: João tem 30 anos
+
+print(string.format("PI = %.2f", math.pi))
+-- Output: PI = 3.14</pre>
+
+                <h3>string.char() e string.byte()</h3>
+                <pre>print(string.char(65, 66, 67))  -- Output: ABC
+print(string.byte("ABC"))        -- Output: 65
+local a, b, c = string.byte("ABC", 1, 3)
+print(a, b, c)  -- Output: 65    66    67</pre>
+
+                <h3>string.rep()</h3>
+                <p>Repete uma string:</p>
+                <pre>print(string.rep("ab", 3))  -- Output: ababab
+print(string.rep("-", 10))  -- Output: ----------</pre>
+
+                <h3>string.reverse()</h3>
+                <pre>print(string.reverse("Lua"))  -- Output: auL</pre>
+
+                <h3>string.match() e string.gmatch()</h3>
+                <p>Busca com padrões (regex simples):</p>
+                <pre>local email = "joao@example.com"
+local usuario, dominio = string.match(email, "(.+)@(.+)")
+print(usuario, dominio)  -- Output: joao    example.com
+
+-- gmatch retorna iterador
+for palavra in string.gmatch("um dois três", "%S+") do
+    print(palavra)
+end
+-- Output: um dois três (em linhas separadas)</pre>
+            </section>
+
+            <!-- Biblioteca Table -->
+            <section id="lib-table">
+                <h2>Biblioteca de Tables</h2>
+
+                <h3>table.insert()</h3>
+                <p>Insere elemento em uma table:</p>
+                <pre>local lista = {1, 2, 3}
+table.insert(lista, 4)
+print(table.concat(lista, ", "))  -- Output: 1, 2, 3, 4
+
+-- Inserir em posição específica
+table.insert(lista, 2, 1.5)
+print(table.concat(lista, ", "))  -- Output: 1, 1.5, 2, 3, 4</pre>
+
+                <h3>table.remove()</h3>
+                <p>Remove elemento de uma table:</p>
+                <pre>local lista = {1, 2, 3, 4, 5}
+table.remove(lista, 3)
+print(table.concat(lista, ", "))  -- Output: 1, 2, 4, 5
+
+local ultimo = table.remove(lista)  -- Remove último
+print(ultimo)  -- Output: 5</pre>
+
+                <h3>table.concat()</h3>
+                <p>Concatena elementos:</p>
+                <pre>local lista = {"a", "b", "c"}
+print(table.concat(lista))           -- Output: abc
+print(table.concat(lista, ", "))     -- Output: a, b, c
+print(table.concat(lista, "-", 1, 2)) -- Output: a-b</pre>
+
+                <h3>table.sort()</h3>
+                <p>Ordena uma table:</p>
+                <pre>local numeros = {3, 1, 4, 1, 5, 9, 2, 6}
+table.sort(numeros)
+print(table.concat(numeros, ", "))
+-- Output: 1, 1, 2, 3, 4, 5, 6, 9
+
+-- Ordenação customizada
+local nomes = {"Bob", "Alice", "Charlie"}
+table.sort(nomes, function(a, b)
+    return string.len(a) < string.len(b)  -- Por tamanho
+end)
+print(table.concat(nomes, ", "))
+-- Output: Bob, Alice, Charlie</pre>
+
+                <h3>table.maxn()</h3>
+                <p>Retorna o maior índice numérico:</p>
+                <pre>local tabela = {10, 20, 30}
+print(table.maxn(tabela))  -- Output: 3
+
+local gaps = {[1] = "a", [5] = "b"}
+print(table.maxn(gaps))    -- Output: 5</pre>
+
+                <h3>Utilitário: Copiar Table</h3>
+                <pre>-- Cópia superficial
+local original = {a = 1, b = 2}
+local copia = {}
+for k, v in pairs(original) do
+    copia[k] = v
+end
+
+-- Ou usando unpack
+local copia2 = {1, 2, 3}
+local nova = {unpack(copia2)}</pre>
+            </section>
+
+            <!-- Biblioteca Math -->
+            <section id="lib-math">
+                <h2>Biblioteca de Matemática</h2>
+
+                <h3>Funções Trigonométricas</h3>
+                <pre>print(math.sin(math.pi / 2))    -- Output: 1
+print(math.cos(0))              -- Output: 1
+print(math.tan(math.pi / 4))    -- Output: 1
+
+print(math.asin(0.5))           -- Output: ~0.5236 (30 graus em rad)
+print(math.acos(1))             -- Output: 0
+print(math.atan(1))             -- Output: ~0.7854 (45 graus em rad)</pre>
+
+                <h3>Conversão Entre Graus e Radianos</h3>
+                <pre>print(math.deg(math.pi))  -- Output: 180
+print(math.rad(180))      -- Output: ~3.14159</pre>
+
+                <h3>Funções Exponenciais e Logarítmicas</h3>
+                <pre>print(math.exp(1))        -- Output: ~2.71828 (e)
+print(math.log(10))       -- Output: ~2.30259 (ln)
+print(math.log10(100))    -- Output: 2 (log base 10)
+print(math.pow(2, 8))     -- Output: 256
+print(2 ^ 8)              -- Equivalente: 256</pre>
+
+                <h3>Arredondamento e Truncagem</h3>
+                <pre>print(math.floor(3.7))   -- Output: 3
+print(math.ceil(3.2))    -- Output: 4
+print(math.abs(-5))      -- Output: 5
+print(math.modf(3.14))   -- Output: 3    0.14</pre>
+
+                <h3>Min e Max</h3>
+                <pre>print(math.min(5, 2, 8, 1))  -- Output: 1
+print(math.max(5, 2, 8, 1))  -- Output: 8</pre>
+
+                <h3>Números Aleatórios</h3>
+                <pre>-- Setar seed (para reprodução)
+math.randomseed(os.time())
+
+-- Número aleatório entre 0 e 1
+print(math.random())
+
+-- Inteiro entre 1 e 10
+print(math.random(1, 10))
+
+-- Inteiro entre 1 e 100
+print(math.random(100))</pre>
+
+                <h3>Constantes</h3>
+                <pre>print(math.pi)    -- Output: ~3.14159
+print(math.huge)  -- Output: inf (infinito)</pre>
+
+                <h3>Funções Hiperbólicas</h3>
+                <pre>print(math.sinh(0))  -- Output: 0
+print(math.cosh(0))  -- Output: 1
+print(math.tanh(0))  -- Output: 0</pre>
+            </section>
+
+            <!-- Biblioteca I/O -->
+            <section id="lib-io">
+                <h2>Biblioteca de I/O (Input/Output)</h2>
+
+                <h3>print() e io.write()</h3>
+                <pre>print("Olá Lua")           -- Com quebra de linha
+io.write("Sem quebra")     -- Sem quebra de linha
+io.write("\n")             -- Nova linha manual</pre>
+
+                <h3>io.read()</h3>
+                <p>Lê entrada do usuário:</p>
+                <pre>print("Digite seu nome:")
+local nome = io.read()
+print("Bem-vindo, " .. nome)</pre>
+
+                <h3>Trabalhar com Arquivos</h3>
+                <pre>-- Escrever em arquivo
+local arquivo = io.open("dados.txt", "w")  -- "w" = escrita
+arquivo:write("Primeira linha\n")
+arquivo:write("Segunda linha\n")
+arquivo:close()
+
+-- Ler de arquivo
+local arquivo = io.open("dados.txt", "r")  -- "r" = leitura
+local conteudo = arquivo:read("*a")        -- "*a" = todo o arquivo
+print(conteudo)
+arquivo:close()</pre>
+
+                <h3>Modos de Arquivo</h3>
+                <table>
+                    <tr>
+                        <th>Modo</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td><code>"r"</code></td>
+                        <td>Leitura (padrão)</td>
+                    </tr>
+                    <tr>
+                        <td><code>"w"</code></td>
+                        <td>Escrita (sobrescreve)</td>
+                    </tr>
+                    <tr>
+                        <td><code>"a"</code></td>
+                        <td>Append (adiciona ao fim)</td>
+                    </tr>
+                    <tr>
+                        <td><code>"r+"</code></td>
+                        <td>Leitura e escrita</td>
+                    </tr>
+                </table>
+
+                <h3>Ler Linha por Linha</h3>
+                <pre>local arquivo = io.open("dados.txt", "r")
+for linha in arquivo:lines() do
+    print(linha)
+end
+arquivo:close()
+
+-- Ou manualmente
+local arquivo = io.open("dados.txt", "r")
+while true do
+    local linha = arquivo:read()
+    if not linha then break end
+    print(linha)
+end
+arquivo:close()</pre>
+
+                <h3>io.input() e io.output()</h3>
+                <pre>-- Redirecionar entrada/saída padrão
+io.input("entrada.txt")
+io.output("saida.txt")
+
+local texto = io.read()
+io.write(texto)</pre>
+
+                <h3>file:seek()</h3>
+                <p>Mover posição no arquivo:</p>
+                <pre>local arquivo = io.open("dados.txt", "r")
+arquivo:seek("set", 0)    -- Início
+arquivo:seek("end", -10)  -- 10 bytes antes do fim
+arquivo:close()</pre>
+
+                <h3>io.tmpfile()</h3>
+                <p>Criar arquivo temporário:</p>
+                <pre>local temp = io.tmpfile()
+temp:write("Dados temporários")
+temp:seek("set", 0)
+print(temp:read("*a"))
+-- Arquivo é automaticamente deletado quando fechado</pre>
+            </section>
+
+            <!-- Biblioteca OS -->
+            <section id="lib-os">
+                <h2>Biblioteca de Sistema Operacional</h2>
+
+                <h3>os.time()</h3>
+                <p>Retorna o tempo atual em segundos desde epoch:</p>
+                <pre>local agora = os.time()
+print(agora)  -- Output: 1699564800 (aproximadamente)</pre>
+
+                <h3>os.date()</h3>
+                <p>Formata data e hora:</p>
+                <pre>print(os.date())                    -- Output: Thu Nov  9 15:30:45 2023
+print(os.date("%Y-%m-%d"))          -- Output: 2023-11-09
+print(os.date("%H:%M:%S"))          -- Output: 15:30:45
+print(os.date("%A, %B %d, %Y"))     -- Output: Thursday, November 09, 2023</pre>
+
+                <h3>os.difftime()</h3>
+                <p>Calcula diferença entre tempos:</p>
+                <pre>local tempo1 = os.time()
+-- ... fazer algo ...
+local tempo2 = os.time()
+local diferenca = os.difftime(tempo2, tempo1)
+print("Levou " .. diferenca .. " segundos")</pre>
+
+                <h3>os.execute()</h3>
+                <p>Executa comando do sistema:</p>
+                <pre>-- Linux/Mac
+os.execute("ls -la")
+os.execute("mkdir nova_pasta")
+
+-- Windows
+os.execute("dir")
+os.execute("mkdir nova_pasta")</pre>
+
+                <h3>os.getenv()</h3>
+                <p>Obter variável de ambiente:</p>
+                <pre>print(os.getenv("HOME"))  -- Linux/Mac: home do usuário
+print(os.getenv("PATH"))  -- Lista de caminhos</pre>
+
+                <h3>os.exit()</h3>
+                <p>Encerrar programa:</p>
+                <pre>if not arquivo then
+    print("Erro: arquivo não encontrado")
+    os.exit(1)  -- Código de erro
+end</pre>
+
+                <h3>os.remove()</h3>
+                <p>Deletar arquivo:</p>
+                <pre>local sucesso = os.remove("arquivo.txt")
+if sucesso then
+    print("Deletado")
+else
+    print("Erro ao deletar")
+end</pre>
+
+                <h3>os.rename()</h3>
+                <p>Renomear arquivo:</p>
+                <pre>os.rename("antigo.txt", "novo.txt")</pre>
+
+                <h3>os.tmpname()</h3>
+                <p>Obter nome de arquivo temporário:</p>
+                <pre>local temp = os.tmpname()
+print(temp)  -- Output: /tmp/lua_XXXXX (ou similar)</pre>
+            </section>
+
+            <!-- Debug Library -->
+            <section id="debug">
+                <h2>Biblioteca de Debug</h2>
+
+                <h3>debug.traceback()</h3>
+                <p>Imprime stack trace do erro:</p>
+                <pre>function funcao_a()
+    funcao_b()
+end
+
+function funcao_b()
+    error(debug.traceback("Erro encontrado", 2))
+end
+
+funcao_a()</pre>
+
+                <h3>debug.getinfo()</h3>
+                <p>Obter informações sobre função:</p>
+                <pre>local info = debug.getinfo(1)  -- 1 = função atual
+print(info.name)      -- Nome da função
+print(info.source)    -- Arquivo onde foi definida
+print(info.currentline) -- Linha atual</pre>
+
+                <h3>debug.getlocal()</h3>
+                <p>Obter variáveis locais:</p>
+                <pre>function teste()
+    local x = 10
+    local y = 20
+    
+    local nome, valor = debug.getlocal(1, 1)
+    print(nome .. " = " .. valor)  -- Output: x = 10
+end
+
+teste()</pre>
+
+                <h3>debug.setlocal()</h3>
+                <p>Modificar variável local:</p>
+                <pre>function teste()
+    local x = 10
+    debug.setlocal(1, 1, 50)  -- Muda x para 50
+    print(x)  -- Output: 50
+end
+
+teste()</pre>
+
+                <h3>debug.getfenv() e debug.setfenv()</h3>
+                <p>Obter/mudar environment de função:</p>
+                <pre>function minha_func()
+    print(_G.variavel)
+end
+
+local novo_env = {print = print, variavel = "novo valor"}
+debug.setfenv(minha_func, novo_env)
+minha_func()  -- Output: novo valor</pre>
+            </section>
+
+            <!-- Lint e Boas Práticas -->
+            <section id="lint">
+                <h2>Lint, Style e Boas Práticas</h2>
+
+                <h3>O que é Lint?</h3>
+                <p>Linting é verificar código em busca de erros, inconsistências e problemas de estilo antes da execução. Em Lua, ferramentas populares incluem Luacheck.</p>
+
+                <h3>Instalar Luacheck</h3>
+                <pre>-- Via luarocks
+luarocks install luacheck
+
+-- Verificar arquivo
+luacheck arquivo.lua</pre>
+
+                <h3>Erros Comuns Detectados por Lint</h3>
+                <table>
+                    <tr>
+                        <th>Erro</th>
+                        <th>Descrição</th>
+                        <th>Solução</th>
+                    </tr>
+                    <tr>
+                        <td>Variável não usada</td>
+                        <td><code>local x = 10 -- x nunca é usado</code></td>
+                        <td>Remover ou usar a variável</td>
+                    </tr>
+                    <tr>
+                        <td>Variável indefinida</td>
+                        <td><code>print(x) -- x nunca foi definido</code></td>
+                        <td>Declarar a variável com <code>local</code></td>
+                    </tr>
+                    <tr>
+                        <td>Variável global não intencional</td>
+                        <td><code>x = 10 -- sem local</code></td>
+                        <td>Usar <code>local x = 10</code></td>
+                    </tr>
+                    <tr>
+                        <td>Parâmetro não usado</td>
+                        <td><code>function f(x) print("Oi") end</code></td>
+                        <td>Usar o parâmetro ou renomear para <code>_</code></td>
+                    </tr>
+                </table>
+
+                <h3>Exemplo: Código com Problemas</h3>
+                <pre>-- ❌ Problemas
+resultado = 5  -- Variável global não intencional
+local x = 10   -- Variável não usada
+function processar(dados)
+    return 42
+end
+
+-- ✅ Corrigido
+local resultado = 5
+local x = 10
+print(x)  -- Usar a variável
+function processar(_)  -- Ignorar parâmetro
+    return 42
+end</pre>
+
+                <h3>Boas Práticas de Estilo</h3>
+
+                <h4>1. Use local por padrão</h4>
+                <pre>-- ❌ Ruim
+x = 10
+y = 20
+
+-- ✅ Bom
+local x = 10
+local y = 20</pre>
+
+                <h4>2. Nomes descritivos</h4>
+                <pre>-- ❌ Ruim
+local a = 5
+local b = "João"
+
+-- ✅ Bom
+local idade = 5
+local nome = "João"</pre>
+
+                <h4>3. Indentação consistente</h4>
+                <pre>-- ❌ Ruim
+function teste()
+  local x = 10
+    if x > 5 then
+    print("ok")
+      end
+end
+
+-- ✅ Bom
+function teste()
+    local x = 10
+    if x > 5 then
+        print("ok")
+    end
+end</pre>
+
+                <h4>4. Evite callbacks profundos (Callback Hell)</h4>
+                <pre>-- ❌ Ruim (Callback Hell)
+processarDados(function(resultado1)
+    processarMais(resultado1, function(resultado2)
+        processarAinda(resultado2, function(resultado3)
+            print(resultado3)
+        end)
+    end)
+end)
+
+-- ✅ Bom (Separar em funções)
+local function processar1(resultado1)
+    processarMais(resultado1, processar2)
+end
+
+local function processar2(resultado2)
+    processarAinda(resultado2, processar3)
+end
+
+local function processar3(resultado3)
+    print(resultado3)
+end
+
+processarDados(processar1)</pre>
+
+                <h4>5. Tratamento de Erros</h4>
+                <pre>-- ❌ Ruim
+local arquivo = io.open("dados.txt", "r")
+local conteudo = arquivo:read("*a")
+arquivo:close()
+
+-- ✅ Bom
+local arquivo = io.open("dados.txt", "r")
+if not arquivo then
+    print("Erro: arquivo não encontrado")
+    return
+end
+local conteudo = arquivo:read("*a")
+arquivo:close()</pre>
+
+                <h4>6. Documentação de Código</h4>
+                <pre>--[[
+    Função: calcular_media
+    Descrição: Calcula a média aritmética de uma lista de números
+    Parâmetros:
+        - numeros (table): Lista de números
+    Retorno:
+        - number: A média dos números
+    Exemplo:
+        local media = calcular_media({1, 2, 3, 4, 5})
+        print(media) -- 3
+]]
+local function calcular_media(numeros)
+    local soma = 0
+    for _, valor in ipairs(numeros) do
+        soma = soma + valor
+    end
+    return soma / #numeros
+end</pre>
+
+                <h3>Configurar .luacheckrc</h3>
+                <p>Arquivo de configuração para Luacheck:</p>
+                <pre>-- .luacheckrc
+std = "lua51"
+max_line_length = 120
+exclude_files = {"build/", "vendor/"}
+ignore = {
+    "212",  -- Unused argument
+    "213",  -- Unused variable
+}</pre>
+
+                <div class="box box-success">
+                    <strong>✅ Padrão de Projeto:</strong> Sempre use uma ferramenta de linting em seus projetos. Evita horas de debugging de problemas simples!
+                </div>
+            </section>
+
+            <!-- Resumo Final -->
+            <section>
+                <h2>Resumo e Próximos Passos</h2>
+
+                <p>Você agora domina os fundamentos de Lua! Aqui está um checklist do que foi coberto:</p>
+
+                <ul>
+                    <li>✅ Sintaxe básica e tipos de dados</li>
+                    <li>✅ Variáveis e escopo</li>
+                    <li>✅ Funções, argumentos e varargs</li>
+                    <li>✅ Closures e callbacks</li>
+                    <li>✅ Metatables e metamétodos</li>
+                    <li>✅ Coroutines para controle assíncrono</li>
+                    <li>✅ Modules e organização de código</li>
+                    <li>✅ Todas as bibliotecas padrão importantes</li>
+                    <li>✅ Debugging e boas práticas</li>
+                </ul>
+
+                <h3>Recomendações para Aprender Mais</h3>
+                <ul>
+                    <li><strong>Lua Official Manual:</strong> https://www.lua.org/manual/5.1/</li>
+                    <li><strong>LÖVE 2D:</strong> Framework para games em Lua</li>
+                    <li><strong>Roblox Studio:</strong> Plataforma que usa Lua</li>
+                    <li><strong>Garry's Mod:</strong> Modding com Lua</li>
+                    <li><strong>Projetos práticos:</strong> Crie um jogo pequeno ou uma ferramenta CLI</li>
+                </ul>
+
+                <div class="box box-info">
+                    <strong>💡 Dica Final:</strong> A melhor forma de aprender é praticando. Crie pequenos projetos, leia código de outros, e enfrente erros - é assim que você se torna fluente em Lua!
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
