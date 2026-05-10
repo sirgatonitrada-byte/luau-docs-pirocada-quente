@@ -338,44 +338,95 @@
         }
 
         /* Code Blocks */
-        pre {
-            background: var(--code-bg);
-            color: var(--code-text);
-            padding: 1.8rem;
-            border-radius: 10px;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border-left: 5px solid var(--accent);
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            font-size: 1rem;
-            line-height: 1.7;
-            box-shadow: 0 4px 15px var(--shadow);
+        .code-block {
             position: relative;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            border: 1px solid #2a2d3a;
         }
 
-        pre::before {
-            content: "{ }";
-            position: absolute;
-            top: 0.8rem;
-            right: 1.2rem;
-            font-weight: bold;
-            color: var(--accent);
-            opacity: 0.5;
-            font-size: 0.9rem;
+        .code-block-header {
+            background: #1e2030;
+            padding: 0.55rem 1rem 0.55rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #2a2d3a;
         }
+
+        .code-block-lang {
+            font-size: 0.75rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #636da6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .code-copy-btn {
+            background: none;
+            border: 1px solid #3b3f5c;
+            color: #636da6;
+            padding: 0.25rem 0.6rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-family: 'Consolas', monospace;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .code-copy-btn:hover {
+            border-color: #7c83c8;
+            color: #c8cde8;
+            background: rgba(124,131,200,0.1);
+        }
+
+        .code-copy-btn.copied {
+            border-color: #4ade80;
+            color: #4ade80;
+        }
+
+        pre {
+            background: #13141f;
+            color: #c8cde8;
+            padding: 1.4rem 1.6rem;
+            overflow-x: auto;
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.97rem;
+            line-height: 1.75;
+            tab-size: 4;
+        }
+
+        /* Lua syntax highlight tokens */
+        .tok-kw    { color: #f7768e; }          /* local, if, then, else, end, for, while, do, return, function, not, and, or, in, repeat, until, break */
+        .tok-bi    { color: #bb9af7; }          /* print, pairs, ipairs, type, tostring, tonumber, setmetatable, getmetatable, require, pcall, xpcall, error, assert, select, unpack, rawset, rawget, next */
+        .tok-str   { color: #9ece6a; }          /* "strings" e 'strings' */
+        .tok-num   { color: #ff9e64; }          /* números */
+        .tok-cmt   { color: #565f89; font-style: italic; } /* comentários */
+        .tok-bool  { color: #ff9e64; }          /* true, false, nil */
+        .tok-op    { color: #89ddff; }          /* operadores: = + - * / % ^ .. # ~ < > */
+        .tok-dot   { color: #89ddff; }          /* . e : */
+        .tok-id    { color: #c8cde8; }          /* identificadores normais */
+        .tok-fn    { color: #7aa2f7; }          /* nome de função na definição */
+        .tok-paren { color: #c8cde8; }          /* parênteses e colchetes */
 
         code {
-            font-family: 'Courier New', monospace;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
         }
 
         p code, li code {
-            background: var(--secondary);
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            padding: 0.3em 0.7em;
-            border-radius: 6px;
-            color: white;
-            font-size: 0.98em;
-            font-weight: 600;
+            background: rgba(124,131,200,0.15);
+            border: 1px solid rgba(124,131,200,0.25);
+            padding: 0.2em 0.55em;
+            border-radius: 5px;
+            color: #c8cde8;
+            font-size: 0.93em;
+            font-weight: 500;
             font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
         }
 
@@ -5483,6 +5534,176 @@ end</pre>
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             themeToggle.textContent = isDark ? '☀️ Modo Claro' : '🌙 Modo Escuro';
         });
+
+        // ── Lua Syntax Highlighter ──────────────────────────────────────
+        (function() {
+            const KW = new Set([
+                'local','if','then','else','elseif','end','for','while','do',
+                'return','function','not','and','or','in','repeat','until',
+                'break','goto'
+            ]);
+            const BOOL = new Set(['true','false','nil']);
+            const BUILTIN = new Set([
+                'print','pairs','ipairs','type','tostring','tonumber',
+                'setmetatable','getmetatable','require','pcall','xpcall',
+                'error','assert','select','unpack','rawset','rawget','next',
+                'load','loadfile','dofile','collectgarbage','coroutine',
+                'string','table','math','io','os','debug','package',
+                'rawequal','rawlen','warn'
+            ]);
+
+            function esc(s) {
+                return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            }
+
+            function highlight(src) {
+                let out = '';
+                let i = 0;
+                const len = src.length;
+
+                while (i < len) {
+                    // Long comment --[[ ... ]]
+                    if (src[i]==='-' && src[i+1]==='-' && src[i+2]==='[' && src[i+3]==='[') {
+                        let j = i + 4;
+                        while (j < len && !(src[j]===']' && src[j+1]===']')) j++;
+                        j += 2;
+                        out += `<span class="tok-cmt">${esc(src.slice(i,j))}</span>`;
+                        i = j; continue;
+                    }
+                    // Line comment --
+                    if (src[i]==='-' && src[i+1]==='-') {
+                        let j = i + 2;
+                        while (j < len && src[j] !== '\n') j++;
+                        out += `<span class="tok-cmt">${esc(src.slice(i,j))}</span>`;
+                        i = j; continue;
+                    }
+                    // Long string [[ ... ]]
+                    if (src[i]==='[' && src[i+1]==='[') {
+                        let j = i + 2;
+                        while (j < len && !(src[j]===']' && src[j+1]===']')) j++;
+                        j += 2;
+                        out += `<span class="tok-str">${esc(src.slice(i,j))}</span>`;
+                        i = j; continue;
+                    }
+                    // String " or '
+                    if (src[i]==='"' || src[i]==="'") {
+                        const q = src[i];
+                        let j = i + 1;
+                        while (j < len && src[j] !== q) {
+                            if (src[j]==='\\') j++;
+                            j++;
+                        }
+                        j++;
+                        out += `<span class="tok-str">${esc(src.slice(i,j))}</span>`;
+                        i = j; continue;
+                    }
+                    // Number
+                    if (/[0-9]/.test(src[i]) || (src[i]==='.' && /[0-9]/.test(src[i+1]||''))) {
+                        let j = i;
+                        if (src[i]==='0' && (src[i+1]==='x'||src[i+1]==='X')) {
+                            j += 2;
+                            while (j < len && /[0-9a-fA-F]/.test(src[j])) j++;
+                        } else {
+                            while (j < len && /[0-9]/.test(src[j])) j++;
+                            if (j < len && src[j]==='.') { j++; while (j < len && /[0-9]/.test(src[j])) j++; }
+                            if (j < len && (src[j]==='e'||src[j]==='E')) { j++; if (src[j]==='+'||src[j]==='-') j++; while (j < len && /[0-9]/.test(src[j])) j++; }
+                        }
+                        out += `<span class="tok-num">${esc(src.slice(i,j))}</span>`;
+                        i = j; continue;
+                    }
+                    // Identifier or keyword
+                    if (/[a-zA-Z_]/.test(src[i])) {
+                        let j = i;
+                        while (j < len && /[a-zA-Z0-9_]/.test(src[j])) j++;
+                        const word = src.slice(i, j);
+                        // Check if followed by ( — function call
+                        let k = j;
+                        while (k < len && (src[k]===' '||src[k]==='\t')) k++;
+                        const isCall = src[k]==='(';
+                        if (KW.has(word)) {
+                            out += `<span class="tok-kw">${esc(word)}</span>`;
+                        } else if (BOOL.has(word)) {
+                            out += `<span class="tok-bool">${esc(word)}</span>`;
+                        } else if (BUILTIN.has(word)) {
+                            out += `<span class="tok-bi">${esc(word)}</span>`;
+                        } else if (isCall) {
+                            out += `<span class="tok-fn">${esc(word)}</span>`;
+                        } else {
+                            out += `<span class="tok-id">${esc(word)}</span>`;
+                        }
+                        i = j; continue;
+                    }
+                    // Operators
+                    if (/[+\-*\/^%#~<>=]/.test(src[i])) {
+                        let j = i + 1;
+                        if ((src[i]==='.'&&src[i+1]==='.') || (src[i]==='~'&&src[i+1]==='=') ||
+                            (src[i]==='<'&&src[i+1]==='=') || (src[i]==='>'&&src[i+1]==='=') ||
+                            (src[i]==='='&&src[i+1]==='=') || (src[i]==='/'&&src[i+1]==='/')) j++;
+                        out += `<span class="tok-op">${esc(src.slice(i,j))}</span>`;
+                        i = j; continue;
+                    }
+                    // Dot / colon
+                    if (src[i]==='.' || src[i]===':') {
+                        out += `<span class="tok-dot">${esc(src[i])}</span>`;
+                        i++; continue;
+                    }
+                    // Equals sign alone
+                    if (src[i]==='=') {
+                        out += `<span class="tok-op">=</span>`;
+                        i++; continue;
+                    }
+                    // Everything else (parens, spaces, newlines, commas)
+                    out += esc(src[i]);
+                    i++;
+                }
+                return out;
+            }
+
+            function wrapBlock(pre) {
+                const raw = pre.textContent;
+                const highlighted = highlight(raw);
+                pre.innerHTML = highlighted;
+
+                // Build wrapper
+                const wrapper = document.createElement('div');
+                wrapper.className = 'code-block';
+
+                const header = document.createElement('div');
+                header.className = 'code-block-header';
+
+                const lang = document.createElement('span');
+                lang.className = 'code-block-lang';
+                lang.textContent = 'lua';
+
+                const btn = document.createElement('button');
+                btn.className = 'code-copy-btn';
+                btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';
+                btn.addEventListener('click', () => {
+                    navigator.clipboard.writeText(raw.trim()).then(() => {
+                        btn.textContent = '✓ Copied';
+                        btn.classList.add('copied');
+                        setTimeout(() => {
+                            btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';
+                            btn.classList.remove('copied');
+                        }, 2000);
+                    });
+                });
+
+                header.appendChild(lang);
+                header.appendChild(btn);
+                wrapper.appendChild(header);
+
+                pre.parentNode.insertBefore(wrapper, pre);
+                wrapper.appendChild(pre);
+            }
+
+            // Run on all pre blocks that are not inside .example-output
+            document.querySelectorAll('pre').forEach(pre => {
+                if (!pre.closest('.example-output') && !pre.closest('.code-block')) {
+                    wrapBlock(pre);
+                }
+            });
+        })();
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
