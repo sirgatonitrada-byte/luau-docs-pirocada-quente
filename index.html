@@ -677,6 +677,674 @@
             text-decoration: underline;
             transform: translateY(-1px);
         }
+
+        /* Novos estilos para conceitos visuais */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .concept-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid #2a2e45;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        body:not(.dark-mode) .concept-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-color: var(--border);
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(255,179,71,0.2);
+            border-color: var(--accent);
+        }
+
+        .concept-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .concept-card h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .concept-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+
+        .concept-card pre {
+            font-size: 0.85rem;
+            padding: 1rem;
+            margin: 0;
+        }
+
+        .visual-explanation {
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+            border: 3px solid #2a3f5f;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        body:not(.dark-mode) .visual-explanation {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-color: var(--accent);
+        }
+
+        .visual-explanation h4 {
+            margin-top: 0;
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .table-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .table-section {
+            background: rgba(255,179,71,0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid rgba(255,179,71,0.2);
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .table-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .table-item {
+            background: rgba(26,26,46,0.6);
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            border: 1px solid rgba(255,179,71,0.1);
+        }
+
+        body:not(.dark-mode) .table-item {
+            background: rgba(255,255,255,0.8);
+        }
+
+        .array-item {
+            border-left: 4px solid #4ade80;
+        }
+
+        .hash-item {
+            border-left: 4px solid #60a5fa;
+        }
+
+        .item-index, .item-key {
+            color: #fbbf24;
+            font-weight: 700;
+            min-width: 40px;
+        }
+
+        .item-arrow {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .item-value {
+            color: #4ade80;
+            font-weight: 600;
+        }
+
+        .concept-showcase {
+            background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+            border: 3px solid var(--accent);
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 2.5rem 0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        body:not(.dark-mode) .concept-showcase {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .showcase-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .showcase-icon {
+            font-size: 3rem;
+        }
+
+        .showcase-header h4 {
+            margin: 0;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .showcase-content {
+            padding: 2rem;
+        }
+
+        .showcase-content pre {
+            margin: 0;
+        }
+
+        .type-comparison-table {
+            margin: 3rem 0;
+        }
+
+        .type-comparison-table h4 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dark-concept-section {
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            border: 3px solid #30363d;
+            border-radius: 20px;
+            margin: 4rem 0;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        body:not(.dark-mode) .dark-concept-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-color: var(--border);
+        }
+
+        .concept-header {
+            background: linear-gradient(135deg, #1a0d33 0%, #2d1b4e 100%);
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        body:not(.dark-mode) .concept-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .concept-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+            min-width: 80px;
+        }
+
+        .concept-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .concept-body {
+            padding: 3rem;
+        }
+
+        .concept-description {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.9;
+        }
+
+        .visual-demo {
+            background: rgba(255,179,71,0.05);
+            border: 2px solid rgba(255,179,71,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .demo-title {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .string-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .string-box {
+            background: #1a1a2e;
+            border: 2px solid #2a3f5f;
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-width: 200px;
+        }
+
+        body:not(.dark-mode) .string-box {
+            background: white;
+            border-color: var(--border);
+        }
+
+        .string-label {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .string-chars {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .char {
+            background: var(--accent);
+            color: #1a1a2e;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+        }
+
+        .string-info {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .arrow-right {
+            font-size: 3rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255,179,71,0.05);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+        }
+
+        .feature-icon {
+            color: #4ade80;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .number-comparison {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .lang-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .lang-title {
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .lang-types {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .type-box {
+            background: #1a1a2e;
+            border: 2px solid #2a3f5f;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+
+        body:not(.dark-mode) .type-box {
+            background: white;
+            border-color: var(--border);
+        }
+
+        .type-box.unified {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: var(--accent);
+            font-size: 1.3rem;
+            padding: 1.5rem;
+        }
+
+        .vs-divider {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        .array-visual {
+            display: flex;
+            justify-content: center;
+            margin: 2.5rem 0;
+        }
+
+        .array-container {
+            background: #1a1a2e;
+            border: 3px solid var(--accent);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        body:not(.dark-mode) .array-container {
+            background: white;
+        }
+
+        .array-title {
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+        }
+
+        .array-cells {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .array-cell {
+            background: rgba(255,179,71,0.1);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 1rem;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .cell-index {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .cell-value {
+            font-size: 1.1rem;
+            color: #4ade80;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+        }
+
+        .array-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #fbbf24;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .operations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .operation-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid #2a3f5f;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        body:not(.dark-mode) .operation-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-color: var(--border);
+        }
+
+        .operation-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(255,179,71,0.2);
+        }
+
+        .op-title {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .operation-card code {
+            display: block;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .op-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .table-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .table-type-card {
+            background: #1a1a2e;
+            border: 2px solid #2a3f5f;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        body:not(.dark-mode) .table-type-card {
+            background: white;
+            border-color: var(--border);
+        }
+
+        .table-type-card:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+
+        .type-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .type-name {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .table-type-card pre {
+            font-size: 0.85rem;
+            padding: 0.8rem;
+            margin: 0;
+        }
+
+        .memory-diagram {
+            background: rgba(255,179,71,0.05);
+            border: 2px solid rgba(255,179,71,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .diagram-title {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .memory-visual {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .memory-block {
+            background: #1a1a2e;
+            border: 2px solid #2a3f5f;
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-width: 200px;
+        }
+
+        body:not(.dark-mode) .memory-block {
+            background: white;
+            border-color: var(--border);
+        }
+
+        .block-title {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .block-content {
+            text-align: center;
+        }
+
+        .pointer {
+            color: var(--accent);
+            font-weight: 700;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+
+        .table-memory {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mem-section {
+            background: rgba(255,179,71,0.1);
+            border: 1px solid var(--accent);
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .diagram-note {
+            background: rgba(255,179,71,0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .table-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .number-comparison {
+                flex-direction: column;
+            }
+
+            .vs-divider {
+                transform: rotate(90deg);
+            }
+
+            .array-cells {
+                flex-direction: column;
+            }
+
+            .memory-visual {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -703,6 +1371,7 @@
                 <h2>📝 Tipos e Variáveis</h2>
                 <ul>
                     <li><a href="#tipos">Tipos de Dados</a></li>
+                    <li><a href="#conceitos-visuais">Conceitos Visuais</a></li>
                     <li><a href="#variaveis">Variáveis e Escopo</a></li>
                     <li><a href="#escopo-detalhado">Escopo Detalhado</a></li>
                     <li><a href="#conversao">Conversão de Tipos</a></li>
@@ -1577,6 +2246,458 @@ print(tonumber("10") - tonumber("5"))  -- Output: 5 (correto)</pre>
 
                 <div class="box box-warning">
                     <strong>⚠️ Conversão Implícita:</strong> Lua é flexível demais em algumas conversões. Sempre seja explícito com <code>tonumber()</code> e <code>tostring()</code> em código profissional.
+                </div>
+            </section>
+
+            <!-- Nova seção: Conceitos Visuais Detalhados -->
+            <section id="conceitos-visuais">
+                <h2>🎨 Conceitos Fundamentais Explicados Visualmente</h2>
+                
+                <p>Agora vamos explorar os conceitos mais importantes de Lua com explicações visuais detalhadas e exemplos práticos. Esta seção foi criada para ajudar você a <strong>entender profundamente</strong> como cada tipo de dado funciona internamente.</p>
+
+                <div class="dark-concept-section">
+                    <div class="concept-header">
+                        <span class="concept-number">01</span>
+                        <h3>String - Texto Imutável</h3>
+                    </div>
+                    <div class="concept-body">
+                        <div class="concept-description">
+                            <p>Strings em Lua são <strong>sequências imutáveis de caracteres</strong>. Uma vez criada, uma string não pode ser modificada - qualquer operação cria uma nova string na memória.</p>
+                        </div>
+                        
+                        <div class="visual-demo">
+                            <div class="demo-title">💾 Como Strings Funcionam na Memória</div>
+                            <div class="string-visual">
+                                <div class="string-box">
+                                    <div class="string-label">String Original</div>
+                                    <div class="string-chars">
+                                        <span class="char">L</span>
+                                        <span class="char">u</span>
+                                        <span class="char">a</span>
+                                    </div>
+                                    <div class="string-info">Endereço: 0x1A2B3C</div>
+                                </div>
+                                <div class="arrow-right">→</div>
+                                <div class="string-box">
+                                    <div class="string-label">Após string.upper()</div>
+                                    <div class="string-chars">
+                                        <span class="char">L</span>
+                                        <span class="char">U</span>
+                                        <span class="char">A</span>
+                                    </div>
+                                    <div class="string-info">Endereço: 0x4D5E6F (NOVA!)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre>local original = "Lua"
+local maiuscula = string.upper(original)
+
+print(original)    -- Output: Lua (não mudou!)
+print(maiuscula)   -- Output: LUA (nova string criada)
+
+-- Strings são internadas (compartilham memória se idênticas)
+local a = "teste"
+local b = "teste"
+-- 'a' e 'b' apontam para a MESMA string na memória!
+-- Isso economiza memória e torna comparações rápidas</pre>
+
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span><strong>Imutáveis</strong> - Seguras para compartilhar entre funções</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span><strong>Internadas</strong> - Strings idênticas compartilham memória</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span><strong>Qualquer byte</strong> - Suportam até caractere nulo (\0)</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">✓</span>
+                                <span><strong>Biblioteca rica</strong> - Muitas funções de manipulação</span>
+                            </div>
+                        </div>
+
+                        <div class="box box-info">
+                            <strong>💡 Por que Imutabilidade é Boa:</strong>
+                            <ul>
+                                <li>Strings podem ser compartilhadas sem medo de modificação acidental</li>
+                                <li>Facilita otimizações do interpretador (como string interning)</li>
+                                <li>Torna o código mais previsível e fácil de debugar</li>
+                                <li>Permite uso seguro em múltiplas threads (quando aplicável)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dark-concept-section">
+                    <div class="concept-header">
+                        <span class="concept-number">02</span>
+                        <h3>Number - Tipo Numérico Unificado</h3>
+                    </div>
+                    <div class="concept-body">
+                        <div class="concept-description">
+                            <p>Diferente de muitas linguagens, Lua <strong>não distingue entre inteiros e floats</strong> - ambos são do tipo <code>number</code>. Internamente usa double-precision floating-point (64 bits).</p>
+                        </div>
+
+                        <div class="number-comparison">
+                            <div class="lang-column">
+                                <div class="lang-title">Outras Linguagens</div>
+                                <div class="lang-types">
+                                    <div class="type-box">int</div>
+                                    <div class="type-box">float</div>
+                                    <div class="type-box">double</div>
+                                    <div class="type-box">long</div>
+                                    <div class="type-box">short</div>
+                                </div>
+                            </div>
+                            <div class="vs-divider">VS</div>
+                            <div class="lang-column">
+                                <div class="lang-title">Lua</div>
+                                <div class="lang-types">
+                                    <div class="type-box unified">number</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre>-- Todos são do tipo 'number'
+local inteiro = 42
+local decimal = 3.14159
+local cientifico = 1.5e3        -- 1500
+local hexadecimal = 0xFF        -- 255 (Lua 5.2+)
+local negativo = -100
+
+print(type(inteiro))            -- number
+print(type(decimal))            -- number
+print(inteiro == 42.0)          -- true (são iguais!)
+
+-- Operações matemáticas
+print(10 / 3)                   -- 3.3333333333333
+print(10 % 3)                   -- 1 (módulo/resto)
+print(2 ^ 10)                   -- 1024 (potência)
+print(math.floor(3.7))          -- 3 (arredondar para baixo)
+print(math.ceil(3.2))           -- 4 (arredondar para cima)</pre>
+
+                        <div class="box box-warning">
+                            <strong>⚠️ Precisão de Ponto Flutuante:</strong>
+                            <p>Como Lua usa ponto flutuante, pode haver pequenos erros de arredondamento:</p>
+                            <pre>print(0.1 + 0.2 == 0.3)  -- false! (devido a arredondamento)
+print(0.1 + 0.2)          -- 0.30000000000000004
+
+-- Solução: use epsilon para comparações
+local function quase_igual(a, b, epsilon)
+    epsilon = epsilon or 0.0001
+    return math.abs(a - b) < epsilon
+end
+
+print(quase_igual(0.1 + 0.2, 0.3))  -- true</pre>
+                        </div>
+
+                        <div class="box box-info">
+                            <strong>💡 Vantagens do Tipo Unificado:</strong>
+                            <ul>
+                                <li><strong>Simplicidade</strong>: Não precisa se preocupar com conversões entre int/float</li>
+                                <li><strong>Flexibilidade</strong>: Mesma variável pode armazenar qualquer número</li>
+                                <li><strong>Menos erros</strong>: Sem overflow de inteiros (até certo ponto)</li>
+                                <li><strong>Código mais limpo</strong>: Menos casting e conversões explícitas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dark-concept-section">
+                    <div class="concept-header">
+                        <span class="concept-number">03</span>
+                        <h3>Array - Listas Ordenadas</h3>
+                    </div>
+                    <div class="concept-body">
+                        <div class="concept-description">
+                            <p>Arrays em Lua são <strong>tables com índices numéricos sequenciais</strong>. Importante: <strong>índices começam em 1</strong>, não em 0 como em muitas outras linguagens!</p>
+                        </div>
+
+                        <div class="array-visual">
+                            <div class="array-container">
+                                <div class="array-title">Array em Lua</div>
+                                <div class="array-cells">
+                                    <div class="array-cell">
+                                        <div class="cell-index">[1]</div>
+                                        <div class="cell-value">"maçã"</div>
+                                    </div>
+                                    <div class="array-cell">
+                                        <div class="cell-index">[2]</div>
+                                        <div class="cell-value">"banana"</div>
+                                    </div>
+                                    <div class="array-cell">
+                                        <div class="cell-index">[3]</div>
+                                        <div class="cell-value">"laranja"</div>
+                                    </div>
+                                    <div class="array-cell">
+                                        <div class="cell-index">[4]</div>
+                                        <div class="cell-value">"uva"</div>
+                                    </div>
+                                </div>
+                                <div class="array-note">⚠️ Índices começam em 1, não em 0!</div>
+                            </div>
+                        </div>
+
+                        <pre>-- Criar array
+local frutas = {"maçã", "banana", "laranja"}
+
+-- Acessar elementos (índice começa em 1!)
+print(frutas[1])              -- maçã (primeiro elemento)
+print(frutas[2])              -- banana
+print(frutas[3])              -- laranja
+print(frutas[0])              -- nil (não existe!)
+
+-- Tamanho do array
+print(#frutas)                -- 3
+
+-- Adicionar elemento no final
+table.insert(frutas, "uva")
+print(#frutas)                -- 4
+
+-- Adicionar em posição específica
+table.insert(frutas, 2, "manga")
+-- Agora: {"maçã", "manga", "banana", "laranja", "uva"}
+
+-- Remover elemento
+table.remove(frutas, 2)       -- Remove "manga"
+print(frutas[2])              -- banana (elementos se movem!)
+
+-- Iterar sobre array
+for i = 1, #frutas do
+    print(i, frutas[i])
+end
+
+-- Ou usar ipairs (mais idiomático e seguro)
+for indice, fruta in ipairs(frutas) do
+    print(indice .. ": " .. fruta)
+end</pre>
+
+                        <div class="operations-grid">
+                            <div class="operation-card">
+                                <div class="op-title">📥 Adicionar</div>
+                                <code>table.insert(arr, valor)</code>
+                                <div class="op-desc">Adiciona no final do array</div>
+                            </div>
+                            <div class="operation-card">
+                                <div class="op-title">📤 Remover</div>
+                                <code>table.remove(arr, pos)</code>
+                                <div class="op-desc">Remove e retorna elemento</div>
+                            </div>
+                            <div class="operation-card">
+                                <div class="op-title">🔄 Ordenar</div>
+                                <code>table.sort(arr)</code>
+                                <div class="op-desc">Ordena in-place</div>
+                            </div>
+                            <div class="operation-card">
+                                <div class="op-title">🔗 Concatenar</div>
+                                <code>table.concat(arr, sep)</code>
+                                <div class="op-desc">Junta em string</div>
+                            </div>
+                        </div>
+
+                        <div class="box box-danger">
+                            <strong>🚨 Armadilha Comum - Índice 0:</strong>
+                            <p>Muitos programadores vindos de outras linguagens (C, Java, Python, JavaScript) cometem o erro de usar índice 0:</p>
+                            <pre>local lista = {"primeiro", "segundo", "terceiro"}
+
+-- ERRADO (pensamento de outras linguagens)
+print(lista[0])  -- nil (não existe!)
+
+-- CORRETO (jeito Lua)
+print(lista[1])  -- primeiro
+
+-- Você PODE usar índice 0, mas não é idiomático:
+lista[0] = "zero"
+print(lista[0])  -- zero
+print(#lista)    -- 3 (não conta o índice 0!)</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dark-concept-section">
+                    <div class="concept-header">
+                        <span class="concept-number">04</span>
+                        <h3>Table - A Estrutura Universal</h3>
+                    </div>
+                    <div class="concept-body">
+                        <div class="concept-description">
+                            <p>Tables são a <strong>única estrutura de dados complexa</strong> em Lua, mas são extremamente versáteis e poderosas. Funcionam como arrays, dicionários, objetos, classes e módulos - tudo em um!</p>
+                        </div>
+
+                        <div class="table-types-grid">
+                            <div class="table-type-card">
+                                <div class="type-icon">📋</div>
+                                <div class="type-name">Como Array</div>
+                                <pre>{1, 2, 3, 4, 5}</pre>
+                            </div>
+                            <div class="table-type-card">
+                                <div class="type-icon">📖</div>
+                                <div class="type-name">Como Dicionário</div>
+                                <pre>{nome="João", 
+ idade=30}</pre>
+                            </div>
+                            <div class="table-type-card">
+                                <div class="type-icon">🎯</div>
+                                <div class="type-name">Como Objeto</div>
+                                <pre>{x=10, y=20,
+ mover=function()
+ end}</pre>
+                            </div>
+                            <div class="table-type-card">
+                                <div class="type-icon">🔀</div>
+                                <div class="type-name">Híbrido</div>
+                                <pre>{"a", "b",
+ chave="valor"}</pre>
+                            </div>
+                        </div>
+
+                        <div class="visual-explanation">
+                            <h4>📊 Anatomia Interna de uma Table</h4>
+                            <div class="table-visual">
+                                <div class="table-section">
+                                    <div class="section-title">Array Part (Parte Numérica)</div>
+                                    <div class="table-items">
+                                        <div class="table-item array-item">
+                                            <span class="item-index">[1]</span>
+                                            <span class="item-value">"primeiro"</span>
+                                        </div>
+                                        <div class="table-item array-item">
+                                            <span class="item-index">[2]</span>
+                                            <span class="item-value">"segundo"</span>
+                                        </div>
+                                        <div class="table-item array-item">
+                                            <span class="item-index">[3]</span>
+                                            <span class="item-value">"terceiro"</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-section">
+                                    <div class="section-title">Hash Part (Parte de Chaves)</div>
+                                    <div class="table-items">
+                                        <div class="table-item hash-item">
+                                            <span class="item-key">nome</span>
+                                            <span class="item-arrow">→</span>
+                                            <span class="item-value">"João"</span>
+                                        </div>
+                                        <div class="table-item hash-item">
+                                            <span class="item-key">idade</span>
+                                            <span class="item-arrow">→</span>
+                                            <span class="item-value">30</span>
+                                        </div>
+                                        <div class="table-item hash-item">
+                                            <span class="item-key">ativo</span>
+                                            <span class="item-arrow">→</span>
+                                            <span class="item-value">true</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre>-- Table completa (híbrida)
+local dados = {
+    -- Parte array (índices numéricos sequenciais)
+    "primeiro",
+    "segundo",
+    "terceiro",
+    
+    -- Parte hash (chaves nomeadas)
+    nome = "João",
+    idade = 30,
+    ativo = true,
+    
+    -- Funções também podem ser valores
+    saudar = function()
+        print("Olá!")
+    end,
+    
+    -- Tables aninhadas
+    endereco = {
+        rua = "Rua Principal",
+        numero = 123
+    }
+}
+
+-- Acessar parte array
+print(dados[1])           -- primeiro
+print(#dados)             -- 3 (conta apenas parte array contígua)
+
+-- Acessar parte hash
+print(dados.nome)         -- João
+print(dados["idade"])     -- 30 (sintaxe alternativa)
+
+-- Chamar função
+dados.saudar()            -- Olá!
+
+-- Acessar table aninhada
+print(dados.endereco.rua) -- Rua Principal</pre>
+
+                        <div class="memory-diagram">
+                            <div class="diagram-title">💾 Tables na Memória - Passagem por Referência</div>
+                            <div class="memory-visual">
+                                <div class="memory-block">
+                                    <div class="block-title">Variável</div>
+                                    <div class="block-content">
+                                        <code>local t = {...}</code>
+                                        <div class="pointer">↓ referência</div>
+                                    </div>
+                                </div>
+                                <div class="memory-block">
+                                    <div class="block-title">Memória (Heap)</div>
+                                    <div class="block-content">
+                                        <div class="table-memory">
+                                            <div class="mem-section">Array Part</div>
+                                            <div class="mem-section">Hash Part</div>
+                                            <div class="mem-section">Metatable (opcional)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="diagram-note">
+                                <strong>⚠️ Importante:</strong> Tables são sempre passadas por referência. Copiar uma variável table copia apenas a referência, não os dados! Modificar a "cópia" modifica o original.
+                            </div>
+                        </div>
+
+                        <pre>-- Demonstração de referência vs cópia
+local original = {1, 2, 3}
+local referencia = original   -- Copia apenas a referência!
+
+referencia[1] = 999
+print(original[1])            -- 999 (original também mudou!)
+
+-- Para copiar valores, precisa iterar manualmente:
+local function copiar_table_rasa(t)
+    local nova = {}
+    for k, v in pairs(t) do
+        nova[k] = v
+    end
+    return nova
+end
+
+local original2 = {1, 2, 3}
+local copia = copiar_table_rasa(original2)
+copia[1] = 999
+print(original2[1])           -- 1 (original intacto!)
+
+-- Nota: isso é cópia rasa (shallow copy)
+-- Tables aninhadas ainda são referências!</pre>
+
+                        <div class="box box-success">
+                            <strong>✅ Por que Tables são Tão Poderosas:</strong>
+                            <ul>
+                                <li><strong>Flexíveis</strong>: Podem crescer e encolher dinamicamente sem realocação</li>
+                                <li><strong>Eficientes</strong>: Implementação otimizada com array part (O(1)) + hash part</li>
+                                <li><strong>Versáteis</strong>: Servem para múltiplos propósitos (array, dict, object, class)</li>
+                                <li><strong>Metatables</strong>: Podem ter comportamento customizado via metamétodos</li>
+                                <li><strong>Garbage Collected</strong>: Memória gerenciada automaticamente</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
 
